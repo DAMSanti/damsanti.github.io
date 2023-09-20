@@ -1,33 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejecución de Java en el navegador</title>
+    <title>Ejecución de código Java</title>
 </head>
 <body>
-    <h1>Ejecución de código Java en el navegador</h1>
-    <textarea id="javaCode" rows="10" cols="40">
-        // Tu código Java aquí
-    </textarea>
-    <button id="runButton">Run</button>
-    <div id="output"></div>
-    <script src="https://cheerpjdemos.leaningtech.com/swingdemo_latest.html"></script>
-    <script>
-        const javaCodeTextarea = document.getElementById('javaCode');
-        const runButton = document.getElementById('runButton');
-        const outputDiv = document.getElementById('output');
+    <h1>Área de carga de archivo Java</h1>
+    <input type="file" id="javaFileInput" accept=".java">
+    <br>
+    <button onclick="loadAndRunJava()">Run</button>
 
-        runButton.addEventListener('click', async () => {
-            outputDiv.textContent = 'Ejecutando...';
-            try {
-                const result = await CheerpJRun(javaCodeTextarea.value);
-                outputDiv.textContent = result;
-            } catch (error) {
-                outputDiv.textContent = 'Error al ejecutar el código Java.';
-                console.error(error);
+    <hr>
+
+    <h1>Salida:</h1>
+    <pre id="output"></pre>
+
+    <script>
+        function loadAndRunJava() {
+            const javaFileInput = document.getElementById('javaFileInput');
+            const output = document.getElementById('output');
+
+            if (javaFileInput.files.length === 0) {
+                output.textContent = 'Por favor, selecciona un archivo Java.';
+                return;
             }
-        });
+
+            const javaFile = javaFileInput.files[0];
+            const formData = new FormData();
+            formData.append('javaFile', javaFile);
+
+            fetch('/runjava', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                output.textContent = data;
+            })
+            .catch(error => {
+                output.textContent = 'Error al ejecutar el código Java.';
+                console.error(error);
+            });
+        }
     </script>
 </body>
 </html>
