@@ -22,17 +22,42 @@
         const javaFileSelect = document.getElementById('javaFileSelect');
         const javaCodeTextarea = document.getElementById('javaCode');
         const output = document.getElementById('output');
-
+        let selectedJarFile = ''; // Variable para almacenar el nombre del archivo .jar
+        let selectedPath = '';
+        
         // Función para cargar y mostrar el código Java seleccionado
         javaFileSelect.addEventListener('change', loadJavaCode);
 
         function loadJavaCode() {
             const selectedJavaFile = javaFileSelect.value;
             if (selectedJavaFile) {
-                fetch(`/Codigo/Unidad1/Hora1/Ejercicio1/${selectedJavaFile}`)
-                    .then(response => response.text())
+                // Cargar el JSON aquí
+                fetch('./data/lista-archivos-java.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
+                    .then(response => response.json())
                     .then(data => {
-                        javaCodeTextarea.value = data;
+                        // Obtén la ruta relativa desde el JSON
+                        const selectedFileData = data.find(file => file.nombre === selectedJavaFile);
+                        if (selectedFileData) {
+                            const selectedPath = selectedFileData.ruta;
+
+                            // Construye la URL completa al archivo Java usando la ruta del JSON
+                            const fullJavaFilePath = `${selectedPath}${selectedJavaFile}`;
+
+                            // Asigna el nombre del archivo .jar
+                            selectedJarFile = selectedFileData.jar;
+                            
+                            // Realiza la solicitud para cargar el archivo Java
+                            fetch(fullJavaFilePath)
+                                .then(response => response.text())
+                                .then(javaCode => {
+                                    javaCodeTextarea.value = javaCode;
+                                })
+                                .catch(error => {
+                                    console.error(error);
+                                });
+                        } else {
+                            console.error('Datos del archivo no encontrados en el JSON.');
+                        }
                     })
                     .catch(error => {
                         console.error(error);
@@ -52,8 +77,11 @@
 
             output.textContent = 'Ejecutando...';
 
-            const command = `java -jar /Codigo/Unidad1/Hora1/Ejercicio1/${selectedJavaFile.replace('.java', '.jar')}`;
-            fetch(`/run?command=${encodeURIComponent(command)}`)
+            // Construye la URL completa al archivo .jar usando la ruta del JSON
+            const fullJarFilePath = `codigo/${selectedPath}${selectedJarFile}`;
+
+            // Realiza la solicitud para ejecutar el archivo .jar
+            fetch(fullJarFilePath)
                 .then(response => response.text())
                 .then(data => {
                     output.textContent = data;
@@ -64,14 +92,15 @@
                 });
         }
 
+
         // Listar automáticamente los archivos .java disponibles en todas las carpetas dentro de una carpeta principal
-        fetch('./codigo') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
+        fetch('./data/lista-archivos-java.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
             .then(response => response.json())
             .then(data => {
-                data.forEach(filename => {
+                data.forEach(file => {
                     const option = document.createElement('option');
-                    option.value = filename;
-                    option.textContent = filename;
+                    option.value = file.nombre;
+                    option.textContent = file.nombre.replace(/\.java$/, ''); // Eliminar la extensión ".java"
                     javaFileSelect.appendChild(option);
                 });
             })
