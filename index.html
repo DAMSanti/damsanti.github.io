@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ejecución de archivos .java y .jar</title>
+    <title>Seleccionar archivo .java</title>
 </head>
 <body>
-    <div style="display: flex;">
-        <div style="width: 50%;">
-            <h2>Selecciona un archivo .java:</h2>
-            <select id="javaFileSelect">
-                <option value="">Selecciona un archivo .java</option>
-            </select>
-            <br>
-            <textarea id="javaCode" rows="10" cols="50" readonly></textarea>
-            <br>
-            <button onclick="runJava()">Run</button>
-        </div>
-        <div style="width: 50%;">
-            <h2>Salida:</h2>
-            <pre id="output"></pre>
-        </div>
-    </div>
+    <h1>Selecciona un archivo .java:</h1>
+    <select id="javaFileSelect">
+        <option value="">Selecciona un archivo .java</option>
+    </select>
+    <br>
+    <textarea id="javaCode" rows="10" cols="50" readonly></textarea>
+    <br>
+    <button onclick="loadAndRunJava()">Run</button>
+
+    <hr>
+
+    <h1>Salida:</h1>
+    <pre id="output"></pre>
 
     <script>
         const javaFileSelect = document.getElementById('javaFileSelect');
@@ -46,7 +43,7 @@
         }
 
         // Función para ejecutar el archivo .jar
-        function runJava() {
+        function loadAndRunJava() {
             const selectedJavaFile = javaFileSelect.value;
             if (!selectedJavaFile) {
                 alert('Selecciona un archivo .java primero.');
@@ -67,8 +64,8 @@
                 });
         }
 
-        // Llenar el menú desplegable con la lista de archivos .java disponibles
-        fetch('/listJavaFiles')
+        // Listar automáticamente los archivos .java disponibles en todas las carpetas dentro de una carpeta principal
+        fetch('/codigo') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
             .then(response => response.json())
             .then(data => {
                 data.forEach(filename => {
