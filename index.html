@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejecución de Java en el navegador</title>
+</head>
+<body>
+    <h1>Ejecución de código Java en el navegador</h1>
+    <textarea id="javaCode" rows="10" cols="40">
+        // Tu código Java aquí
+    </textarea>
+    <button id="runButton">Run</button>
+    <div id="output"></div>
+    <script src="https://www.leaningtech.com/cheerpj/demo/cheerpj.js"></script>
+    <script>
+        const javaCodeTextarea = document.getElementById('javaCode');
+        const runButton = document.getElementById('runButton');
+        const outputDiv = document.getElementById('output');
+
+        runButton.addEventListener('click', async () => {
+            outputDiv.textContent = 'Ejecutando...';
+            try {
+                const result = await CheerpJRun(javaCodeTextarea.value);
+                outputDiv.textContent = result;
+            } catch (error) {
+                outputDiv.textContent = 'Error al ejecutar el código Java.';
+                console.error(error);
+            }
+        });
+    </script>
+</body>
+</html>
