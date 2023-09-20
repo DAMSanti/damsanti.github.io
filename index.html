@@ -94,7 +94,7 @@
 
 
         // Listar automáticamente los archivos .java disponibles en todas las carpetas dentro de una carpeta principal
-        fetch('./data/lista-archivos-java.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
+        fetch('/data/lista-archivos-java.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
             .then(response => response.json())
             .then(data => {
                 data.forEach(file => {
