@@ -1,46 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ejecución de código Java</title>
+    <title>Ejecución de archivos .java y .jar</title>
 </head>
 <body>
-    <h1>Área de carga de archivo Java</h1>
-    <input type="file" id="javaFileInput" accept=".java">
-    <br>
-    <button onclick="loadAndRunJava()">Run</button>
-
-    <hr>
-
-    <h1>Salida:</h1>
-    <pre id="output"></pre>
+    <div style="display: flex;">
+        <div style="width: 50%;">
+            <h2>Selecciona un archivo .java:</h2>
+            <select id="javaFileSelect">
+                <option value="">Selecciona un archivo .java</option>
+            </select>
+            <br>
+            <textarea id="javaCode" rows="10" cols="50" readonly></textarea>
+            <br>
+            <button onclick="runJava()">Run</button>
+        </div>
+        <div style="width: 50%;">
+            <h2>Salida:</h2>
+            <pre id="output"></pre>
+        </div>
+    </div>
 
     <script>
-        function loadAndRunJava() {
-            const javaFileInput = document.getElementById('javaFileInput');
-            const output = document.getElementById('output');
+        const javaFileSelect = document.getElementById('javaFileSelect');
+        const javaCodeTextarea = document.getElementById('javaCode');
+        const output = document.getElementById('output');
 
-            if (javaFileInput.files.length === 0) {
-                output.textContent = 'Por favor, selecciona un archivo Java.';
+        // Función para cargar y mostrar el código Java seleccionado
+        javaFileSelect.addEventListener('change', loadJavaCode);
+
+        function loadJavaCode() {
+            const selectedJavaFile = javaFileSelect.value;
+            if (selectedJavaFile) {
+                fetch(`/Codigo/Unidad1/Hora1/Ejercicio1/${selectedJavaFile}`)
+                    .then(response => response.text())
+                    .then(data => {
+                        javaCodeTextarea.value = data;
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            } else {
+                javaCodeTextarea.value = '';
+            }
+        }
+
+        // Función para ejecutar el archivo .jar
+        function runJava() {
+            const selectedJavaFile = javaFileSelect.value;
+            if (!selectedJavaFile) {
+                alert('Selecciona un archivo .java primero.');
                 return;
             }
 
-            const javaFile = javaFileInput.files[0];
-            const formData = new FormData();
-            formData.append('javaFile', javaFile);
+            output.textContent = 'Ejecutando...';
 
-            fetch('/runjava', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.text())
+            const command = `java -jar /Codigo/Unidad1/Hora1/Ejercicio1/${selectedJavaFile.replace('.java', '.jar')}`;
+            fetch(`/run?command=${encodeURIComponent(command)}`)
+                .then(response => response.text())
+                .then(data => {
+                    output.textContent = data;
+                })
+                .catch(error => {
+                    console.error(error);
+                    output.textContent = 'Error al ejecutar el archivo .jar.';
+                });
+        }
+
+        // Llenar el menú desplegable con la lista de archivos .java disponibles
+        fetch('/listJavaFiles')
+            .then(response => response.json())
             .then(data => {
-                output.textContent = data;
+                data.forEach(filename => {
+                    const option = document.createElement('option');
+                    option.value = filename;
+                    option.textContent = filename;
+                    javaFileSelect.appendChild(option);
+                });
             })
             .catch(error => {
-                output.textContent = 'Error al ejecutar el código Java.';
                 console.error(error);
             });
-        }
     </script>
 </body>
 </html>
