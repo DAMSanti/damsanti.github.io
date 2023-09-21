@@ -146,6 +146,11 @@
                                         });
                                     }
 
+                                    // Después de crear la instancia de CodeMirror
+                                    if (codeMirrorInstance) {
+                                        codeMirrorInstance.setSize(null, '65vh'); // Establece la altura en 65% de la ventana
+                                    }
+
                                     // Establecer el código Java
                                     codeMirrorInstance.setValue(javaCode);
                                 })
