@@ -183,7 +183,7 @@
 
             output.textContent = 'Ejecutando...';
 
-            const fullJarFilePath = `codigo/${selectedPath}${selectedJarFile}`;
+            const fullJarFilePath = `${selectedPath}${selectedJarFile}`;
             fetch(fullJarFilePath)
                 .then(response => response.text())
                 .then(data => {
