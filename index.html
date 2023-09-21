@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Seleccionar archivo .java</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>    
     <style>
         /* Estilos para el cuadro de texto */
         #javaCode {
@@ -114,7 +116,7 @@
             }
         }
 
-        // Cargar el código del ejercicio seleccionado
+        // Cargar el código del ejercicio seleccionado y resaltar la sintaxis
         function loadJavaCode() {
             const selectedJavaFile = ejercicioSelect.value;
             if (selectedJavaFile) {
@@ -129,7 +131,11 @@
                             fetch(fullJavaFilePath)
                                 .then(response => response.text())
                                 .then(javaCode => {
+                                    // Coloca el código Java en el textarea
                                     javaCodeTextarea.value = javaCode;
+
+                                    // Resalta la sintaxis del código usando Prism.js
+                                    Prism.highlightElement(javaCodeTextarea);
                                 })
                                 .catch(error => {
                                     console.error(error);
