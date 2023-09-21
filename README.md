@@ -7,5 +7,6 @@
 
 ## Enlaces
 
-- [Programacion](https://damsanti.github.io/)
+- [Programacion](https://damsanti.github.io/programacion.html)
 - [Peliculas](https://damsanti.github.io/peliculas.html)
+- [Arquitectura Von-Newmann](https://damsanti.github.io/arquitectura.html)
