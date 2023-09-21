@@ -1,63 +1,63 @@
 [
     {
         "nombre": "ejercicio1.java",
-        "ruta": "codigo/Unidad1/Hoja0/Ejercicio1/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 0",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "ejercicio2.java",
-        "ruta": "codigo/Unidad1/Hoja0/Ejercicio2/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 0",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "ejercicio3.java",
-        "ruta": "codigo/Unidad1/Hoja0/Ejercicio3/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 0",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "ejercicio4.java",
-        "ruta": "codigo/Unidad1/Hoja0/Ejercicio4/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 0",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "ejercicio5.java",
-        "ruta": "codigo/Unidad1/Hoja0/Ejercicio5/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 0",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "ejercicio6.java",
-        "ruta": "codigo/Unidad1/Hoja0/Ejercicio6/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 0",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "ejercicio7.java",
-        "ruta": "codigo/Unidad1/Hoja0/Ejercicio7/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 0",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "ejercicio8.java",
-        "ruta": "codigo/Unidad1/Hoja0/Ejercicio8/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 0",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "ejercicio9.java",
-        "ruta": "codigo/Unidad1/Hoja0/Ejercicio9/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 0",
         "jar": "ejercicio1.jar"
@@ -65,28 +65,28 @@
    
     {
         "nombre": "Hoja1x1.java",
-        "ruta": "codigo/Unidad1/Hoja1/Ejercicio1/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 1",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "Hoja1x3.java",
-        "ruta": "codigo/Unidad1/Hoja1/Ejercicio2/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 1",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "Hoja1x4.java",
-        "ruta": "codigo/Unidad1/Hoja1/Ejercicio3/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 1",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "Hoja1x5.java",
-        "ruta": "codigo/Unidad1/Hoja1/Ejercicio4/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 1",
         "jar": "ejercicio1.jar"
@@ -94,56 +94,56 @@
   
     {
         "nombre": "Hoja2x1.java",
-        "ruta": "codigo/Unidad1/Hoja2/Ejercicio1/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 2",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "Hoja2x2.java",
-        "ruta": "codigo/Unidad1/Hoja2/Ejercicio2/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 2",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "Hoja2x3.java",
-        "ruta": "codigo/Unidad1/Hoja2/Ejercicio3/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 2",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "Hoja2x4.java",
-        "ruta": "codigo/Unidad1/Hoja2/Ejercicio4/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 2",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "Hoja2x5.java",
-        "ruta": "codigo/Unidad1/Hoja2/Ejercicio5/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 2",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "Hoja2x6.java",
-        "ruta": "codigo/Unidad1/Hoja2/Ejercicio6/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 2",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "Hoja2x7.java",
-        "ruta": "codigo/Unidad1/Hoja2/Ejercicio7/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 2",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "Hoja2x8.java",
-        "ruta": "codigo/Unidad1/Hoja2/Ejercicio8/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 2",
         "jar": "ejercicio1.jar"
@@ -151,63 +151,63 @@
     
     {
         "nombre": "Hoja3x01.java",
-        "ruta": "codigo/Unidad1/Hoja3/Ejercicio1/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 3",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "Hoja3x02.java",
-        "ruta": "codigo/Unidad1/Hoja3/Ejercicio2/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 3",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "Hoja3x04.java",
-        "ruta": "codigo/Unidad1/Hoja3/Ejercicio3/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 3",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "Hoja3x05.java",
-        "ruta": "codigo/Unidad1/Hoja3/Ejercicio4/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 3",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "Hoja3x06.java",
-        "ruta": "codigo/Unidad1/Hoja3/Ejercicio5/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 3",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "Hoja3x07.java",
-        "ruta": "codigo/Unidad1/Hoja3/Ejercicio6/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 3",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "Hoja3x08.java",
-        "ruta": "codigo/Unidad1/Hoja3/Ejercicio7/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 3",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "Hoja3x09.java",
-        "ruta": "codigo/Unidad1/Hoja3/Ejercicio8/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 3",
         "jar": "ejercicio1.jar"
     },
     {
         "nombre": "Hoja3x10.java",
-        "ruta": "codigo/Unidad1/Hoja3/Ejercicio9/",
+        "ruta": "Unidad1/",
         "unidad": "Unidad 1",
         "Hoja": "Hoja 3",
         "jar": "ejercicio1.jar"
