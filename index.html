@@ -123,7 +123,7 @@
         function loadJavaCode() {
             const selectedJavaFile = ejercicioSelect.value;
             if (selectedJavaFile) {
-                fetch('/data/lista-archivos-java.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
+                fetch('/data/lista-archivos-java.json')
                     .then(response => response.json())
                     .then(data => {
                         const selectedFileData = data.find(file => file.nombre === selectedJavaFile);
@@ -166,6 +166,7 @@
                 }
             }
         }
+
 
         // Función para ejecutar el archivo .jar
         function loadAndRunJava() {
