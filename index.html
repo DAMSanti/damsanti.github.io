@@ -131,11 +131,14 @@
                             fetch(fullJavaFilePath)
                                 .then(response => response.text())
                                 .then(javaCode => {
-                                    // Coloca el código Java en el textarea
-                                    javaCodeTextarea.value = javaCode;
+                                    // Coloca el código Java en el <pre>
+                                    javaCodePre.textContent = javaCode;
+
+                                    // Agrega la clase de lenguaje para resaltar la sintaxis
+                                    javaCodePre.className = 'language-java';
 
                                     // Resalta la sintaxis del código usando Prism.js
-                                    Prism.highlightElement(javaCodeTextarea);
+                                    Prism.highlightElement(javaCodePre);
                                 })
                                 .catch(error => {
                                     console.error(error);
@@ -148,7 +151,7 @@
                         console.error(error);
                     });
             } else {
-                javaCodeTextarea.value = '';
+                javaCodePre.textContent = '';
             }
         }
 
