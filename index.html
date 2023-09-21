@@ -2,14 +2,16 @@
 <html>
 <head>
     <title>Seleccionar archivo .java</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/clike/clike.min.js"></script>
+    
     <style>
-        /* Estilos para el cuadro de texto */
-        #javaCode {
-            width: 100%; /* Establecer el ancho al 50% de la ventana */
+        /* Estilos para el editor de código */
+        .CodeMirror {
             height: 50vh;
-            margin: 0 auto; /* Centrar horizontalmente */
+            border: 1px solid #ccc;
+            font-family: monospace;
         }
     </style>
 </head>
@@ -45,6 +47,7 @@
         const output = document.getElementById('output');
         let selectedJarFile = ''; // Variable para almacenar el nombre del archivo .jar
         let selectedPath = '';
+        let codeMirrorInstance; // Instancia de CodeMirror
         
         // Función para cargar y mostrar el código Java seleccionado
         unidadSelect.addEventListener('change', loadHojas);
@@ -116,7 +119,7 @@
             }
         }
 
-        // Cargar el código del ejercicio seleccionado y resaltar la sintaxis
+        // Cargar el código del ejercicio seleccionado y mostrarlo en CodeMirror
         function loadJavaCode() {
             const selectedJavaFile = ejercicioSelect.value;
             if (selectedJavaFile) {
@@ -131,14 +134,13 @@
                             fetch(fullJavaFilePath)
                                 .then(response => response.text())
                                 .then(javaCode => {
-                                    // Coloca el código Java en el <pre>
-                                    javaCodePre.textContent = javaCode;
-
-                                    // Agrega la clase de lenguaje para resaltar la sintaxis
-                                    javaCodePre.className = 'language-java';
-
-                                    // Resalta la sintaxis del código usando Prism.js
-                                    Prism.highlightElement(javaCodePre);
+                                    // Coloca el código Java en CodeMirror
+                                    codeMirrorInstance.setValue(javaCode);
+                                    // Resalta automáticamente la sintaxis del código
+                                    codeMirrorInstance.autoFormatRange(
+                                        { line: 0, ch: 0 },
+                                        { line: codeMirrorInstance.lineCount() }
+                                    );
                                 })
                                 .catch(error => {
                                     console.error(error);
@@ -151,7 +153,7 @@
                         console.error(error);
                     });
             } else {
-                javaCodePre.textContent = '';
+                codeMirrorInstance.setValue('');
             }
         }
 
@@ -176,6 +178,13 @@
                     output.textContent = 'Error al ejecutar el archivo .jar.';
                 });
         }
+
+        // Inicializar CodeMirror
+        codeMirrorInstance = CodeMirror.fromTextArea(document.getElementById('javaCode'), {
+            mode: 'text/x-java',
+            lineNumbers: true,
+            readOnly: true
+        });
     </script>
 </body>
 </html>
