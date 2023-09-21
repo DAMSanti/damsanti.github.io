@@ -2,14 +2,10 @@
 <html>
 <head>
     <title>Seleccionar archivo .java</title>
-    <style>
-        /* Estilos para el cuadro de texto */
-        #javaCode {
-            width: 100%; /* Establecer el ancho al 50% de la ventana */
-            height: 50vh;
-            margin: 0 auto; /* Centrar horizontalmente */
-        }
-    </style>
+    <!-- Carga los estilos y scripts de CodeMirror -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/clike/clike.min.js"></script>
 </head>
 <body>
     <h1>Selecciona un ejercicio:</h1>
@@ -26,7 +22,9 @@
     </select>
     
     <br>
-    <textarea id="javaCode" rows="10" cols="50" readonly></textarea>
+    <!-- Reemplaza el textarea por el editor de CodeMirror -->
+    <textarea id="javaCode" rows="10" cols="50" style="display:none;"></textarea>
+    <div id="javaCodeEditor"></div>
     <br>
     <button onclick="loadAndRunJava()">Run</button>
 
@@ -40,6 +38,7 @@
         const hojaSelect = document.getElementById('hojaSelect');
         const ejercicioSelect = document.getElementById('ejercicioSelect');
         const javaCodeTextarea = document.getElementById('javaCode');
+        const javaCodeEditorContainer = document.getElementById('javaCodeEditor');
         const output = document.getElementById('output');
         let selectedJarFile = ''; // Variable para almacenar el nombre del archivo .jar
         let selectedPath = '';
@@ -114,7 +113,7 @@
             }
         }
 
-        // Cargar el código del ejercicio seleccionado y resaltar la sintaxis
+        // Cargar el código del ejercicio seleccionado y mostrarlo en CodeMirror
         function loadJavaCode() {
             const selectedJavaFile = ejercicioSelect.value;
             if (selectedJavaFile) {
@@ -129,11 +128,12 @@
                             fetch(fullJavaFilePath)
                                 .then(response => response.text())
                                 .then(javaCode => {
-                                    // Coloca el código Java en el textarea
-                                    javaCodeTextarea.value = javaCode;
+                                    // Mostrar el editor de CodeMirror y ocultar el textarea
+                                    javaCodeTextarea.style.display = 'none';
+                                    javaCodeEditorContainer.style.display = 'block';
 
-                                    // Resalta la sintaxis del código usando Prism.js
-                                    Prism.highlightElement(javaCodeTextarea);
+                                    // Establecer el código Java en el editor de CodeMirror
+                                    codeMirrorInstance.setValue(javaCode);
                                 })
                                 .catch(error => {
                                     console.error(error);
@@ -146,6 +146,8 @@
                         console.error(error);
                     });
             } else {
+                // Limpiar el contenido del editor de CodeMirror si no se selecciona ningún ejercicio
+                codeMirrorInstance.setValue('');
                 javaCodeTextarea.value = '';
             }
         }
