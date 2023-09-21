@@ -44,7 +44,6 @@
         const unidadSelect = document.getElementById('unidadSelect');
         const hojaSelect = document.getElementById('hojaSelect');
         const ejercicioSelect = document.getElementById('ejercicioSelect');
-        const javaCodeTextarea = document.getElementById('javaCode');
         const javaCodeEditorContainer = document.getElementById('javaCodeEditor');
         const output = document.getElementById('output');
         let selectedJarFile = ''; // Variable para almacenar el nombre del archivo .jar
@@ -136,7 +135,6 @@
                                 .then(response => response.text())
                                 .then(javaCode => {
                                     // Mostrar el editor de CodeMirror y ocultar el textarea
-                                    javaCodeTextarea.style.display = 'none';
                                     javaCodeEditorContainer.style.display = 'block';
 
                                     // Crear una instancia de CodeMirror si aún no existe
@@ -166,7 +164,6 @@
                 if (codeMirrorInstance) {
                     codeMirrorInstance.setValue('');
                 }
-                javaCodeTextarea.value = '';
             }
         }
 
