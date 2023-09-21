@@ -6,6 +6,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/clike/clike.min.js"></script>
+    <style>
+        /* Estilos para el área de CodeMirror */
+        #javaCodeEditorContainer {
+            width: 100%;
+            height: 50vh; /* La mitad superior de la pantalla */
+            position: absolute;
+            top: 0;
+        }
+    </style>
 </head>
 <body>
     <h1>Selecciona un ejercicio:</h1>
@@ -132,8 +141,13 @@
                                     javaCodeTextarea.style.display = 'none';
                                     javaCodeEditorContainer.style.display = 'block';
 
-                                    // Establecer el código Java en el editor de CodeMirror
-                                    codeMirrorInstance.setValue(javaCode);
+                                    // Crear una instancia de CodeMirror y establecer el código Java
+                                    codeMirrorInstance = CodeMirror(javaCodeEditorContainer, {
+                                        mode: 'text/x-java',
+                                        lineNumbers: true,
+                                        readOnly: true,
+                                        value: javaCode
+                                    });
                                 })
                                 .catch(error => {
                                     console.error(error);
@@ -147,10 +161,13 @@
                     });
             } else {
                 // Limpiar el contenido del editor de CodeMirror si no se selecciona ningún ejercicio
-                codeMirrorInstance.setValue('');
+                if (codeMirrorInstance) {
+                    codeMirrorInstance.setValue('');
+                }
                 javaCodeTextarea.value = '';
             }
         }
+
 
         // Función para ejecutar el archivo .jar
         function loadAndRunJava() {
