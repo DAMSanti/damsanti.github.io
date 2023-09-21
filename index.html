@@ -52,6 +52,7 @@
         const output = document.getElementById('output');
         let selectedJarFile = ''; // Variable para almacenar el nombre del archivo .jar
         let selectedPath = '';
+        let codeMirrorInstance = null;
         
         // Función para cargar y mostrar el código Java seleccionado
         unidadSelect.addEventListener('change', loadHojas);
@@ -123,7 +124,6 @@
             }
         }
 
-        // Cargar el código del ejercicio seleccionado y mostrarlo en CodeMirror
         function loadJavaCode() {
             const selectedJavaFile = ejercicioSelect.value;
             if (selectedJavaFile) {
@@ -142,13 +142,17 @@
                                     javaCodeTextarea.style.display = 'none';
                                     javaCodeEditorContainer.style.display = 'block';
 
-                                    // Crear una instancia de CodeMirror y establecer el código Java
-                                    codeMirrorInstance = CodeMirror(javaCodeEditorContainer, {
-                                        mode: 'text/x-java',
-                                        lineNumbers: true,
-                                        readOnly: true,
-                                        value: javaCode
-                                    });
+                                    // Crear una instancia de CodeMirror si aún no existe
+                                    if (!codeMirrorInstance) {
+                                        codeMirrorInstance = CodeMirror(javaCodeEditorContainer, {
+                                            mode: 'text/x-java',
+                                            lineNumbers: true,
+                                            readOnly: true,
+                                        });
+                                    }
+
+                                    // Establecer el código Java
+                                    codeMirrorInstance.setValue(javaCode);
                                 })
                                 .catch(error => {
                                     console.error(error);
@@ -168,7 +172,6 @@
                 javaCodeTextarea.value = '';
             }
         }
-
 
         // Función para ejecutar el archivo .jar
         function loadAndRunJava() {
