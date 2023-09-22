@@ -58,6 +58,7 @@
         const output = document.getElementById('output');
         const htmlFrame = document.getElementById('htmlFrame');
         let selectedPath = '';
+        let codeMirrorInstance = null; // Define la variable global aquí
 
         // Función para cargar y mostrar el código Java o HTML seleccionado
         unidadSelect.addEventListener('change', loadHojas);
