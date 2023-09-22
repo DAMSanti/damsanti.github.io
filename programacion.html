@@ -66,7 +66,7 @@
 
         // Cargar las unidades disponibles al cargar la página
         window.addEventListener('load', () => {
-            fetch('/data/lista-archivos.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
+            fetch('/data/lista-archivos-java.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
                 .then(response => response.json())
                 .then(data => {
                     const unidades = [...new Set(data.map(file => file.unidad))];
@@ -88,7 +88,7 @@
             hojaSelect.innerHTML = '<option value="">Selecciona una hoja</option>'; // Limpiar las opciones anteriores
 
             if (selectedUnidad) {
-                fetch('/data/lista-archivos.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
+                fetch('/data/lista-archivos-java.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
                     .then(response => response.json())
                     .then(data => {
                         const hojas = [...new Set(data.filter(file => file.unidad === selectedUnidad).map(file => file.Hoja))];
@@ -112,7 +112,7 @@
             archivoSelect.innerHTML = '<option value="">Selecciona un archivo</option>'; // Limpiar las opciones anteriores
 
             if (selectedUnidad && selectedHoja) {
-                fetch('/data/lista-archivos.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
+                fetch('/data/lista-archivos-java-java.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
                     .then(response => response.json())
                     .then(data => {
                         const archivos = data.filter(file => file.unidad === selectedUnidad && file.Hoja === selectedHoja);
@@ -132,7 +132,7 @@
         function loadFile() {
             const selectedArchivo = archivoSelect.value;
             if (selectedArchivo) {
-                fetch('/data/lista-archivos.json')
+                fetch('/data/lista-archivos-java-java.json')
                     .then(response => response.json())
                     .then(data => {
                         const selectedFileData = data.find(file => file.nombre === selectedArchivo);
