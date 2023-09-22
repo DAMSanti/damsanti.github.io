@@ -118,15 +118,18 @@
             }
         }
 
-        // Cargar el archivo Java seleccionado
+        // Función para cargar el archivo Java seleccionado
         function loadFile() {
             const selectedArchivo = archivoSelect.value;
             if (selectedArchivo && selectedArchivo.endsWith('.java')) {
+                // Buscar la referencia al archivo correspondiente en el JSON
                 const selectedFileData = data.find(file => file.nombre === selectedArchivo);
                 if (selectedFileData) {
-                    selectedPath = selectedFileData.ruta_java;
-                    const fullFilePath = `${selectedPath}${selectedArchivo}`;
-                    
+                    // Construir la ruta completa al archivo Java utilizando la base de la URL actual
+                    const currentURL = window.location.href;
+                    const baseURL = currentURL.substring(0, currentURL.lastIndexOf('/') + 1);
+                    const fullFilePath = `${baseURL}${selectedFileData.ruta_java}`;
+
                     // Mostrar el editor de CodeMirror y ocultar el iframe
                     javaCodeEditorContainer.style.display = 'block';
                     htmlFrame.style.display = 'none';
@@ -165,7 +168,7 @@
                 htmlFrame.style.display = 'none';
             }
         }
-
+        
         // Función para ejecutar el archivo HTML seleccionado
         function runCode() {
             const selectedArchivo = archivoSelect.value;
