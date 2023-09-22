@@ -185,27 +185,6 @@
             }
         }
 
-        function runCode() {
-            const selectedArchivo = archivoSelect.value;
-            if (selectedArchivo && selectedArchivo.endsWith('.java')) {
-                // Buscar la referencia al archivo HTML correspondiente en el JSON
-                const selectedFileData = data.find(file => file.nombre === selectedArchivo);
-                if (selectedFileData && selectedFileData.ruta_html) {
-                    const fullFilePath = selectedFileData.ruta_html;
-
-                    // Ocultar el editor de CodeMirror y mostrar el iframe
-                    javaCodeEditorContainer.style.display = 'none';
-                    htmlFrame.style.display = 'block';
-
-                    // Cargar y mostrar el archivo HTML en el iframe
-                    htmlFrame.src = fullFilePath;
-                } else {
-                    console.error('No se encontró la referencia al archivo HTML correspondiente.');
-                }
-            } else {
-                console.error('No se ha seleccionado un archivo Java válido.');
-            }
-        }
 
     </script>
 </body>
