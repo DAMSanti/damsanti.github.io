@@ -45,7 +45,7 @@
 
     <hr>
     
-    <button onclick="loadFile()">Run</button>
+    <button onclick="runCode()">Run</button>
 
     <h1>Salida:</h1>
     <div id="output"></div>
@@ -130,6 +130,7 @@
             }
         }
 
+        // Cargar el archivo Java seleccionado
         function loadFile() {
             const selectedArchivo = archivoSelect.value;
             if (selectedArchivo) {
@@ -140,43 +141,33 @@
                         if (selectedFileData) {
                             selectedPath = selectedFileData.ruta;
                             const fullFilePath = `${selectedPath}${selectedArchivo}`;
-                            if (selectedArchivo.endsWith('.html')) {
-                                // Mostrar el editor de CodeMirror y ocultar el iframe
-                                javaCodeEditorContainer.style.display = 'block';
-                                htmlFrame.style.display = 'none';
-                                fetch(fullFilePath)
-                                    .then(response => response.text())
-                                    .then(javaCode => {
-                                        // Crear una instancia de CodeMirror si aún no existe
-                                        if (!codeMirrorInstance) {
-                                            codeMirrorInstance = CodeMirror(javaCodeEditorContainer, {
-                                                mode: 'text/x-java',
-                                                lineNumbers: true,
-                                                readOnly: true,
-                                            });
-                                        }
+                            
+                            // Mostrar el editor de CodeMirror y ocultar el iframe
+                            javaCodeEditorContainer.style.display = 'block';
+                            htmlFrame.style.display = 'none';
+                            fetch(fullFilePath)
+                                .then(response => response.text())
+                                .then(javaCode => {
+                                    // Crear una instancia de CodeMirror si aún no existe
+                                    if (!codeMirrorInstance) {
+                                        codeMirrorInstance = CodeMirror(javaCodeEditorContainer, {
+                                            mode: 'text/x-java',
+                                            lineNumbers: true,
+                                            readOnly: true,
+                                        });
+                                    }
 
-                                        // Después de crear la instancia de CodeMirror
-                                        if (codeMirrorInstance) {
-                                            codeMirrorInstance.setSize(null, '65vh'); // Establecer la altura en 65% de la ventana
-                                        }
+                                    // Después de crear la instancia de CodeMirror
+                                    if (codeMirrorInstance) {
+                                        codeMirrorInstance.setSize(null, '65vh'); // Establecer la altura en 65% de la ventana
+                                    }
 
-                                        // Establecer el código Java
-                                        codeMirrorInstance.setValue(javaCode);
-                                    })
-                                    .catch(error => {
-                                        console.error(error);
-                                    });
-                            } else if (selectedArchivo.endsWith('.html')) {
-                                // Ocultar el editor de CodeMirror y mostrar el iframe
-                                javaCodeEditorContainer.style.display = 'none';
-                                htmlFrame.style.display = 'block';
-
-                                // Cargar y mostrar el archivo HTML en el iframe
-                                htmlFrame.src = fullFilePath;
-                            } else {
-                                console.error('Tipo de archivo no compatible.');
-                            }
+                                    // Establecer el código Java
+                                    codeMirrorInstance.setValue(javaCode);
+                                })
+                                .catch(error => {
+                                    console.error(error);
+                                });
                         } else {
                             console.error('Datos del archivo no encontrados en el JSON.');
                         }
@@ -191,6 +182,23 @@
                 }
                 // Ocultar el iframe si no se selecciona ningún archivo HTML
                 htmlFrame.style.display = 'none';
+            }
+        }
+
+        // Función para ejecutar el archivo HTML seleccionado
+        function runCode() {
+            const selectedArchivo = archivoSelect.value;
+            if (selectedArchivo && selectedArchivo.endsWith('.html')) {
+                const fullFilePath = `${selectedPath}${selectedArchivo}`;
+                
+                // Ocultar el editor de CodeMirror y mostrar el iframe
+                javaCodeEditorContainer.style.display = 'none';
+                htmlFrame.style.display = 'block';
+
+                // Cargar y mostrar el archivo HTML en el iframe
+                htmlFrame.src = fullFilePath;
+            } else {
+                console.error('No se ha seleccionado un archivo HTML válido.');
             }
         }
     </script>
