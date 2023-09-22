@@ -57,7 +57,7 @@
 
         // Cargar las unidades disponibles al cargar la página
         window.addEventListener('load', () => {
-            fetch('/data/lista-archivos-html.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos HTML
+            fetch('/data/lista-archivos-java.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos HTML
                 .then(response => response.json())
                 .then(data => {
                     const unidades = [...new Set(data.map(file => file.unidad))];
