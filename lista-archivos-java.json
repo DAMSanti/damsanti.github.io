@@ -1,0 +1,215 @@
+[
+    {
+        "nombre": "ejercicio1.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 0",
+        "jar": "ejercicio1.class"
+    },
+    {
+        "nombre": "Ejercicio2.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 0",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Ejercicio3.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 0",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Ejercicio4.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 0",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Ejercicio5.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 0",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Ejercicio6.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 0",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Ejercicio7.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 0",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Ejercicio8.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 0",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Ejercicio9.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 0",
+        "jar": "ejercicio1.jar"
+    },
+   
+    {
+        "nombre": "Hoja1x1.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 1",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Hoja1x3.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 1",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Hoja1x4.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 1",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Hoja1x5.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 1",
+        "jar": "ejercicio1.jar"
+    },
+  
+    {
+        "nombre": "Hoja2x1.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 2",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Hoja2x2.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 2",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Hoja2x3.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 2",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Hoja2x4.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 2",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Hoja2x5.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 2",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Hoja2x6.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 2",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Hoja2x7.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 2",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Hoja2x8.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 2",
+        "jar": "ejercicio1.jar"
+    },
+    
+    {
+        "nombre": "Hoja3x01.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 3",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Hoja3x02.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 3",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Hoja3x04.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 3",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Hoja3x05.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 3",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Hoja3x06.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 3",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Hoja3x07.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 3",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Hoja3x08.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 3",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Hoja3x09.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 3",
+        "jar": "ejercicio1.jar"
+    },
+    {
+        "nombre": "Hoja3x10.java",
+        "ruta": "codigo/",
+        "unidad": "Unidad 1",
+        "Hoja": "Hoja 3",
+        "jar": "ejercicio1.jar"
+    }
+]
