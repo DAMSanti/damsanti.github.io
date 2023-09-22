@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Seleccionar archivo .java</title>
+    <title>Seleccionar archivo .java o .html</title>
     <!-- Carga los estilos y scripts de CodeMirror -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.js"></script>
@@ -12,10 +12,17 @@
             height: 65vh !important;
             overflow: auto;
         }
+        /* Estilos para el iframe */
+        #htmlFrame {
+            width: 100%;
+            height: 65vh;
+            border: none;
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <h1>Selecciona un ejercicio:</h1>
+    <h1>Selecciona un archivo .java o .html:</h1>
     <select id="unidadSelect">
         <option value="">Selecciona una unidad</option>
     </select>
@@ -24,8 +31,8 @@
         <option value="">Selecciona una hoja</option>
     </select>
 
-    <select id="ejercicioSelect">
-        <option value="">Selecciona un ejercicio</option>
+    <select id="archivoSelect">
+        <option value="">Selecciona un archivo</option>
     </select>
     
     <br>
@@ -33,9 +40,12 @@
     <div id="javaCodeEditorContainer"></div>
     <br>
 
+    <!-- Elemento iframe para mostrar HTML -->
+    <iframe id="htmlFrame"></iframe>
+
     <hr>
     
-    <button onclick="loadAndRunJava()">Run</button>
+    <button onclick="loadAndDisplayFile()">Run</button>
 
     <h1>Salida:</h1>
     <div id="output"></div>
@@ -43,21 +53,20 @@
     <script>
         const unidadSelect = document.getElementById('unidadSelect');
         const hojaSelect = document.getElementById('hojaSelect');
-        const ejercicioSelect = document.getElementById('ejercicioSelect');
+        const archivoSelect = document.getElementById('archivoSelect');
         const javaCodeEditorContainer = document.getElementById('javaCodeEditorContainer');
         const output = document.getElementById('output');
-        let selectedJarFile = ''; // Variable para almacenar el nombre del archivo .jar
+        const htmlFrame = document.getElementById('htmlFrame');
         let selectedPath = '';
-        let codeMirrorInstance = null;
-        
-        // Función para cargar y mostrar el código Java seleccionado
+
+        // Función para cargar y mostrar el código Java o HTML seleccionado
         unidadSelect.addEventListener('change', loadHojas);
-        hojaSelect.addEventListener('change', loadEjercicios);
-        ejercicioSelect.addEventListener('change', loadJavaCode);
+        hojaSelect.addEventListener('change', loadArchivos);
+        archivoSelect.addEventListener('change', loadFile);
 
         // Cargar las unidades disponibles al cargar la página
         window.addEventListener('load', () => {
-            fetch('/data/lista-archivos-java.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
+            fetch('/data/lista-archivos.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
                 .then(response => response.json())
                 .then(data => {
                     const unidades = [...new Set(data.map(file => file.unidad))];
@@ -79,7 +88,7 @@
             hojaSelect.innerHTML = '<option value="">Selecciona una hoja</option>'; // Limpiar las opciones anteriores
 
             if (selectedUnidad) {
-                fetch('/data/lista-archivos-java.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
+                fetch('/data/lista-archivos.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
                     .then(response => response.json())
                     .then(data => {
                         const hojas = [...new Set(data.filter(file => file.unidad === selectedUnidad).map(file => file.Hoja))];
@@ -96,22 +105,22 @@
             }
         }
 
-        // Cargar los ejercicios disponibles cuando se selecciona una hoja
-        function loadEjercicios() {
+        // Cargar los archivos disponibles cuando se selecciona una hoja
+        function loadArchivos() {
             const selectedUnidad = unidadSelect.value;
             const selectedHoja = hojaSelect.value;
-            ejercicioSelect.innerHTML = '<option value="">Selecciona un ejercicio</option>'; // Limpiar las opciones anteriores
+            archivoSelect.innerHTML = '<option value="">Selecciona un archivo</option>'; // Limpiar las opciones anteriores
 
             if (selectedUnidad && selectedHoja) {
-                fetch('/data/lista-archivos-java.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
+                fetch('/data/lista-archivos.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
                     .then(response => response.json())
                     .then(data => {
-                        const ejercicios = data.filter(file => file.unidad === selectedUnidad && file.Hoja === selectedHoja);
-                        ejercicios.forEach(ejercicio => {
+                        const archivos = data.filter(file => file.unidad === selectedUnidad && file.Hoja === selectedHoja);
+                        archivos.forEach(archivo => {
                             const option = document.createElement('option');
-                            option.value = ejercicio.nombre;
-                            option.textContent = ejercicio.nombre.replace(/\.java$/, '');
-                            ejercicioSelect.appendChild(option);
+                            option.value = archivo.nombre;
+                            option.textContent = archivo.nombre;
+                            archivoSelect.appendChild(option);
                         });
                     })
                     .catch(error => {
@@ -120,43 +129,53 @@
             }
         }
 
-        function loadJavaCode() {
-            const selectedJavaFile = ejercicioSelect.value;
-            if (selectedJavaFile) {
-                fetch('/data/lista-archivos-java.json')
+        function loadFile() {
+            const selectedArchivo = archivoSelect.value;
+            if (selectedArchivo) {
+                fetch('/data/lista-archivos.json')
                     .then(response => response.json())
                     .then(data => {
-                        const selectedFileData = data.find(file => file.nombre === selectedJavaFile);
+                        const selectedFileData = data.find(file => file.nombre === selectedArchivo);
                         if (selectedFileData) {
                             selectedPath = selectedFileData.ruta;
-                            selectedJarFile = selectedFileData.jar;
-                            const fullJavaFilePath = `${selectedPath}${selectedJavaFile}`;
-                            fetch(fullJavaFilePath)
-                                .then(response => response.text())
-                                .then(javaCode => {
-                                    // Mostrar el editor de CodeMirror y ocultar el textarea
-                                    javaCodeEditorContainer.style.display = 'block';
+                            const fullFilePath = `${selectedPath}${selectedArchivo}`;
+                            if (selectedArchivo.endsWith('.java')) {
+                                // Mostrar el editor de CodeMirror y ocultar el iframe
+                                javaCodeEditorContainer.style.display = 'block';
+                                htmlFrame.style.display = 'none';
+                                fetch(fullFilePath)
+                                    .then(response => response.text())
+                                    .then(javaCode => {
+                                        // Crear una instancia de CodeMirror si aún no existe
+                                        if (!codeMirrorInstance) {
+                                            codeMirrorInstance = CodeMirror(javaCodeEditorContainer, {
+                                                mode: 'text/x-java',
+                                                lineNumbers: true,
+                                                readOnly: true,
+                                            });
+                                        }
 
-                                    // Crear una instancia de CodeMirror si aún no existe
-                                    if (!codeMirrorInstance) {
-                                        codeMirrorInstance = CodeMirror(javaCodeEditorContainer, {
-                                            mode: 'text/x-java',
-                                            lineNumbers: true,
-                                            readOnly: true,
-                                        });
-                                    }
+                                        // Después de crear la instancia de CodeMirror
+                                        if (codeMirrorInstance) {
+                                            codeMirrorInstance.setSize(null, '65vh'); // Establecer la altura en 65% de la ventana
+                                        }
 
-                                    // Después de crear la instancia de CodeMirror
-                                    if (codeMirrorInstance) {
-                                        codeMirrorInstance.setSize(null, '65vh'); // Establecer la altura en 65% de la ventana
-                                    }
+                                        // Establecer el código Java
+                                        codeMirrorInstance.setValue(javaCode);
+                                    })
+                                    .catch(error => {
+                                        console.error(error);
+                                    });
+                            } else if (selectedArchivo.endsWith('.html')) {
+                                // Ocultar el editor de CodeMirror y mostrar el iframe
+                                javaCodeEditorContainer.style.display = 'none';
+                                htmlFrame.style.display = 'block';
 
-                                    // Establecer el código Java
-                                    codeMirrorInstance.setValue(javaCode);
-                                })
-                                .catch(error => {
-                                    console.error(error);
-                                });
+                                // Cargar y mostrar el archivo HTML en el iframe
+                                htmlFrame.src = fullFilePath;
+                            } else {
+                                console.error('Tipo de archivo no compatible.');
+                            }
                         } else {
                             console.error('Datos del archivo no encontrados en el JSON.');
                         }
@@ -165,33 +184,13 @@
                         console.error(error);
                     });
             } else {
-                // Limpiar el contenido del editor de CodeMirror si no se selecciona ningún ejercicio
+                // Limpiar el contenido del editor de CodeMirror si no se selecciona ningún archivo
                 if (codeMirrorInstance) {
                     codeMirrorInstance.setValue('');
                 }
+                // Ocultar el iframe si no se selecciona ningún archivo HTML
+                htmlFrame.style.display = 'none';
             }
-        }
-
-        // Función para ejecutar el archivo .jar
-        function loadAndRunJava() {
-            const selectedJavaFile = ejercicioSelect.value;
-            if (!selectedJavaFile) {
-                alert('Selecciona un archivo .java primero.');
-                return;
-            }
-
-            output.textContent = 'Ejecutando...';
-
-            const fullJarFilePath = `${selectedPath}${selectedJarFile}`;
-            fetch(fullJarFilePath)
-                .then(response => response.text())
-                .then(data => {
-                    output.textContent = data;
-                })
-                .catch(error => {
-                    console.error(error);
-                    output.textContent = 'Error al ejecutar el archivo .jar.';
-                });
         }
     </script>
 </body>
