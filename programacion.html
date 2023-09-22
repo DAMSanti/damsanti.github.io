@@ -38,7 +38,7 @@
     <button onclick="loadAndRunJava()">Run</button>
 
     <h1>Salida:</h1>
-    <pre id="output"></pre>
+    <div id="output"></div>
 
     <script>
         const unidadSelect = document.getElementById('unidadSelect');
@@ -148,7 +148,7 @@
 
                                     // Después de crear la instancia de CodeMirror
                                     if (codeMirrorInstance) {
-                                        codeMirrorInstance.setSize(null, '65vh'); // Establece la altura en 65% de la ventana
+                                        codeMirrorInstance.setSize(null, '65vh'); // Establecer la altura en 65% de la ventana
                                     }
 
                                     // Establecer el código Java
@@ -171,7 +171,6 @@
                 }
             }
         }
-
 
         // Función para ejecutar el archivo .jar
         function loadAndRunJava() {
