@@ -91,7 +91,7 @@
                 fetch('/data/lista-archivos-java.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
                     .then(response => response.json())
                     .then(data => {
-                        const hojas = [...new Set(data.filter(file => file.unidad === selectedUnidad).map(file => file.Hoja))];
+                        const hojas = [...new Set(data.filter(file => file.unidad === selectedUnidad).map(file => file.hoja))];
                         hojas.forEach(hoja => {
                             const option = document.createElement('option');
                             option.value = hoja;
@@ -115,7 +115,7 @@
                 fetch('/data/lista-archivos-java.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
                     .then(response => response.json())
                     .then(data => {
-                        const archivos = data.filter(file => file.unidad === selectedUnidad && file.Hoja === selectedHoja);
+                        const archivos = data.filter(file => file.unidad === selectedUnidad && file.hoja === selectedHoja);
                         archivos.forEach(archivo => {
                             const option = document.createElement('option');
                             option.value = archivo.nombre;
