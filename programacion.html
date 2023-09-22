@@ -133,7 +133,7 @@
         // Cargar el archivo Java seleccionado
         function loadFile() {
             const selectedArchivo = archivoSelect.value;
-            if (selectedArchivo) {
+            if (selectedArchivo && selectedArchivo.endsWith('.java')) {
                 fetch('/data/lista-archivos-java.json')
                     .then(response => response.json())
                     .then(data => {
