@@ -23,25 +23,22 @@
             padding: 20px; /* Espacio interno del cuadro */
             border-radius: 10px; /* Bordes redondeados */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra del cuadro */
-            text-align: center; /* Centrar texto en el cuadro */
+            text-align: center; /* Centrar contenido en el cuadro */
         }
 
-        /* Estilos para el título */
-        h1 {
-            font-size: 24px; /* Tamaño de fuente del título */
-            margin-bottom: 20px; /* Espacio inferior para separar del contenido */
-        }
-
-        /* Estilos para el GIF */
-        img {
-            max-width: 100%; /* Asegurar que el GIF no sea más ancho que el contenedor */
+        /* Estilos para el reproductor de video */
+        video {
+            max-width: 100%; /* Asegurar que el video no sea más ancho que el contenedor */
         }
     </style>
 </head>
 <body>
     <div class="content-box">
         <h1>Arquitectura Von Neumann</h1>
-        <img src="von-newmann.gif">
+        <video controls autoplay loop PlaybackRate="0.75">
+            <source src="von-newmann.mp4" type="video/mp4">
+            Tu navegador no soporta la reproducción de video.
+        </video>
     </div>
 </body>
 </html>
