@@ -79,7 +79,7 @@
             hojaSelect.innerHTML = '<option value="">Selecciona una hoja</option>'; // Limpiar las opciones anteriores
 
             if (selectedUnidad) {
-                fetch('/data/lista-archivos-html.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos HTML
+                fetch('/data/lista-archivos-java.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos HTML
                     .then(response => response.json())
                     .then(data => {
                         const hojas = [...new Set(data.filter(file => file.unidad === selectedUnidad).map(file => file.Hoja))];
@@ -103,7 +103,7 @@
             ejercicioSelect.innerHTML = '<option value="">Selecciona un ejercicio</option>'; // Limpiar las opciones anteriores
 
             if (selectedUnidad && selectedHoja) {
-                fetch('/data/lista-archivos-html.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos HTML
+                fetch('/data/lista-archivos-java.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos HTML
                     .then(response => response.json())
                     .then(data => {
                         const ejercicios = data.filter(file => file.unidad === selectedUnidad && file.Hoja === selectedHoja);
@@ -123,7 +123,7 @@
         function loadHTMLCode() {
             const selectedHTMLFile = ejercicioSelect.value;
             if (selectedHTMLFile) {
-                fetch('/data/lista-archivos-html.json')
+                fetch('/data/lista-archivos-java.json')
                     .then(response => response.json())
                     .then(data => {
                         const selectedFileData = data.find(file => file.nombre === selectedHTMLFile);
