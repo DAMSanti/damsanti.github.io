@@ -1,200 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Seleccionar archivo .java o .html</title>
+    <title>Seleccionar archivo .java</title>
     <!-- Carga los estilos y scripts de CodeMirror -->
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/clike/clike.min.js"></script>
-    <style>
-        /* Estilos para el área de CodeMirror */
-        #javaCodeEditorContainer {
-            height: 65vh !important;
-            overflow: auto;
-        }
-        /* Estilos para el iframe */
-        #htmlFrame {
-            width: 100%;
-            height: 65vh;
-            border: none;
-            display: none;
-        }
-    </style>
-</head>
-<body>
-    <h1>Selecciona un archivo .java o .html:</h1>
-    <select id="unidadSelect">
-        <option value="">Selecciona una unidad</option>
-    </select>
-
-    <select id="hojaSelect">
-        <option value="">Selecciona una hoja</option>
-    </select>
-
-    <select id="archivoSelect">
-        <option value="">Selecciona un archivo</option>
-    </select>
-    
-    <br>
-    <!-- Reemplaza el textarea por el editor de CodeMirror -->
-    <div id="javaCodeEditorContainer"></div>
-    <br>
-
-    <!-- Elemento iframe para mostrar HTML -->
-    <iframe id="htmlFrame"></iframe>
-
-    <hr>
-    
-    <hr>
-
-    <button onclick="runCode()">Run</button>
-
-    <h1>Salida:</h1>
-    <div id="output"></div>
-
-    <!-- Nueva sección de la consola emulada -->
-    <div class="console">
-        <pre id="output">Bienvenido a la consola emulada.</pre>
-        <input id="input" type="text" autofocus>
-    </div>
     <script src="consolascript.js"></script>
+    <script src="programacion.js"></script>
+</head>
+<body>  
+    <header>
+        <div id="banner">
+            <img src="./data/logo-iesmh.png" alt="Logotipo">
+            <h1>Curso 23/24 Desarrollo de aplicaciones multiplataforma</h1>
+            <a href="index.html" class="btn"><<</a>
+        </div>
+    </header>  
+    <main>  
+        <br>
+        <div id="content-box">
+            <h1 class="main-title">Selecciona un archivo .java</h1>
+            <br>
+            <!-- Envuelve los desplegables en un contenedor -->
+            <div class="centered-container">
+                 <select id="unidadSelect">
+                     <option value="">Selecciona una unidad</option>
+                 </select>
+                 <select id="hojaSelect">
+                     <option value="">Selecciona una hoja</option>
+                 </select>
+                 <select id="archivoSelect">
+                     <option value="">Selecciona un archivo</option>
+                 </select>
+            </div>
 
-    <script>
-        const unidadSelect = document.getElementById('unidadSelect');
-        const hojaSelect = document.getElementById('hojaSelect');
-        const archivoSelect = document.getElementById('archivoSelect');
-        const javaCodeEditorContainer = document.getElementById('javaCodeEditorContainer');
-        const output = document.getElementById('output');
-        const htmlFrame = document.getElementById('htmlFrame');
-        let selectedPath = '';
-        let codeMirrorInstance = null; // Define la variable global aquí
+            <br>
 
-        // Función para cargar y mostrar el código Java o HTML seleccionado
-        unidadSelect.addEventListener('change', loadHojas);
-        hojaSelect.addEventListener('change', loadArchivos);
-        archivoSelect.addEventListener('change', loadFile);
+            <!-- Editor de CodeMirror -->
+            <div id="javaCodeEditorContainer"></div>
 
-        // Cargar las unidades disponibles al cargar la página
-        window.addEventListener('load', () => {
-            fetch('/data/lista-archivos-java.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
-                .then(response => response.json())
-                .then(data => {
-                    const unidades = [...new Set(data.map(file => file.unidad))];
-                    unidades.forEach(unidad => {
-                        const option = document.createElement('option');
-                        option.value = unidad;
-                        option.textContent = unidad;
-                        unidadSelect.appendChild(option);
-                    });
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        });
+            <br>   
+            <!-- Elemento iframe para mostrar HTML -->
+            <iframe id="htmlFrame"></iframe>
 
-        // Cargar las hojas disponibles cuando se selecciona una unidad
-        function loadHojas() {
-            const selectedUnidad = unidadSelect.value;
-            hojaSelect.innerHTML = '<option value="">Selecciona una hoja</option>'; // Limpiar las opciones anteriores
+            <hr>
 
-            if (selectedUnidad) {
-                fetch('/data/lista-archivos-java.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
-                    .then(response => response.json())
-                    .then(data => {
-                        const hojas = [...new Set(data.filter(file => file.unidad === selectedUnidad).map(file => file.Hoja))];
-                        hojas.forEach(hoja => {
-                            const option = document.createElement('option');
-                            option.value = hoja;
-                            option.textContent = hoja;
-                            hojaSelect.appendChild(option);
-                        });
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    });
-            }
-        }
-
-        // Cargar los archivos disponibles cuando se selecciona una hoja
-        function loadArchivos() {
-            const selectedUnidad = unidadSelect.value;
-            const selectedHoja = hojaSelect.value;
-            archivoSelect.innerHTML = '<option value="">Selecciona un archivo</option>'; // Limpiar las opciones anteriores
-
-            if (selectedUnidad && selectedHoja) {
-                fetch('/data/lista-archivos-java.json') // Reemplaza con la ruta de tu servidor para obtener la lista de archivos
-                    .then(response => response.json())
-                    .then(data => {
-                        const archivos = data.filter(file => file.unidad === selectedUnidad && file.Hoja === selectedHoja);
-                        archivos.forEach(archivo => {
-                            const option = document.createElement('option');
-                            option.value = archivo.nombre;
-                            option.textContent = archivo.nombre;
-                            archivoSelect.appendChild(option);
-                        });
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    });
-            }
-        }
-
-        // Cargar el archivo Java seleccionado
-        function loadFile() {
-            const selectedArchivo = archivoSelect.value;
-            if (selectedArchivo && selectedArchivo.endsWith('.java')) {
-                fetch('/data/lista-archivos-java.json')
-                    .then(response => response.json())
-                    .then(data => {
-                        const selectedFileData = data.find(file => file.nombre === selectedArchivo);
-                        if (selectedFileData) {
-                            selectedPath = selectedFileData.ruta;
-                            const fullFilePath = `${selectedPath}${selectedArchivo}`;
-                            
-                            // Mostrar el editor de CodeMirror y ocultar el iframe
-                            javaCodeEditorContainer.style.display = 'block';
-                            htmlFrame.style.display = 'none';
-                            fetch(fullFilePath)
-                                .then(response => response.text())
-                                .then(javaCode => {
-                                    // Crear una instancia de CodeMirror si aún no existe
-                                    if (!codeMirrorInstance) {
-                                        codeMirrorInstance = CodeMirror(javaCodeEditorContainer, {
-                                            mode: 'text/x-java',
-                                            lineNumbers: true,
-                                            readOnly: true,
-                                        });
-                                    }
-
-                                    // Después de crear la instancia de CodeMirror
-                                    if (codeMirrorInstance) {
-                                        codeMirrorInstance.setSize(null, '65vh'); // Establecer la altura en 65% de la ventana
-                                    }
-
-                                    // Establecer el código Java
-                                    codeMirrorInstance.setValue(javaCode);
-                                })
-                                .catch(error => {
-                                    console.error(error);
-                                });
-                        } else {
-                            console.error('Datos del archivo no encontrados en el JSON.');
-                        }
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    });
-            } else {
-                // Limpiar el contenido del editor de CodeMirror si no se selecciona ningún archivo
-                if (codeMirrorInstance) {
-                    codeMirrorInstance.setValue('');
-                }
-                // Ocultar el iframe si no se selecciona ningún archivo HTML
-                htmlFrame.style.display = 'none';
-            }
-        }
-
-
-    </script>
+            <!-- Sección de la consola emulada -->
+            <div id="salida" class="console">        
+                <p id="statusMessage"></p> <!-- Agrega este elemento para mostrar el mensaje de estado -->
+                <input id="input" type="text" autofocus>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
