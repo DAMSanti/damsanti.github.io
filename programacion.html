@@ -45,10 +45,19 @@
 
     <hr>
     
+    <hr>
+
     <button onclick="runCode()">Run</button>
 
     <h1>Salida:</h1>
     <div id="output"></div>
+
+    <!-- Nueva sección de la consola emulada -->
+    <div class="console">
+        <pre id="output">Bienvenido a la consola emulada.</pre>
+        <input id="input" type="text" autofocus>
+    </div>
+    <script src="consolascript.js"></script>
 
     <script>
         const unidadSelect = document.getElementById('unidadSelect');

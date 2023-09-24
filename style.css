@@ -1,0 +1,224 @@
+/* Cambia el fondo de color de toda la página */
+body {
+    background-color: #BFBFBA;
+    justify-content: center; /* Centrar horizontalmente */
+}
+
+/* Estilos para el banner */
+#banner {
+    background-color: #929EAF; /* Color de fondo del banner */
+    color: #3765A7; /* Color del texto en el banner */
+    text-shadow: 3px 4px 6px #1D4072, 0 0 0 #000, 1px 4px 6px #def;
+    padding: 1% 0; /* Espaciado interior del banner */
+    position: relative; /* Posición relativa para alinear el logotipo */
+    height: 8vh; /* Altura fija del banner */
+    width: 100% !important;
+    border-radius: 20px; /* Agrega esquinas redondeadas al botón */
+}
+    /* Estilos para el título en el banner */
+    #banner h1 {
+        margin: 0; /* Elimina el margen superior del título */
+        font-size: 2vw; /* Tamaño de fuente del título */
+        position: absolute; /* Posición absoluta para centrar verticalmente */
+        top: 50%; /* Centrar verticalmente en el banner */
+        left: 50%; /* Centrar horizontalmente en el banner */
+        transform: translate(-50%, -50%); /* Centrar tanto horizontal como verticalmente */
+    }
+    /* Estilos para el logotipo en el banner */
+    #banner img {
+        max-width: 20vw; /* Tamaño máximo del logotipo */
+        position: absolute; /* Posición absoluta para alinear con la parte superior izquierda */
+        top: 15%; /* Alinear con el margen superior del banner */
+        left: 0; /* Alinear con el margen izquierdo del banner */
+    }
+    /* Estilos para el botón */
+    #banner a {
+        position: absolute;
+        left: 95%;
+        top: 25%;
+        width: 50px; /* Ancho del botón */
+        height: 50px; /* Altura del botón */
+        background-color: #007BFF; /* Color de fondo del botón */
+        color: #fff; /* Color del texto del botón */
+        text-align: center;
+        line-height: 50px; /* Alinea verticalmente el texto en el botón */
+        font-size: 25px; /* Tamaño de fuente del texto del botón */
+        font-weight: bolder;
+        text-decoration: none; /* Elimina el subrayado del enlace */
+        border: none; /* Elimina el borde del botón */
+        border-radius: 5px; /* Agrega esquinas redondeadas al botón */
+        cursor: pointer;
+    }
+    /* Cambiar el color del botón al pasar el cursor sobre él */
+    #banner a:hover {
+        background-color: #0056b3;
+    }
+
+
+/* Estilos para el cuadro de contenido */
+#content-box {
+    background-color: #fff; /* Color de fondo del cuadro */
+    padding: 20px; /* Espacio interno del cuadro */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra del cuadro */  
+    min-width: 300px;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%); /* Centrar el cuadro */      
+}
+    /* Estilos para el título principal */
+    #content-box h1 {
+        margin: 0 auto; /* Centrar horizontalmente */
+        text-align: center; /* Centrar el texto */
+        width: 70%; /* Ancho del contenedor al 70% del ancho de la página */
+        font-size: 34px; /* Tamaño de fuente para el título principal */
+        color: #0C0D0E; /* Color del texto blanco */
+    }
+    #content-box ul li {
+        margin: 10px; /* Centrar horizontalmente */
+        margin-left: -25px;
+        list-style-type: none;
+        padding: 10px;
+        text-align: center;
+    }
+    /* Estilo para los enlaces dentro de .content-box */
+    #content-box ul li a {
+        padding: 10px;
+        width: 50px; /* Ancho del botón */
+        height: 50px; /* Altura del botón */
+        background-color: #007BFF; /* Color de fondo del botón */
+        color: #fff; /* Color del texto del botón */
+        line-height: 50px; /* Alinea verticalmente el texto en el botón */
+        font-size: 25px; /* Tamaño de fuente del texto del botón */
+        border: none; /* Elimina el borde del botón */
+        border-radius: 5px; /* Agrega esquinas redondeadas al botón */
+        cursor: pointer;
+        text-align: center;       
+        background-color: #007BFF; /* Color de fondo del botón */
+        color: #FFF; /* Cambia el color del texto de los enlaces si es necesario */
+        text-decoration: none; /* Cambia el estilo del subrayado si es necesario */
+    }
+    /* Estilo específico para los enlaces si es necesario */
+    #content-box ul li a:hover {
+        background-color: #0056b3; /* Cambia el color al pasar el cursor sobre los enlaces si es necesario */
+    }
+    /* Estilo para el video */
+    #content-box video {
+        max-width: 100%; /* Asegura que el video no sea más ancho que el contenedor */
+        height: auto; /* Altura automática para mantener la relación de aspecto */
+        margin: 20px 0; /* Espacio en la parte superior e inferior del video (ajusta según tus preferencias) */
+    }
+    /* Centrar contenido dentro de #content-box */
+    #content-box > * {
+        margin: auto; /* Centrar horizontal y verticalmente todos los elementos hijos */
+    }
+
+
+/* Estilos para el contenedor centrado */
+.centered-container {
+    text-align: center; /* Alineación de texto en el centro */
+    width: 90%; /* Ancho al 90% del ancho de la página */
+    margin: 0 auto; /* Centrar horizontalmente */
+    display: flex; /* Uso de flexbox para alinear elementos en fila */
+    flex-direction: row; /* Alinea elementos en una fila horizontal */
+    justify-content: space-between; /* Espacio entre elementos */
+    align-items: center; /* Alinea verticalmente en el centro */
+}
+    #unidadSelect {
+        width: 25vh;
+        height: 30px;
+        text-align: center; /* Centrar el texto */
+    }
+
+    #hojaSelect {
+        width: 25vh;
+        height: 30px;
+        margin-left: 300px;
+        margin-right: 300px;
+        text-align: center; /* Centrar el texto */
+    }
+
+    #archivoSelect {
+        width: 25vh;
+        height: 30px;
+        text-align: center; /* Centrar el texto */
+    }
+
+/* Estilos para el iframe */
+#htmlFrame {
+    width: 90%;
+    height: 45vh;
+    border: none;
+    display: none;
+}
+
+/* Estilos para el área de CodeMirror */
+#javaCodeEditorContainer {
+    height: 45vh !important;
+    overflow: auto;
+    width: 90%; /* Cambia el ancho al 90% del ancho de la página */
+    margin: 0 auto; /* Centrar horizontalmente */
+    background-color: #fff; /* Fondo blanco para resaltar la sección */
+}
+
+
+
+
+
+
+
+
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+
+        th:hover {
+            background-color: #ddd;
+        }
+
+
+
+
+
+
+
+
+
+
+.console {
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    padding: 10px;
+    width: 90%; /* Cambia el ancho al 90% del ancho de la página */
+    margin: 0 auto; /* Centrar horizontalmente */
+    height: 200px;
+}
+
+#salida {
+    overflow: auto;
+    max-height: 300px;
+}
+
+input {
+    background-color: black;
+    color: white;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-family: monospace;
+}
