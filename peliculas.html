@@ -3,134 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="peliculas.js"></script>
+    
     <title>Listado de Películas</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th, td {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-
-        th {
-            background-color: #f2f2f2;
-            cursor: pointer;
-        }
-
-        th:hover {
-            background-color: #ddd;
-        }
-    </style>
 </head>
+<header>
+    <div id="banner">
+        <img src="logo-iesmh.png" alt="Logotipo">
+        <h1>Curso 23/24 Desarrollo de aplicaciones multiplataforma</h1>
+        <a href="index.html" class="btn"><<</a>
+    </div>
+</header> 
+    
 <body>
-    <h1>Listado de Películas</h1>
-    <table>
-        <thead>
-            <tr>
-                <th onclick="sortTable(0)">Título</th>
-                <th onclick="sortTable(1)">Año</th>
-                <th onclick="sortTable(2)">Duración (min)</th>
-                <th>Géneros</th>
-                <th>Director</th>
-                <th>Actores</th>
-                <th>Argumento</th>
-                <th>Poster</th>
-            </tr>
-        </thead>
-        <tbody id="movieTableBody">
-            <!-- Los datos de las películas se insertarán aquí mediante JavaScript -->
-        </tbody>
-    </table>
-
-    <script>
-        let moviesData; // Variable global para almacenar los datos de las películas
-
-        let sortColumn = 0; // Columna inicial para ordenar (Título)
-        let sortOrder = 1; // Orden ascendente por defecto
-
-        // Realizar una solicitud HTTP para obtener el JSON de películas
-        fetch('lista-peliculas.json')
-            .then(response => response.json())
-            .then(data => {
-                moviesData = data; // Almacenar los datos de las películas en la variable global
-
-                // Llenar la tabla con las películas
-                fillTable(data);
-            })
-            .catch(error => console.error('Error al cargar el JSON de películas:', error));
-
-        // Función para crear filas de la tabla
-        function createTableRow(movie) {
-            const row = document.createElement("tr");
-
-            // Columnas de la tabla
-            row.innerHTML = `
-                <td>${movie.title}</td>
-                <td>${movie.year}</td>
-                <td>${movie.runtime}</td>
-                <td>${movie.genres.join(', ')}</td>
-                <td>${movie.director}</td>
-                <td>${movie.actors}</td>
-                <td>${movie.plot}</td>
-                <td><img src="${movie.posterUrl}" alt="${movie.title}" width="100"></td>
-            `;
-
-            return row;
-        }
-
-        // Función para llenar la tabla con las películas
-        function fillTable(data) {
-            const tableBody = document.getElementById("movieTableBody");
-            tableBody.innerHTML = ""; // Limpiar el cuerpo de la tabla
-
-            data.movies.forEach(movie => {
-                const row = createTableRow(movie);
-                tableBody.appendChild(row);
-            });
-        }
-
-        // Función para ordenar la tabla por una columna específica
-        function sortTable(columnIndex) {
-            if (columnIndex !== sortColumn) {
-                // Si se cambia la columna, establecer el orden ascendente por defecto
-                sortOrder = 1;
-            } else {
-                // Si se hace clic en la misma columna, cambiar el orden
-                sortOrder *= -1;
-            }
-
-            sortColumn = columnIndex;
-            moviesData.movies.sort((a, b) => {
-                const valueA = getCellValue(a, columnIndex);
-                const valueB = getCellValue(b, columnIndex);
-
-                // Convertir a números si es la columna de "Año" o "Duración (min)"
-                if (columnIndex === 0 || columnIndex === 1) {
-                    return sortOrder * (parseInt(valueA, 10) - parseInt(valueB, 10));
-                } else {
-                    return sortOrder * valueA.localeCompare(valueB, undefined, { numeric: true });
-                }
-            });
-
-            fillTable(moviesData);
-        }
-
-        // Función para obtener el valor de una celda específica en una fila
-        function getCellValue(row, columnIndex) {
-            const columnName = Object.keys(row)[columnIndex];
-            const cellValue = row[columnName];
-
-            // Convertir a número si es la columna de "Año" o "Duración (min)"
-            if (columnIndex === 0 || columnIndex === 1) {
-                return parseInt(cellValue, 10);
-            }
-
-            return cellValue;
-        }
-    </script>
+    <br>
+    <div id="content-box">
+        <h1>Listado de Películas</h1>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">Título</th>
+                    <th onclick="sortTable(1)">Año</th>
+                    <th onclick="sortTable(2)">Duración (min)</th>
+                    <th>Géneros</th>
+                    <th>Director</th>
+                    <th>Actores</th>
+                    <th>Argumento</th>
+                    <th>Poster</th>
+                </tr>
+            </thead>
+            <tbody id="movieTableBody">
+                <!-- Los datos de las películas se insertarán aquí mediante JavaScript -->
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
