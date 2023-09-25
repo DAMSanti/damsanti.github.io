@@ -27,7 +27,6 @@ body {
             top: 50%; /* Centrar verticalmente en el banner */
             left: 50%; /* Centrar horizontalmente en el banner */
             transform: translate(-50%, -50%); /* Centrar tanto horizontal como verticalmente */
-            white-space: pre;
         }
         /* Estilos para el logotipo en el banner */
         #banner img {
