@@ -31,7 +31,7 @@ body {
         /* Estilos para el logotipo en el banner */
         #banner img {
             max-height: 60%;
-            max-width:  40%;
+            max-width:  25%;
             position: absolute; /* Posición absoluta para alinear con la parte superior izquierda */
             top: 15%; /* Alinear con el margen superior del banner */
             left: 0; /* Alinear con el margen izquierdo del banner */
