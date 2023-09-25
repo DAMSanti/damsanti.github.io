@@ -4,55 +4,112 @@ body {
     justify-content: center; /* Centrar horizontalmente */
 }
 
-/* Estilos para el banner */
-#banner {
-    background-color: #929EAF; /* Color de fondo del banner */
-    color: #3765A7; /* Color del texto en el banner */
-    text-shadow: 3px 4px 6px #1D4072, 0 0 0 #000, 1px 4px 6px #def;
-    padding: 1% 0; /* Espaciado interior del banner */
-    position: relative; /* Posición relativa para alinear el logotipo */
-    height: 8vh; /* Altura fija del banner */
-    width: 100% !important;
-    border-radius: 20px; /* Agrega esquinas redondeadas al botón */
+
+
+
+@media screen and (max-width: 768) {
+    /* Estilos para el banner */
+    #banner {
+        background-color: #929EAF; /* Color de fondo del banner */
+        color: #3765A7; /* Color del texto en el banner */
+        text-shadow: 3px 4px 6px #1D4072, 0 0 0 #000, 1px 4px 6px #def;
+        padding: 1% 0; /* Espaciado interior del banner */
+        position: relative; /* Posición relativa para alinear el logotipo */
+        height: 8vh; /* Altura fija del banner */
+        width: 100% !important;
+        border-radius: 20px; /* Agrega esquinas redondeadas al botón */
+    }
+        /* Estilos para el título en el banner */
+        #banner h1 {
+            margin: 0; /* Elimina el margen superior del título */
+            font-size: 2vw; /* Tamaño de fuente del título */
+            position: absolute; /* Posición absoluta para centrar verticalmente */
+            top: 50%; /* Centrar verticalmente en el banner */
+            left: 50%; /* Centrar horizontalmente en el banner */
+            transform: translate(-50%, -50%); /* Centrar tanto horizontal como verticalmente */
+        }
+        /* Estilos para el logotipo en el banner */
+        #banner img {
+            max-width: 20vw; /* Tamaño máximo del logotipo */
+            position: absolute; /* Posición absoluta para alinear con la parte superior izquierda */
+            top: 15%; /* Alinear con el margen superior del banner */
+            left: 0; /* Alinear con el margen izquierdo del banner */
+        }
+        /* Estilos para el botón */
+        #banner a {
+            position: absolute;
+            left: 95%;
+            top: 25%;
+            width: 50px; /* Ancho del botón */
+            height: 50px; /* Altura del botón */
+            background-color: #007BFF; /* Color de fondo del botón */
+            color: #fff; /* Color del texto del botón */
+            text-align: center;
+            line-height: 50px; /* Alinea verticalmente el texto en el botón */
+            font-size: 25px; /* Tamaño de fuente del texto del botón */
+            font-weight: bolder;
+            text-decoration: none; /* Elimina el subrayado del enlace */
+            border: none; /* Elimina el borde del botón */
+            border-radius: 5px; /* Agrega esquinas redondeadas al botón */
+            cursor: pointer;
+        }
+        /* Cambiar el color del botón al pasar el cursor sobre él */
+        #banner a:hover {
+            background-color: #0056b3;
+        }
 }
-    /* Estilos para el título en el banner */
-    #banner h1 {
-        margin: 0; /* Elimina el margen superior del título */
-        font-size: 2vw; /* Tamaño de fuente del título */
-        position: absolute; /* Posición absoluta para centrar verticalmente */
-        top: 50%; /* Centrar verticalmente en el banner */
-        left: 50%; /* Centrar horizontalmente en el banner */
-        transform: translate(-50%, -50%); /* Centrar tanto horizontal como verticalmente */
+
+@media screen and (min-width: 768) {
+    /* Estilos para el banner */
+    #banner {
+        background-color: #929EAF; /* Color de fondo del banner */
+        color: #3765A7; /* Color del texto en el banner */
+        text-shadow: 3px 4px 6px #1D4072, 0 0 0 #000, 1px 4px 6px #def;
+        padding: 1% 0; /* Espaciado interior del banner */
+        position: relative; /* Posición relativa para alinear el logotipo */
+        height: 8vh; /* Altura fija del banner */
+        width: 100% !important;
+        border-radius: 20px; /* Agrega esquinas redondeadas al botón */
     }
-    /* Estilos para el logotipo en el banner */
-    #banner img {
-        max-width: 20vw; /* Tamaño máximo del logotipo */
-        position: absolute; /* Posición absoluta para alinear con la parte superior izquierda */
-        top: 15%; /* Alinear con el margen superior del banner */
-        left: 0; /* Alinear con el margen izquierdo del banner */
-    }
-    /* Estilos para el botón */
-    #banner a {
-        position: absolute;
-        left: 95%;
-        top: 25%;
-        width: 50px; /* Ancho del botón */
-        height: 50px; /* Altura del botón */
-        background-color: #007BFF; /* Color de fondo del botón */
-        color: #fff; /* Color del texto del botón */
-        text-align: center;
-        line-height: 50px; /* Alinea verticalmente el texto en el botón */
-        font-size: 25px; /* Tamaño de fuente del texto del botón */
-        font-weight: bolder;
-        text-decoration: none; /* Elimina el subrayado del enlace */
-        border: none; /* Elimina el borde del botón */
-        border-radius: 5px; /* Agrega esquinas redondeadas al botón */
-        cursor: pointer;
-    }
-    /* Cambiar el color del botón al pasar el cursor sobre él */
-    #banner a:hover {
-        background-color: #0056b3;
-    }
+        /* Estilos para el título en el banner */
+        #banner h1 {
+            margin: 0; /* Elimina el margen superior del título */
+            font-size: 2vw; /* Tamaño de fuente del título */
+            position: absolute; /* Posición absoluta para centrar verticalmente */
+            top: 50%; /* Centrar verticalmente en el banner */
+            left: 50%; /* Centrar horizontalmente en el banner */
+            transform: translate(-50%, -50%); /* Centrar tanto horizontal como verticalmente */
+        }
+        /* Estilos para el logotipo en el banner */
+        #banner img {
+            max-width: 20vw; /* Tamaño máximo del logotipo */
+            position: absolute; /* Posición absoluta para alinear con la parte superior izquierda */
+            top: 15%; /* Alinear con el margen superior del banner */
+            left: 0; /* Alinear con el margen izquierdo del banner */
+        }
+        /* Estilos para el botón */
+        #banner a {
+            position: absolute;
+            left: 95%;
+            top: 25%;
+            width: 50px; /* Ancho del botón */
+            height: 50px; /* Altura del botón */
+            background-color: #007BFF; /* Color de fondo del botón */
+            color: #fff; /* Color del texto del botón */
+            text-align: center;
+            line-height: 50px; /* Alinea verticalmente el texto en el botón */
+            font-size: 25px; /* Tamaño de fuente del texto del botón */
+            font-weight: bolder;
+            text-decoration: none; /* Elimina el subrayado del enlace */
+            border: none; /* Elimina el borde del botón */
+            border-radius: 5px; /* Agrega esquinas redondeadas al botón */
+            cursor: pointer;
+        }
+        /* Cambiar el color del botón al pasar el cursor sobre él */
+        #banner a:hover {
+            background-color: #0056b3;
+        }
+}
 
 
 /* Estilos para el cuadro de contenido */
