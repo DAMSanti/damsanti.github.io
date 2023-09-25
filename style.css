@@ -7,7 +7,7 @@ body {
 
 
 
-@media screen and (max-width: 768) {
+@media screen and (max-width: 768px) {
     /* Estilos para el banner */
     #banner {
         background-color: #929EAF; /* Color de fondo del banner */
@@ -27,13 +27,16 @@ body {
             top: 50%; /* Centrar verticalmente en el banner */
             left: 50%; /* Centrar horizontalmente en el banner */
             transform: translate(-50%, -50%); /* Centrar tanto horizontal como verticalmente */
+            white-space: pre;
         }
         /* Estilos para el logotipo en el banner */
         #banner img {
-            max-width: 20vw; /* Tamaño máximo del logotipo */
+            max-height: 60%;
+            max-width:  40%;
             position: absolute; /* Posición absoluta para alinear con la parte superior izquierda */
             top: 15%; /* Alinear con el margen superior del banner */
             left: 0; /* Alinear con el margen izquierdo del banner */
+            transform: translate(0,0);
         }
         /* Estilos para el botón */
         #banner a {
@@ -59,7 +62,7 @@ body {
         }
 }
 
-@media screen and (min-width: 768) {
+@media screen and (min-width: 768px) {
     /* Estilos para el banner */
     #banner {
         background-color: #929EAF; /* Color de fondo del banner */
@@ -82,10 +85,12 @@ body {
         }
         /* Estilos para el logotipo en el banner */
         #banner img {
-            max-width: 20vw; /* Tamaño máximo del logotipo */
+            max-height: 60%;
+            max-width:  40%;
             position: absolute; /* Posición absoluta para alinear con la parte superior izquierda */
             top: 15%; /* Alinear con el margen superior del banner */
             left: 0; /* Alinear con el margen izquierdo del banner */
+            transform: translate(0,0);
         }
         /* Estilos para el botón */
         #banner a {
