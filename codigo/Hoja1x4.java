@@ -8,17 +8,18 @@ package code.hoja1x4;
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
     public class Hoja1x4 {
-        enum Meses {enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre}
+        enum Meses {ENERO,FEBRERO,MARZO,ABRIL,MAYO,JUNIO,JULIO,AGOSTO,SEPTIEMBRE,OCTUBRE,NOVIEMBRE,DICIEMBRE}
 
         public static void main(String[ ] args) {
-            Meses m = Meses.marzo;
-            System.out.println("El mes seleccionad es: " + m);
+            Meses m = Meses.MARZO;
+            
+            System.out.println("El mes seleccionado es: " + m);
             try {
-                m = Meses.valueOf("MARZO");
-                System.out.println("El mes seleccionad es: " + m);
+                m = Meses.valueOf(MARZO);
+                System.out.println("El mes seleccionado es: " + m);
             }
                 catch (IllegalArgumentException e) {
-                System.out.println("No se pudo asignar 'MARZO' a la variable m, sigue siendo " + m);
+                System.out.println("No se pudo asignar 'marzo' a la variable m, sigue siendo " + m);
             }
         }
     }
