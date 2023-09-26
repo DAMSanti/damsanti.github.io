@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Seleccionar archivo .java</title>
+    <!-- Carga los estilos y scripts de CodeMirror -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.1/mode/clike/clike.min.js"></script>
+    <script src="./scripts/consolascript.js"></script>
+    <script src="./scripts/programacion.js"></script>
+</head>
+<body>  
+    <header>
+        <div id="banner" class="grid-banner">
+            <img src="./data/logo-iesmh.png" alt="Logotipo">
+            <h1>Curso 23/24 Desarrollo de aplicaciones multiplataforma</h1>
+            <a href="programacion.html" class="btn"><<</a>
+        </div>
+    </header>  
+    <main>  
+        <br>
+        <div id="content-box">
+            <h1 class="main-title">Selecciona un archivo .java</h1>
+            <br>
+            <!-- Envuelve los desplegables en un contenedor -->
+            <div class="centered-container">
+                 <select id="unidadSelect">
+                     <option value="">Selecciona una unidad</option>
+                 </select>
+                 <select id="hojaSelect">
+                     <option value="">Selecciona una hoja</option>
+                 </select>
+                 <select id="archivoSelect">
+                     <option value="">Selecciona un archivo</option>
+                 </select>
+            </div>
+
+            <br>
+
+            <!-- Editor de CodeMirror -->
+            <div id="javaCodeEditorContainer"></div>
+
+            <br>   
+            <!-- Elemento iframe para mostrar HTML -->
+            <iframe id="htmlFrame"></iframe>
+
+            <hr>
+
+            <!-- Sección de la consola emulada -->
+            <div id="salida" class="console">        
+                <p id="statusMessage"></p> <!-- Agrega este elemento para mostrar el mensaje de estado -->
+                <input id="input" type="text" autofocus>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

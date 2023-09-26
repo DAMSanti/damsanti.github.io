@@ -136,11 +136,11 @@ body {
     padding: 20px; /* Espacio interno del cuadro */
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra del cuadro */  
-    min-width: 300px;
+    min-width: 500px;
     margin: 0 auto;
     position: absolute;
     left: 50%;
-    transform: translate(-50%, 0%); /* Centrar el cuadro */      
+    transform: translate(-50%, 0%); /* Centrar el cuadro */  
 }
     /* Estilos para el título principal */
     #content-box h1 {
