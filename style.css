@@ -8,15 +8,11 @@ body {
 /*        BANNER       */
 /***********************/
 
-.grid-banner {
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr; /* Divide en tres columnas: 1fr, 2fr, 1fr */
-  align-items: center; /* Centra verticalmente los elementos en las filas */
-  gap: 10px; /* Espacio entre elementos */
-}
-
 /* Estilos para el banner */
 #banner {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr; /* Divide en tres columnas: 1fr, 2fr, 1fr */
+    align-items: center; /* Centra verticalmente los elementos en las filas */
     background-color: #929EAF; /* Color de fondo del banner */
     color: #3765A7; /* Color del texto en el banner */
     text-shadow: 3px 4px 6px #1D4072, 0 0 0 #000, 1px 4px 6px #def;
@@ -24,6 +20,7 @@ body {
     position: relative; /* Posición relativa para alinear el logotipo */
     height: 8vh; /* Altura fija del banner */
     max-width: 100%;
+    min-height: 50px;
     border-radius: 20px; /* Agrega esquinas redondeadas al botón */
 }
     /* Estilos para el título en el banner */
@@ -46,6 +43,8 @@ body {
         justify-self: end;
         width: 5vh; /* Ancho del botón */
         height: 5vh; /* Altura del botón */
+        min-height: 35px;
+        min-width: 35px;
         background-color: #007BFF; /* Color de fondo del botón */
         color: #fff; /* Color del texto del botón */
         text-align: center;
@@ -60,6 +59,72 @@ body {
     #banner a:hover {
         background-color: #0056b3;
     }
+
+
+/***********************/
+/*        INDEX        */
+/***********************/
+
+/* Estilos para el cuadro de contenido */
+#index-box {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+    grid-row-gap: 15px;
+    background-color: #fff; /* Color de fondo del cuadro */
+    padding: 20px; /* Espacio interno del cuadro */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra del cuadro */  
+    min-width: 300px;
+    max-width: 70%;
+    margin: 0 auto;    
+}
+
+    /* Estilos para el título principal */
+    #index-box h1 {
+        grid-row: 1;
+        grid-column: 1 / span 3;
+        font-size: 2vw; /* Tamaño de fuente para el título principal */
+        color: #0C0D0E; /* Color del texto blanco */
+    }
+
+    /* Estilo para los enlaces dentro de .content-box */
+    #index-box div {  
+        width: 80%;
+        line-height: 50px; /* Alinea verticalmente el texto en el botón */     
+    }
+
+    #index-box a {  
+        font-size: 1vw; /* Tamaño de fuente del texto del botón */
+        height: 100%;
+        width: 100%;
+        display: block;
+        color: #FFF; /* Cambia el color del texto de los enlaces si es necesario */
+        text-decoration: none; /* Cambia el estilo del subrayado si es necesario */
+        background-color: #007BFF; /* Color de fondo del botón */
+        text-align: center;
+        cursor: pointer;
+        border: none; /* Elimina el borde del botón */    
+        border-radius: 5px; /* Agrega esquinas redondeadas al botón */
+    }
+
+    /* Estilo específico para los enlaces si es necesario */
+    #index-box div:hover {
+        background-color: #0056b3; /* Cambia el color al pasar el cursor sobre los enlaces si es necesario */
+    }
+    /* Estilo para el video */
+    #index-box video {
+        max-width: 100%; /* Asegura que el video no sea más ancho que el contenedor */
+        height: auto; /* Altura automática para mantener la relación de aspecto */
+        margin: 20px 0; /* Espacio en la parte superior e inferior del video (ajusta según tus preferencias) */
+    }
+    /* Centrar contenido dentro de #content-box */
+    #index-box > * {
+        margin: auto; /* Centrar horizontal y verticalmente todos los elementos hijos */
+    }
+
+
+
 
 
 
@@ -123,6 +188,13 @@ body {
     #content-box > * {
         margin: auto; /* Centrar horizontal y verticalmente todos los elementos hijos */
     }
+
+
+
+
+
+
+
 
 
 /* Estilos para el contenedor centrado */
