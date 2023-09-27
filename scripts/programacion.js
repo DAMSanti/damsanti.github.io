@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var htmlFrame = document.getElementById('htmlFrame');
     let selectedPath = '';
     let codeMirrorInstance = null; // Define la variable global aquí
-    let sitiojson = "./data/lista-archivos-java.json";
+    let sitiojson = "/data/lista-archivos-java.json";
 
     // Cargar las unidades disponibles al cargar la página
     window.addEventListener('load', () => {
