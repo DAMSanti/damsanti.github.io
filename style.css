@@ -108,6 +108,17 @@ body {
         border-radius: 5px; /* Agrega esquinas redondeadas al botón */
     }
 
+    #index-box a:not([href]){
+        /* Estilo para enlaces sin atributo href */
+        background-color: #D1D7DC; /* Cambia el color de fondo a rojo */
+        /* Otros estilos personalizados si es necesario */
+    }
+    #index-box a:not([href]):hover{
+        /* Estilo para enlaces sin atributo href */
+        background-color: #A7ADB1; /* Cambia el color de fondo a rojo */
+        /* Otros estilos personalizados si es necesario */
+    }
+
     /* Estilo específico para los enlaces si es necesario */
     #index-box a:hover {
         background-color: #0056b3; /* Cambia el color al pasar el cursor sobre los enlaces si es necesario */
@@ -262,3 +273,4 @@ th {
 th:hover {
     background-color: #ddd;
 }
+

@@ -63,7 +63,7 @@ function sortTable(columnIndex) {
 }
 
 // Realizar una solicitud HTTP para obtener el JSON de películas
-fetch('./data/lista-peliculas.json')
+fetch('/data/lista-peliculas.json')
     .then(response => response.json())
     .then(data => {
         moviesData = data; // Almacenar los datos de las películas en la variable global
