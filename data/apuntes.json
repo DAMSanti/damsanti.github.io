@@ -1,0 +1,32 @@
+[
+    {
+        "asignatura": "PR",
+        "unidades": "0",
+        "nombre": "Programación UD"
+    },
+    {
+        "asignatura": "SI",
+        "unidades": "1",
+        "nombre": "Sistemas UD"
+    },
+    {
+        "asignatura": "BD",
+        "unidades": "1",
+        "nombre": "Bases de Datos UD"
+    },
+    {
+        "asignatura": "FO",
+        "unidades": "0",
+        "nombre": "Formacion UD"
+    },
+    {
+        "asignatura": "LM",
+        "unidades": "1",
+        "nombre": "Leng. Marcas UD"
+    },
+    {
+        "asignatura": "ED",
+        "unidades": "0",
+        "nombre": "Entornos UD"
+    }
+]

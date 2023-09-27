@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Seleccionar asignatura y unidad</title>
+    <!-- Carga los estilos y scripts de CodeMirror -->
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>  
+    <header>
+        <div id="banner" class="grid-banner">
+            <img src="/data/logo-iesmh.png" alt="Logotipo">
+            <h1>Curso 23/24 Desarrollo de aplicaciones multiplataforma</h1>
+            <a href="index.html" class="btn"><<</a>
+        </div>
+    </header>  
+    <main>  
+        <br>
+        <div id="content-box">
+            <h1 class="main-title">Selecciona asignatura y unidad</h1>
+            <br>
+            <!-- Envuelve los desplegables en un contenedor -->
+            <div class="centered-container">
+                <select id="asignaturaSelect">
+                    <option value="">Selecciona una asignatura</option>
+                    <option value="PR">Programación</option>
+                    <option value="BD">Bases de Datos</option>
+                    <option value="ED">Entornos de Desarrollo</option>
+                    <option value="LM">Lenguaje de Marcas</option>
+                    <option value="SI">Sistemas Informáticos</option>
+                    <option value="FO">Formacion y Orientacion Laboral</option>
+                    <!-- Agrega más opciones según tus necesidades -->
+                </select>
+                <select id="unidadSelect">
+                    <option value="">Selecciona una unidad</option>    
+                </select>
+                <button onclick="mostrarPDF()">Mostrar PDF</button>
+            </div>
+                <div id="pdfContainer">
+                    <!-- Aquí se mostrará el PDF seleccionado -->
+                </div>
+        </div>
+    </main>
+    <script> 
+        // Función para generar dinámicamente las opciones del desplegable de unidades
+        function generarOpcionesUnidades() {
+            const asignaturaSelect = document.getElementById("asignaturaSelect");
+            const unidadSelect = document.getElementById("unidadSelect");
+            const asignaturaValue = asignaturaSelect.value;
+
+            unidadSelect.innerHTML = ""; // Limpiamos las opciones anteriores
+
+            // Cargamos el archivo JSON que contiene la información de las unidades
+            fetch("/data/apuntes.json")
+                .then(response => response.json())
+                .then(data => {
+                    // Filtramos las entradas del JSON para la asignatura seleccionada
+                    const unidadesAsignatura = data.filter(entry => entry.asignatura === asignaturaValue);
+
+                    // Generamos las opciones de unidades en función de los datos del JSON
+                    unidadesAsignatura.forEach(entry => {
+                        const option = document.createElement("option");
+                        option.value = entry.unidades;
+                        option.textContent = `${entry.nombre} ${entry.unidades}`;
+                        unidadSelect.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error al cargar el archivo JSON:", error);
+                });
+        }
+
+        // Llamamos a la función para generar las opciones de unidades cuando cambia la asignatura
+        document.getElementById("asignaturaSelect").addEventListener("change", generarOpcionesUnidades);
+
+        // Función para mostrar el PDF seleccionado
+        function mostrarPDF() {
+            const asignatura = document.getElementById("asignaturaSelect").value;
+            const unidad = document.getElementById("unidadSelect").value;
+            const pdfContainer = document.getElementById("pdfContainer");
+
+            const pdfURL = `/apuntes/${asignatura}Unidad${unidad}.pdf`;
+
+            // Verificar si el archivo existe antes de mostrarlo
+            fetch(pdfURL)
+                .then(response => {
+                    if (response.status === 200) {
+                        // Si el archivo existe, mostrarlo en un iframe
+                        pdfContainer.innerHTML = `<iframe src="${pdfURL}" width="100%" height="500px"></iframe>`;
+                    } else {
+                        // Si el archivo no existe, mostrar un mensaje de error
+                        pdfContainer.innerHTML = "El archivo PDF no existe.";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error al cargar el PDF:", error);
+                    pdfContainer.innerHTML = "Hubo un error al cargar el PDF.";
+                });
+        }
+    </script>  
+</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -215,6 +215,12 @@ body {
     align-items: center; /* Alinea verticalmente en el centro */
 }
 
+    /* Estilos para el contenedor centrado */
+    .centered-container select {
+        position: relative;
+        margin: 0 auto;
+    }
+
 #unidadSelect {
     width: 25vh;
     height: 30px;
@@ -235,6 +241,13 @@ body {
     text-align: center; /* Centrar el texto */
 }
 
+#asignaturaSelect {
+    width: 25vh;
+    height: 30px;
+    margin-right: 150px;
+    text-align: center; /* Centrar el texto */
+}
+
 /* Estilos para el iframe */
 #htmlFrame {
     border: none;
@@ -247,6 +260,7 @@ body {
     overflow: auto;
     margin: 0 auto; /* Centrar horizontalmente */
 }
+
 
 
 /********************************/

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var htmlFrame = document.getElementById('htmlFrame');
     let selectedPath = '';
     let codeMirrorInstance = null; // Define la variable global aquí
-    let sitiojson = "/data/lista-archivos-java.json";
+    let sitiojson = "./data/lista-archivos-java.json";
 
     // Cargar las unidades disponibles al cargar la página
     window.addEventListener('load', () => {
@@ -100,8 +100,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     const selectedFileData = data.find(file => file.nombre === selectedArchivo);
                     if (selectedFileData) {
                         selectedPath = selectedFileData.ruta;
+                        console.log(selectedPath);
                         const fullFilePath = `${selectedPath}${selectedArchivo}`;
-
+                        console.log(fullFilePath);
                         // Mostrar el editor de CodeMirror y ocultar el iframe
                         javaCodeEditorContainer.style.display = 'block';
                         htmlFrame.style.display = 'none';
