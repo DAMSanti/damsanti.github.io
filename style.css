@@ -230,8 +230,8 @@ body {
 #hojaSelect {
     width: 25vh;
     height: 30px;
-    margin-left: 300px;
-    margin-right: 300px;
+    margin-left: 15vw;
+    margin-right: 15vw;
     text-align: center; /* Centrar el texto */
 }
 
@@ -244,7 +244,7 @@ body {
 #asignaturaSelect {
     width: 25vh;
     height: 30px;
-    margin-right: 150px;
+    margin-right: 10vw;
     text-align: center; /* Centrar el texto */
 }
 
