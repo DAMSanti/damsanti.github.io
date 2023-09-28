@@ -146,7 +146,7 @@ body {
     padding: 20px; /* Espacio interno del cuadro */
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra del cuadro */  
-    min-width: 500px;
+    min-width: 300px;
     margin: 0 auto;
     position: absolute;
     left: 50%;
@@ -222,28 +222,28 @@ body {
     }
 
 #unidadSelect {
-    width: 25vh;
-    height: 30px;
+    width: 10vw;
+    height: 3vh;
     text-align: center; /* Centrar el texto */
 }
 
 #hojaSelect {
-    width: 25vh;
-    height: 30px;
+    width: 10vw;
+    height: 3vh;
     margin-left: 15vw;
     margin-right: 15vw;
     text-align: center; /* Centrar el texto */
 }
 
 #archivoSelect {
-    width: 25vh;
-    height: 30px;
+    width: 10vw;
+    height: 3vh;
     text-align: center; /* Centrar el texto */
 }
 
 #asignaturaSelect {
-    width: 25vh;
-    height: 30px;
+    width: 10vw;
+    height: 3vh;
     margin-right: 10vw;
     text-align: center; /* Centrar el texto */
 }
