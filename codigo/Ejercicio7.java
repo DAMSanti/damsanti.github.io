@@ -15,9 +15,8 @@ import java.util.Scanner;
             // Creamos objeto teclado
             Scanner teclado = new Scanner(System.in);
             
-            boolean llueve;
-            boolean tarea;
-            boolean biblioteca;
+            boolean llueve, tarea, biblioteca;
+            String solucion;
             
             // Entrada de datos 
             System.out.println("Escribe solo \"true\" o \"false\"");
@@ -27,12 +26,9 @@ import java.util.Scanner;
             tarea=teclado.nextBoolean();
             System.out.print("¿Tienes que ir a la biblioteca? ");
             biblioteca=teclado.nextBoolean();
-            
-            if (( biblioteca == true ) || (llueve!=tarea && tarea==true)) {
-                System.out.print("Puedes salir a la calle ");
-            }
-            else {
-                System.out.print("No puedes salir a la calle ");
-            }
+
+
+            solucion = ((biblioteca == true) || (llueve!=tarea) && (tarea==true)) ? "" : "No" ;
+            System.out.print(solucion + " Puedes salir a la calle ");
     }
 }

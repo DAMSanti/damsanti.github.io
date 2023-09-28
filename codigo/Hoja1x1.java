@@ -9,10 +9,10 @@ package code.hoja1x1;
 //////////////////////////////////////////////////////////////////////////////////////////////////   
 
     public class Hoja1x1 {
+        // El sexo a pesar de ser un caracter, no es de libre eleccion sino que solo puede ser uno de estos valores.
+        public enum Sexos {M,V}
         // Aqui empieza el main del programa, que es el punto donde comienza a ejecutarse.
         public static void main(String[ ] args) {
-            // El sexo a pesar de ser un caracter, no es de libre eleccion sino que solo puede ser uno de estos valores.
-            enum Sexos {M,V}
             // Boolean porque solo puede ser verdadero o falso, eleccion binaria.
             boolean casado=true;
             // byte, short, int y long en base a la maxima memoria de los numeros, 8, 16, 32 y 64 bits respectivamente de memoria reservada.

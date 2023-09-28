@@ -28,10 +28,7 @@ import javax.swing.JOptionPane;
             
             //Comprobamos si es superior a 100€
             
-            if (precio >= 100) {
-                //Aplicamos descuento
-                precio = precio * 0.95 ;                
-            }
+            precio = precio >= 100 ? precio * 0.95 : precio ;
             
             //Presentacion del resultado
             System.out.println("\n\n\t   FACTURA\n");

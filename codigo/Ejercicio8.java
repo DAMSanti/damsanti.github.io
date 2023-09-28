@@ -15,10 +15,8 @@ import java.util.Scanner;
             // Creamos objeto teclado
             Scanner teclado = new Scanner(System.in);
             
-            final double premanz = 2.35 ;
-            final double prepera = 1.95 ;
-            double manzana ;
-            double pera ;
+            final double premanz = 2.35, prepera = 1.95 ;
+            double manzana, pera ;
             
             // Entrada de datos 
             System.out.print("Cuantos kilos de manzanas se vendieron el primer semestre:  ");

@@ -12,8 +12,7 @@ package code.hoja1x3;
         public static void main(String[] args) {
             short x = 7;
             int y = 5;
-            float f1 = 13.5f;
-            float f2 = 8f;
+            float f1 = 13.5f, f2 = 8f;
             System.out.println("El valor de x es " + x + " y el valor de y es " + y);
             System.out.println("El resultado de x + y es " + (x + y));
             System.out.println("El resultado de x - y es " + (x - y));

@@ -22,12 +22,7 @@ import java.util.Scanner;
             System.out.print("Introduce un numero ");
             n=teclado.nextByte();
             
-            if (n%2 == 0) {
-                condicion=true;
-            }
-            else {
-                condicion=false;
-            }
+            condicion = n%2 == 0 ;
             
             System.out.println("¿Es par? " + condicion );
                     

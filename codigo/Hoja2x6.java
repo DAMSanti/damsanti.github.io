@@ -8,7 +8,6 @@ package unidad1.hoja2x6;
 ////////////////////////////////////////////////////////////////////////////////////////////////// 
 
 import java.util.Scanner;
-import java.lang.Math;
 
     public class Hoja2x6 {
         public static void main(String[ ] args) {

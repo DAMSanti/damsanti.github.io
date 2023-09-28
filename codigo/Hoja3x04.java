@@ -8,7 +8,6 @@ package unidad1.hoja3x04;
 ////////////////////////////////////////////////////////////////////////////////////////////////// 
 
 import java.util.Scanner;
-import java.lang.Math;
 
     public class Hoja3x04 {
         public static void main(String[ ] args) {

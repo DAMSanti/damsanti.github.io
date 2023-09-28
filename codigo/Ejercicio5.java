@@ -22,12 +22,7 @@ import java.util.Scanner;
             System.out.print("¿Cual es tu edad? ");
             edad=teclado.nextByte();
             
-            if (edad >= 18) {
-                condicion=true;
-            }
-            else {
-                condicion=false;
-            }
+            condicion = edad>=18;
             
             System.out.println("MAYOR DE EDAD: " + condicion );
                     

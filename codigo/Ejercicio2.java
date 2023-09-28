@@ -15,8 +15,7 @@ import java.util.Scanner;
             // Creamos objeto teclado
             Scanner teclado = new Scanner(System.in);
             
-            int anonacimiento;
-            int anoactual = 2023 ;
+            int anonacimiento, anoactual = 2023 ;
             
             // Entrada de datos            
             System.out.print("¿Cual es tu año de nacimiento? ");

@@ -15,8 +15,7 @@ import java.util.Scanner;
             // Creamos objeto teclado
             Scanner teclado = new Scanner(System.in);
             
-            double n1;
-            double n2;
+            double n1, n2;
             
             // Entrada de datos  
             System.out.println("\tCALCULADORA DE MEDIA\n");
