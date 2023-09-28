@@ -2,7 +2,6 @@ let moviesData; // Variable global para almacenar los datos de las películas
 let sortColumn = 0; // Columna inicial para ordenar (Título)
 let sortOrder = 1; // Orden ascendente por defecto
 
-
 // Función para crear filas de la tabla
 function createTableRow(movie) {
     const row = document.createElement("tr");
@@ -33,9 +32,41 @@ function fillTable(data) {
     });
 }
 
+let lastSortedColumnIndex = null; // Variable para rastrear la última columna ordenada
+
 function sortTable(columnIndex) {
     const table = document.querySelector("table");
     const rows = Array.from(table.rows).slice(1); // Ignora la fila de encabezado
+    
+    // Si se hace clic en la misma columna nuevamente, invierte el orden
+    if (lastSortedColumnIndex === columnIndex) {
+        sortOrder *= -1;
+    } else {
+        sortOrder = 1;
+    }
+
+    // Reinicia las clases y flechas de todas las celdas de encabezado
+    const thElements = table.querySelectorAll("th");
+    thElements.forEach(th => {
+        th.classList.remove("sorted-column");
+        const arrowElement = th.querySelector(".arrow-icon");
+        if (arrowElement) {
+            th.removeChild(arrowElement); // Elimina cualquier flecha existente
+        }
+    });
+
+    // Establece el color de fondo de la columna actual
+    thElements[columnIndex].classList.add("sorted-column"); 
+
+    // Agrega la flecha hacia arriba o hacia abajo al título de la columna
+    const arrowElement = document.createElement("span");
+    arrowElement.classList.add("arrow-icon");
+    if (sortOrder === 1) {
+        arrowElement.textContent = "▲"; // Flecha hacia arriba
+    } else {
+        arrowElement.textContent = "▼"; // Flecha hacia abajo
+    }
+    thElements[columnIndex].appendChild(arrowElement);
 
     rows.sort((a, b) => {
         const aValue = a.cells[columnIndex].textContent;
@@ -58,8 +89,8 @@ function sortTable(columnIndex) {
         table.appendChild(row);
     });
 
-    // Cambia el orden para la próxima vez que se haga clic
-    sortOrder *= -1;
+    // Actualiza la última columna ordenada
+    lastSortedColumnIndex = columnIndex;
 }
 
 // Realizar una solicitud HTTP para obtener el JSON de películas
@@ -74,6 +105,5 @@ fetch('/data/lista-peliculas.json')
     .catch(error => console.error('Error al cargar el JSON de películas:', error));
 
 document.addEventListener("DOMContentLoaded", function () {
-
 
 });

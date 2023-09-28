@@ -288,3 +288,14 @@ th:hover {
     background-color: #ddd;
 }
 
+/* Estilos para las celdas de encabezado de columna cuando están ordenadas */
+th.sorted-column {
+    background-color: #A7ADB1; /* Cambia el color de fondo a naranja (puedes ajustar el color a tu gusto) */
+    color: #fff; /* Cambia el color del texto en la celda de encabezado */
+}
+
+/* Estilos para la flecha en el título de la columna */
+.arrow-icon {
+    margin-left: 5px; /* Espacio entre el texto del título y la flecha */
+    font-size: 12px; /* Tamaño de fuente de la flecha */
+}
