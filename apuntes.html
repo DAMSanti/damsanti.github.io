@@ -49,19 +49,19 @@
 
             unidadSelect.innerHTML = ""; // Limpiamos las opciones anteriores
 
-            // Cargamos el archivo JSON que contiene la información de las unidades
             fetch("/data/apuntes.json")
                 .then(response => response.json())
                 .then(data => {
-                    // Filtramos las entradas del JSON para la asignatura seleccionada
                     const unidadesAsignatura = data.filter(entry => entry.asignatura === asignaturaValue);
 
-                    // Generamos las opciones de unidades en función de los datos del JSON
+                    let unidadCount = 1; // Contador para asignar valores únicos
+
                     unidadesAsignatura.forEach(entry => {
                         const option = document.createElement("option");
-                        option.value = entry.unidades;
+                        option.value = unidadCount;
                         option.textContent = `${entry.nombre} ${entry.unidades}`;
                         unidadSelect.appendChild(option);
+                        unidadCount++;
                     });
                 })
                 .catch(error => {
@@ -69,8 +69,9 @@
                 });
         }
 
-        // Llamamos a la función para generar las opciones de unidades cuando cambia la asignatura
         document.getElementById("asignaturaSelect").addEventListener("change", generarOpcionesUnidades);
+
+
 
         // Función para mostrar el PDF seleccionado
         function mostrarPDF() {

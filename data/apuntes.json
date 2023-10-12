@@ -6,6 +6,16 @@
     },
     {
         "asignatura": "SI",
+        "unidades": "1",
+        "nombre": "Sistemas UD"
+    },
+    {
+        "asignatura": "SI",
+        "unidades": "2",
+        "nombre": "Sistemas UD"
+    },
+    {
+        "asignatura": "SI",
         "unidades": "3",
         "nombre": "Sistemas UD"
     },
