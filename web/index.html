@@ -27,7 +27,7 @@
 
     <!-- Página de Inicio -->
     <main>
-        <section>
+        <section id="cuerpoindex">
             <article>
                 <h2>Russell se inspira en Alonso mientras explica el cambio de enfoque después de las vacaciones de verano de la F1</h2>
                 <p>George Russell cree que un “pequeño cambio de mentalidad”, inspirado en el dos veces campeón del mundo Fernando Alonso, le ha ayudado a disfrutar de un mejor nivel de rendimiento desde que regresó de las vacaciones de verano de la F1</p> 
@@ -45,7 +45,7 @@
                     <p>“Simplemente estoy en un lugar mucho más feliz. Estoy aprendiendo cosas nuevas que nunca antes hubiera soñado hacer, así que, en general, estoy en un buen lugar”.</p>
                     <p>Russell se encuentra actualmente en el octavo lugar en el campeonato de pilotos con 132 puntos, solo cuatro puntos detrás del séptimo clasificado, Lando Norris, antes de las últimas cinco rondas de la temporada.</p>
                 </div>
-                <button id="leerMas">Leer más</button>
+                <button id="leerMas" class="button"><span id="spanmas" onclick="mostrarOcultarContenido()">Leer más</span></button>
             </article>
             <article>
                 <h2>Calendario de Eventos 2023</h2>
@@ -208,7 +208,7 @@
             </article>
             <article>
                 <h2>¿Quieres presentarte?</h2>
-                <form>
+                <form class="conoce">
                     <label for="sexo">Sexo:</label>
                     <input type="radio" name="sexo" value="hombre"> Hombre
                     <input type="radio" name="sexo" value="mujer"> Mujer
@@ -226,8 +226,8 @@
                     <label for="fecha">Fecha de Acceso:</label>
                     <input type="date" name="fecha">
 
-                    <input type="reset" value="Borrar">
-                    <input type="submit" value="Enviar">
+                    <input id="boton" class="borrar" type="reset" value="Borrar">
+                    <input id="boton" class="enviar" type="submit" value="Enviar">
                 </form>
             </article>
         </section>
@@ -256,22 +256,21 @@
     </footer>
 </body>
  
-<script>
-     document.addEventListener('DOMContentLoaded', function() {
-        var botonLeerMas = document.getElementById('leerMas');
-        var contenidoCompleto = document.getElementById('contenidoCompleto');
+    <script>
+        function mostrarOcultarContenido() {
+            var boton = document.getElementById("leerMas");
+            var contenido = document.getElementById("contenidoCompleto");
+            var spanmas = document.getElementById("spanmas");
 
-        botonLeerMas.addEventListener('click', function() {
-            if (contenidoCompleto.style.display === 'none') {
-                contenidoCompleto.style.display = 'block';
-                botonLeerMas.innerText = 'Leer menos';
+            if (contenido.style.display === "none") {
+                contenido.style.display = "block";
+                spanmas.innerText = "Leer menos";
             } else {
-                contenidoCompleto.style.display = 'none';
-                botonLeerMas.innerText = 'Leer más';
+                contenido.style.display = "none";
+                spanmas.innerText = "Leer más";
             }
-        });
-    }); 
-</script>
+        }
+    </script>
     
     
 </html>

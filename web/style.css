@@ -1,18 +1,36 @@
 /* styles.css */
 
+/* Scrollbar styles */
+::-webkit-scrollbar {
+width: 12px;
+height: 12px;
+}
+
+::-webkit-scrollbar-track {
+border: 1px solid #FE380E;
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+background: #333;  
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: #88ba1c;  
+}
+
 /* Estilo de la cabecera */
 header {
     background-image: url('imgs/banner.png'); /* Ruta de la imagen de fono */
     background-size: 100% 100%;
-    background-color: #333;
-    color: #fff;
-    text-align:center;
     padding: 20px;
     height: 8vh;
     position: relative;
 }
 
 header h1 {
+    color: #fff;
     font-size: 240%;
     position: absolute;
     top: 30%;
@@ -21,14 +39,12 @@ header h1 {
 }
 
 header img {
-    max-height: 75%;
+    max-height: 7vh;
     position: absolute;
-    top: 50%;
+    top: 5vh;
     left: 10%;
     transform: translate(-50%, -50%);
 }
-
-
 
 
 /* Estilo del índice */
@@ -39,99 +55,34 @@ nav ul {
     justify-content: space-around;
 }
 
-nav li {
-    margin: 0 10px;
-}
-
 nav a {
     text-decoration: none;
     color: #fff;
     font-weight: bold;
 }
 
-
-
-
-
-/* Estilo de los artículos */
-section {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px;
-    height: 70vh;
+nav a:hover {
+    text-shadow: 3px 4px 6px #1D4072, 0 0 0 #000, 1px 4px 6px #def;
 }
-
-article {
-    flex: 1;
-    background-color: #f9f9f9;
-    padding: 20px;
-    margin: 10px;
-    overflow: auto;
-    text-align: center
-}
-
-
-#leerMas {
-    display: block;
-    margin-top: 10px;
-}
-
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-table, th, td {
-    border: 1px solid #000;
-}
-
-th, td {
-    padding: 10px;
-}
-
-/* Estilo del formulario */
-form {
-    margin-top: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-input[type="radio"], select, input[type="number"], input[type="date"] {
-    margin-bottom: 10px;
-}
-
-
-
 
 
 /* Estilo del aside */
 aside {
-    position: fixed;
+    position: absolute;
     top: 19%;
-    right: -250px;
-    width: 250px;
+    right: -0px;
+    width: 0px;
     height: 65%;
-    transition: right 0.3s;
     background-color: #333;
     color: #333;
     padding: 20px;
-    text-align: center;
+    font-size: 1px;
 }
 
 aside:hover {
-    position: fixed;
-    top: 19%;
-    right: -0px;
     width: 250px;
-    height: 65%;
-    transition: left 0.3s;
-    background-color: #333;
     color: white;
-    padding: 20px;
+    font-size: 100%;
     text-align:center;
 }
 
@@ -140,14 +91,19 @@ aside ul {
 }
 
 aside li {
-    margin: 30px 0;
-    margin-right: 20px;
+    margin: 3vh 0;
 }
+
 aside a {
     color: white;
     text-decoration: none;
     font-weight: bold;
 }
+
+aside a:hover {
+    text-shadow: 3px 4px 6px #1D4072, 0 0 0 #000, 1px 4px 6px #def;
+}
+
 
 /* Estilo del pie de página */
 footer {
@@ -162,7 +118,221 @@ footer a {
     color: #fff;
 }
 
-/* Estilo del enlace de volver arriba */
 footer a:hover {
     text-decoration: underline;
 }
+
+
+/* Estilo de la section centrar en index */
+#cuerpoindex {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    height: 69vh;       
+}
+
+    #cuerpoindex article {
+        flex: 1;
+        background-color: #f9f9f9;
+        padding: 20px;
+        margin: 10px;
+        overflow: auto;
+        text-align: center 
+    }
+
+
+/* Estilo de formulatio de presentacion */
+.conoce {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+    .conoce label {
+        display: block;
+        padding: 10px;
+        margin-bottom: 5%;
+    }
+
+    .conoce input[type="radio"], input[type="number"], input[type="date"] {
+        margin-bottom: 5%;
+    }
+
+    .conoce select{
+        overflow:hidden;
+        text-align: center;
+        margin-bottom: 5%;
+        padding: 5px;
+    }
+
+    .conoce input[type="text"], input[type="password"], input[type="number"], textarea {
+        padding: 5px;
+    }
+
+#boton {
+    text-align: center;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.enviar {
+    background-color: #4CAF50;
+}
+
+.borrar {
+    background-color: #f44336;
+}
+
+
+/* Estilo boton leer mas */
+#leerMas {
+    border-radius: 4px;
+    background-color: #FE380E;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 20px;
+    padding: 20px;
+    width: 150px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+    font-size: 15px;
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+/* Estilo tabla resumen de temporada */
+table {
+    width: 100%;
+}
+
+th, td, tr {
+    border-collapse: collapse;
+    border: 1px solid #000;
+    padding: 5px;
+    line-height: 2;
+}
+
+
+
+
+
+
+
+
+
+
+
+#formulario {
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+    height: 69vh;  
+    display: inline-block;   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#galeria {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+#galeria article {
+    flex: 0 1 calc(33.33% - 20px);
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+    background-color: #f9f9f9;
+}
+
+#galeria article:hover {
+    transform: scale(1.05);
+}
+
+#galeria table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#galeria td {
+    text-align: center;
+    padding: 10px;
+}
+
+#galeria img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+#galeria p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
