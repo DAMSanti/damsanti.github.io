@@ -1,21 +1,23 @@
 # player.py
 import pygame
+from config import SCREEN_WIDTH, SCREEN_HEIGHT
 
 class Player:
     def __init__(self, game):
         self.game = game  # Referencia a la instancia de Game
-        self.x = self.game.screen_width // 2 - 360 // 2
-        self.y = self.game.screen_height - 400 - 10
-        self.width = 360
-        self.height = 400
-        self.speed = 10
+        self.x = SCREEN_WIDTH // 2 - 360 // 2
+        self.y = SCREEN_HEIGHT - SCREEN_HEIGHT * 0.37
+        self.width = SCREEN_WIDTH * 0.19
+        self.height = SCREEN_HEIGHT * 0.37
+        self.speed = int(SCREEN_WIDTH * 0.003)
         self.image = pygame.image.load('person.png').convert_alpha()
         self.image = pygame.transform.scale(self.image, (self.width, self.height))
         self.rect = self.image.get_rect()
-        self.rect.x = self.x  # Asegura que self.rect.x sea igual a self.x
+        self.rect.x = self.x
         self.rect.y = self.y
         self.flipped = False
         self.blocked = False
+        self.pantalla = 0
 
     def move_left(self):
         if not self.flipped:
@@ -32,7 +34,7 @@ class Player:
             if self.flipped:
                 self.image = pygame.transform.flip(self.image, True, False)
                 self.flipped = False
-            if self.x < self.game.screen_width // 2 - self.width // 2:
+            if self.x < SCREEN_WIDTH // 2 - self.width // 2:
                 self.x += self.speed
             self.rect.x = self.x  # Actualiza la posición X del rectángulo
 
@@ -47,7 +49,7 @@ class Player:
         if keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT]:
             self.move_left()
         elif keys[pygame.K_RIGHT] and not keys[pygame.K_LEFT] and not self.blocked:
-            if self.x < self.game.screen_width // 2 - self.width // 2:
+            if self.x < SCREEN_WIDTH // 2 - self.width // 2:
                 self.move_right()
             else:
                 self.game.background_speed = self.speed
