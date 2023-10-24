@@ -68,9 +68,9 @@ class Game:
         for i in range(max_vidas):
             pos_vidas = [SCREEN_WIDTH - 100 - (i * 70), 40]
             if i < self.vidas:
-                heart_image = pygame.image.load(corazonlleno_image).convert_alpha()
+                heart_image = pygame.image.load(ruta_corazonlleno).convert_alpha()
             else:
-                heart_image = pygame.image.load(corazonvacio_image).convert_alpha()
+                heart_image = pygame.image.load(ruta_corazonvacio).convert_alpha()
             heart_image = pygame.transform.scale(heart_image, (60, 60))
             screen.blit(heart_image, (pos_vidas[0], pos_vidas[1]))   
 

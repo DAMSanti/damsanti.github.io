@@ -97,7 +97,7 @@ class MiniGame1:
                     self.dragging_value_index = None     
 
     def draw_variable(self, var_type, rect):
-        cesta_image = pygame.image.load('cesta.png').convert_alpha()
+        cesta_image = pygame.image.load(ruta_cesta).convert_alpha()
         cesta_image = pygame.transform.scale(cesta_image, (rect.width, rect.height)) 
         screen.blit(cesta_image, rect)
         
@@ -126,7 +126,7 @@ class MiniGame1:
                 return  # No dibujar valores ya adivinados
 
         # Cargar la imagen "numeros.png" y escalarla al tamaño del rectángulo
-        numeros_image = pygame.image.load("numeros.png").convert_alpha()
+        numeros_image = pygame.image.load(ruta_numeros).convert_alpha()
         numeros_image = pygame.transform.scale(numeros_image, (SCREEN_WIDTH * 0.06, SCREEN_HEIGHT * 0.08))
         screen.blit(numeros_image, rect)
 
@@ -170,7 +170,7 @@ class MiniGame1:
         # Renderiza el cuadro de tipo de variable arrastrado
         if self.dragging_variable is not None:
             dragged_value = self.values[self.dragging_value_index]
-            numeros_image = pygame.image.load("numeros.png").convert_alpha()
+            numeros_image = pygame.image.load(ruta_numeros).convert_alpha()
             numeros_image = pygame.transform.scale(numeros_image, (SCREEN_WIDTH * 0.06, SCREEN_HEIGHT * 0.08))
             screen.blit(numeros_image, self.value_rect)
                     

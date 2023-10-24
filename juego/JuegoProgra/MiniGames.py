@@ -1,5 +1,6 @@
 # player.py
 import pygame
+import sys
 from config import *
 
 class MiniGames:
@@ -14,7 +15,6 @@ class MiniGames:
     
     def start(self, i):
         self.juego = i
-        print("El valor es ", self.juego)
         self.pinta_panel(self)
         self.display_description(self.juego)
         self.waiting = True
@@ -95,13 +95,13 @@ class MiniGames:
         screen.blit(button_text, button_text_rect)
         
     def draw_lives(self):
-        for i in range(self.vidas):
+        for i in range(max_vidas):
             x = panel_x + panel_width - panel_width * 0.1 - (i * panel_width * 0.017)
             y = panel_y + panel_height * 0.04
-            if i < max_vidas:
-                heart_image = pygame.image.load("corazon.png").convert_alpha()
+            if i < self.vidas:
+                heart_image = pygame.image.load(ruta_corazonlleno).convert_alpha()
             else:
-                heart_image = pygame.image.load("corazonvacio.png").convert_alpha()
+                heart_image = pygame.image.load(ruta_corazonvacio).convert_alpha()
             heart_image = pygame.transform.scale(heart_image, (panel_width * 0.015, panel_width * 0.015))
             screen.blit(heart_image, (x, y))   
             

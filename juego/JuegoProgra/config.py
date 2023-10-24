@@ -2,6 +2,7 @@
 import pygame
 import os
 pygame.init()
+pygame.display.set_caption("Juego de Programación en Java")
 
 # Obtén información sobre la pantalla actual
 screen_info = pygame.display.Info()
@@ -13,10 +14,20 @@ SCREEN_HEIGHT = 1080
 ESCRITORIO_WIDTH = SCREEN_WIDTH * 0.25
 ESCRITORIO_HEIGHT = SCREEN_HEIGHT * 0.38
 
+# Rutas a imagenes
+ruta_fondo = 'fondo.jpg'
+ruta_escritorios = 'escritorio.png'
+ruta_idle = 'anim/idle'
+ruta_walk = 'anim/run'
+ruta_corazonlleno = "corazon.png"
+ruta_corazonvacio = "corazonvacio.png"
+ruta_panel = "pantalla.png"    
+ruta_numeros = "numeros.png"
+ruta_cesta = 'cesta.png'
+
+# Variables generales
 max_vidas = 3
 pantalla = 2 # Modifica la pantallad e inicio
-idle_animation_frames = []
-walk_animation_frames = []
 frame_change_interval = 1
 speed = int(SCREEN_WIDTH * 0.006)
 panel_width = int(SCREEN_WIDTH * 0.8)
@@ -26,6 +37,44 @@ panel_y = (SCREEN_HEIGHT - panel_height) // 2
 play_button_x = (panel_x + panel_width // 2) - (200 // 2)
 play_button_y = panel_y + panel_height - SCREEN_HEIGHT * 0.2
 click_lock_duration = 0.5   
+player_y = SCREEN_HEIGHT - SCREEN_HEIGHT * 0.5
+player_width = SCREEN_WIDTH * 0.25
+player_height = SCREEN_HEIGHT * 0.5
+text_color = (255, 255, 255)
+panel_image = pygame.image.load(ruta_panel)
+hover_color = (0, 160, 0)
+clicked_color = (0, 100, 0)
+
+game_font = pygame.font.Font(None, 36)
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+
+interactua_text = game_font.render("Pulsa la barra espaciadora", True, (255, 255, 255))
+description_0 = "Minijuego 1: \n\nAsigna los tipos de variables correctos a cada uno de los datos mostrados. \nDeberas introducir el tipo que mas se ajuste en cada caso."
+description_1 = "Minijuego 2: \n\nHaz el cast necesario para obtener el resultado deseado."
+description_2 = "Minijuego 3: \n\nUtiliza los botones en pantalla para navegar por el laberinto."
+
+# Definimos la imagen de fondo
+escritorio_image = pygame.image.load(ruta_escritorios).convert_alpha()
+escritorio_image = pygame.transform.scale(escritorio_image, (ESCRITORIO_WIDTH, ESCRITORIO_HEIGHT))
+background_image = pygame.image.load(ruta_fondo)
+background_image = pygame.transform.scale(background_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
+
+# Lista de frames de las animaciones
+idle_animation_frames = []
+walk_animation_frames = []
+
+# Listar todos los archivos en la carpeta
+for filename in os.listdir(ruta_idle):
+    if filename.endswith('.png'):
+        image = pygame.image.load(os.path.join(ruta_idle, filename)).convert_alpha()
+        image = pygame.transform.scale(image, (player_width, player_height))
+        idle_animation_frames.append(image)
+
+for filename in os.listdir(ruta_walk):
+    if filename.endswith('.png'):
+        image = pygame.image.load(os.path.join(ruta_walk, filename)).convert_alpha()
+        image = pygame.transform.scale(image, (player_width, player_height))
+        walk_animation_frames.append(image)   
 
 variable_types = ["byte", "short", "int", "long", "double", "float", "char"]
 values_types = {
@@ -71,46 +120,3 @@ values_types = {
             'i': "char",
             'x': "char"
         }
-        
-player_y = SCREEN_HEIGHT - SCREEN_HEIGHT * 0.5
-player_width = SCREEN_WIDTH * 0.25
-player_height = SCREEN_HEIGHT * 0.5
-
-screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Juego de Programación en Java")
-
-game_font = pygame.font.Font(None, 36)
-
-interactua_text = game_font.render("Pulsa la barra espaciadora", True, (255, 255, 255))
-description_0 = "Minijuego 1: \n\nAsigna los tipos de variables correctos a cada uno de los datos mostrados. \nDeberas introducir el tipo que mas se ajuste en cada caso."
-description_1 = "Minijuego 2: \n\nAsigna los tipos de variables correctos a cada uno de los datos mostrados. \nDeberas introducir el tipo que mas se ajuste en cada caso."
-description_2 = "Minijuego 3: \n\nAsigna los tipos de variables correctos a cada uno de los datos mostrados. \nDeberas introducir el tipo que mas se ajuste en cada caso."
-
-text_color = (255, 255, 255)
-panel_image = pygame.image.load("pantalla.png")
-hover_color = (0, 160, 0)
-clicked_color = (0, 100, 0)
-
-# Definimos la imagen de fondo
-escritorio_image = pygame.image.load('escritorio.png').convert_alpha()
-escritorio_image = pygame.transform.scale(escritorio_image, (ESCRITORIO_WIDTH, ESCRITORIO_HEIGHT))
-background_image = pygame.image.load('fondo.jpg')
-background_image = pygame.transform.scale(background_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
-corazonlleno_image = "corazon.png"
-corazonvacio_image = "corazonvacio.png"
-# Ruta de la carpeta que contiene las imágenes PNG
-folder_path = 'anim/idle'
-folder_path_walk = 'anim/run'
-# Listar todos los archivos en la carpeta
-for filename in os.listdir(folder_path):
-    if filename.endswith('.png'):
-        image = pygame.image.load(os.path.join(folder_path, filename)).convert_alpha()
-        image = pygame.transform.scale(image, (player_width, player_height))
-        idle_animation_frames.append(image)
-
-for filename in os.listdir(folder_path_walk):
-    if filename.endswith('.png'):
-        image = pygame.image.load(os.path.join(folder_path_walk, filename)).convert_alpha()
-        image = pygame.transform.scale(image, (player_width, player_height))
-        walk_animation_frames.append(image)   
-        
