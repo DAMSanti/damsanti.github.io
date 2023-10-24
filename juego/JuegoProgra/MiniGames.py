@@ -103,5 +103,18 @@ class MiniGames:
             else:
                 heart_image = pygame.image.load("corazonvacio.png").convert_alpha()
             heart_image = pygame.transform.scale(heart_image, (panel_width * 0.015, panel_width * 0.015))
-            screen.blit(heart_image, (x, y))       
+            screen.blit(heart_image, (x, y))   
+            
+    def end(self, success):
+        if success:
+            self.game.borra_objects()
+            self.game.minigame = None
+            self.game.space_pressed = False
+            self.game.pantalla += 1
+            self.game.run()
+        else:   
+            self.game.vidas-=1       
+            self.game.minigame = None
+            self.game.space_pressed = False
+            self.game.run()    
             

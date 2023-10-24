@@ -22,7 +22,7 @@ class Game:
         self.background_x = 0
         self.objects = []
         self.vidas = 3
-        self.pantalla = 2 # Modifica la pantallad e inicio
+        self.pantalla = 0 # Modifica la pantallad e inicio
         
     def run(self):
         while not self.game_over:

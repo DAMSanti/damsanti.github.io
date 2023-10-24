@@ -112,5 +112,5 @@ for filename in os.listdir(folder_path_walk):
     if filename.endswith('.png'):
         image = pygame.image.load(os.path.join(folder_path_walk, filename)).convert_alpha()
         image = pygame.transform.scale(image, (player_width, player_height))
-        walk_animation_frames.append(image)    
+        walk_animation_frames.append(image)   
         
