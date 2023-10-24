@@ -1,0 +1,9 @@
+{
+    "nombre": "placa_2",
+    "RAM": { "x": 620, "y": 120, "ancho": 60, "alto": 430 },
+    "USB": { "x": 710, "y": 480, "ancho": 20, "alto": 60 },
+    "SATA": { "x": 690, "y": 610, "ancho": 60, "alto": 100 },
+    "Socket": { "x": 370, "y": 270, "ancho": 170, "alto": 125 },
+    "Chipset": { "x": 500, "y": 660, "ancho": 90, "alto": 70 },
+    "PCI-Express": { "x": 240, "y": 605, "ancho": 310, "alto": 30 }
+}

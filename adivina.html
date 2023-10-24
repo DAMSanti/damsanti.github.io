@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Identificar partes de placas base</title>
+    <style>
+        .selected-area {
+            border: 2px solid red;
+            position : absolute;
+        }
+        .crosshair-cursor {
+            cursor: crosshair;
+        }
+    </style>
+</head>
+<body>
+    <h1>Identificar partes de Placas Base</h1>
+    <div id="image-container">
+        <img id="baseboard-image" src="" alt="Placa Base" width="800" height="700">
+    </div>
+    <button onclick="loadRandomImage()">Cargar Imagen</button>
+
+    <button onclick="selectPart('Socket', this)">Socket</button>
+    <button onclick="selectPart('Chipset', this)">Chipset</button>
+    <button onclick="selectPart('RAM', this)">RAM</button>
+    <button onclick="selectPart('USB', this)">USB</button>
+    <button onclick="selectPart('SATA', this)">SATA</button>
+    <button onclick="selectPart('PCI-Express', this)">PCI-Express</button>
+    
+    <script>
+        const baseboardImages = ['placas/placa_1.jpg', 'placas/placa_2.jpg', 'placas/placa_3.jpg']
+        let currentImageIndex = 0;
+        let lastImageIndex = -1;
+        const imageElement = document.getElementById('baseboard-image');
+        let selectedPart = '';
+        let currentButton; // Variable para rastrear el botón seleccionado
+        const bodyElement = document.body; // Definir bodyElement correctamente
+        let areasDeInteres; // Almacena las áreas de interés cargadas desde el JSON
+        const disabledButtons = [];
+
+
+        function loadRandomImage() {
+            do {
+                currentImageIndex = Math.floor(Math.random() * baseboardImages.length);
+            } while (currentImageIndex === lastImageIndex);    
+            lastImageIndex = currentImageIndex;
+            const imageUrl = baseboardImages[currentImageIndex];
+            imageElement.src = imageUrl;
+            clearSelections();
+            loadAreasDeInteres(); // Cargar áreas de interés cada vez que cambia la imagen
+            for (const button of disabledButtons) {
+                button.disabled = false;
+            }
+        }
+
+        function loadAreasDeInteres() {
+            const imageUrl = baseboardImages[currentImageIndex];
+            const jsonUrl = `placas/placa_${currentImageIndex + 1}.json`; // Ajusta la URL del JSON según la imagen actual
+            areasDeInteres = {}; // Reinicia las áreas de interés
+
+            fetch(jsonUrl)
+                .then(response => response.json())
+                .then(data => {
+                    areasDeInteres = data;
+                })
+                .catch(error => {
+                    console.error('Error al cargar el archivo JSON:', error);
+                });
+        }
+        
+        function clearSelections() {
+            const selectedAreas = document.querySelectorAll('.selected-area');
+            selectedAreas.forEach((area) => area.remove());
+        }
+        
+        function selectPart(partName) {
+            selectedPart = partName;
+            currentButton = event.target; 
+            bodyElement.classList.add('crosshair-cursor');
+        }
+            
+        imageElement.addEventListener('click', (event) => {
+            if (selectedPart) {
+                if (isCorrectPart(selectedPart, event)) {
+                    const areaSeleccionada = areasDeInteres[selectedPart];
+                    const selectedArea = document.createElement('div');
+                    selectedArea.className = 'selected-area';
+                    selectedArea.style.left = areaSeleccionada.x + 'px';
+                    selectedArea.style.top = areaSeleccionada.y + 'px';
+                    selectedArea.style.width = areaSeleccionada.ancho + 'px';
+                    selectedArea.style.height = areaSeleccionada.alto + 'px';
+                    imageElement.parentElement.appendChild(selectedArea);
+                    alert(`¡Correcto! Has seleccionado la parte: ${selectedPart}`);
+                } else {
+                    alert('¡Incorrecto! Inténtalo de nuevo.');
+                }
+                selectedPart = '';
+                bodyElement.classList.remove('crosshair-cursor');
+            }
+        });
+        
+        function isCorrectPart(partName, event) {
+            if (areasDeInteres) {
+                const areaSeleccionada = areasDeInteres[partName];
+                if (!areaSeleccionada) {
+                    return false; // La parte seleccionada no tiene un área de interés definida
+                }
+
+                // Verifica si el clic está dentro del área de interés
+                if (
+                    event.clientX >= areaSeleccionada.x &&
+                    event.clientX <= areaSeleccionada.x + areaSeleccionada.ancho &&
+                    event.clientY >= areaSeleccionada.y &&
+                    event.clientY <= areaSeleccionada.y + areaSeleccionada.alto
+                ) {
+                    // Si la respuesta es correcta, cambia el color del recuadro a verde
+                    const selectedArea = document.querySelector('.selected-area');
+                    // selectedArea.classList.add('correct');
+                    // Desactiva el botón correspondiente y agrega a la lista de botones desactivados
+                    currentButton.disabled = true;
+                    disabledButtons.push(currentButton);
+                    return true;
+                }
+            }
+            return false; // No se pudieron cargar las áreas de interés o la respuesta es incorrecta
+        }
+        
+        function showAreasDeInteres() {
+            if (areasDeInteres) {
+                clearSelections(); // Borra las selecciones existentes
+                for (const areaName in areasDeInteres) {
+                    if (areasDeInteres.hasOwnProperty(areaName)) {
+                        const area = areasDeInteres[areaName];
+                        const selectedArea = document.createElement('div');
+                        selectedArea.className = 'selected-area';
+                        selectedArea.style.position = 'absolute';
+                        selectedArea.style.left = area.x + 'px';
+                        selectedArea.style.top = area.y + 'px';
+                        selectedArea.style.width = area.ancho + 'px';
+                        selectedArea.style.height = area.alto + 'px';
+                        imageElement.parentElement.appendChild(selectedArea);
+                    }
+                }
+            }
+        }
+
+
+        
+        loadRandomImage(); // Carga una imagen aleatoria al cargar la página
+        
+    </script> 
+</body>
+</html>
