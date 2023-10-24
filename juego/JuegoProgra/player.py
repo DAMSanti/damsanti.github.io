@@ -1,70 +1,90 @@
 # player.py
 import pygame
-from config import SCREEN_WIDTH, SCREEN_HEIGHT
+from MiniGames import MiniGames
+from config import *
 
 class Player:
     def __init__(self, game):
+        self.minigame = None
         self.game = game  # Referencia a la instancia de Game
-        self.x = SCREEN_WIDTH // 2 - 360 // 2
-        self.y = SCREEN_HEIGHT - SCREEN_HEIGHT * 0.37
-        self.width = SCREEN_WIDTH * 0.19
-        self.height = SCREEN_HEIGHT * 0.37
-        self.speed = int(SCREEN_WIDTH * 0.003)
-        self.image = pygame.image.load('person.png').convert_alpha()
-        self.image = pygame.transform.scale(self.image, (self.width, self.height))
-        self.rect = self.image.get_rect()
-        self.rect.x = self.x
-        self.rect.y = self.y
+        self.player_x = SCREEN_WIDTH * 0.9 // 2 - SCREEN_WIDTH * 0.3 // 2
+        self.background_speed = 0
+        self.current_frame = 0
+        self.animation_timer = 0
+        self.rect = image.get_rect()
+        self.rect.x = self.player_x
+        self.rect.y = player_y
         self.flipped = False
         self.blocked = False
-        self.pantalla = 0
 
+    def interactua_object(self):  
+        if self.minigame is None:
+            self.minigame = MiniGames(self.game)
+        if self.minigame:
+            self.minigame.start(self.game.pantalla) 
+            
     def move_left(self):
         if not self.flipped:
-            self.image = pygame.transform.flip(self.image, True, False)
             self.flipped = True
-        if self.x > 0:
-            self.x -= self.speed
+        if self.player_x > 0:
+            self.player_x -= speed
         else:
-            self.x = 1
-        self.rect.x = self.x
+            self.player_x = 1
+        self.rect.x = self.player_x
 
     def move_right(self):
         if not self.blocked:
             if self.flipped:
-                self.image = pygame.transform.flip(self.image, True, False)
                 self.flipped = False
-            if self.x < SCREEN_WIDTH // 2 - self.width // 2:
-                self.x += self.speed
-            self.rect.x = self.x  # Actualiza la posición X del rectángulo
+            if self.player_x < SCREEN_WIDTH // 2 - player_width // 2:
+                self.player_x += speed
+            self.rect.x = self.player_x  # Actualiza la posición X del rectángulo
 
     def stop(self):
         self.blocked = False
 
     def draw(self, screen):
-        screen.blit(self.image, (self.x, self.y + 20))
+        if self.flipped:
+            screen.blit(pygame.transform.flip(self.current_animation[self.current_frame], True, False), (self.player_x, player_y + 20))
+        else:
+            screen.blit(self.current_animation[self.current_frame], (self.player_x, player_y + 20))
 
     def control_personaje(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT] and not keys[pygame.K_RIGHT]:
             self.move_left()
+            self.current_animation = walk_animation_frames
         elif keys[pygame.K_RIGHT] and not keys[pygame.K_LEFT] and not self.blocked:
-            if self.x < SCREEN_WIDTH // 2 - self.width // 2:
+            if self.player_x < SCREEN_WIDTH // 2 - player_width // 2:
                 self.move_right()
+                self.current_animation = walk_animation_frames
             else:
-                self.game.background_speed = self.speed
+                self.background_speed = speed
+                self.current_animation = walk_animation_frames
         else:
-            self.game.background_speed = 0
+            self.background_speed = 0
             self.stop()
-
-        # Desplazar el fondo horizontalmente
-        self.game.background_x -= self.game.background_speed
-
-        # Calcular la puntuación basada en la distancia recorrida
-        self.game.score += self.game.background_speed
+            self.current_animation = idle_animation_frames
+        self.updateAnim()
+        self.calculaPuntuacion()
+        self.controlaFondo()
+        
+    def updateAnim(self):        
+        # Actualizar la animación
+        self.animation_timer += 1
+        if self.animation_timer >= frame_change_interval:
+            self.current_frame = (self.current_frame + 1) % len(self.current_animation)
+            self.animation_timer = 0
+            
+    def calculaPuntuacion(self):        
+        # Calcular la puntuación BACKGROUND_SPEED en la distancia recorrida
+        self.game.score += self.background_speed
         if self.game.score > self.game.max_score:
-            self.game.max_score = self.game.score
+            self.game.max_score = self.game.score   
 
+    def controlaFondo(self):
+        # Desplazar el fondo horizontalmente
+        self.game.background_x -= self.background_speed
         # Si el fondo se desplaza más allá de su ancho, lo reiniciamos
-        if self.game.background_x < -self.game.background_image.get_width():
-            self.game.background_x = 0
+        if self.game.background_x < -background_image.get_width():
+            self.game.background_x = 0  
