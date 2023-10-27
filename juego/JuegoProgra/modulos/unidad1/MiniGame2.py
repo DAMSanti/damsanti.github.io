@@ -302,7 +302,7 @@ class MiniGame2:
 
         pygame.display.update()
 
-    def corrige(self, index, clasificacion):      
+    def corrige(self, index, clasificacion): 
         if index == 0 and clasificacion == "Byte":
             self.success+=1
             MiniGames.pinta_panel(self)
@@ -316,9 +316,9 @@ class MiniGame2:
             self.success+=1
             MiniGames.pinta_panel(self)
         else:
-            self.lives-=1
-            self.pinta_panel() 
-            if self.lives == 0:
+            self.vidas-=1
+            MiniGames.pinta_panel(self) 
+            if self.vidas == 0:
                 pygame.time.delay(1000)
                 MiniGames.end(self, False)
         if self.success >=7 :

@@ -44,17 +44,30 @@ class MiniGame4:
                 if event.type == pygame.KEYDOWN:
                     if self.active:
                         if event.key == pygame.K_RETURN:
-                            self.combinar_y_ejecutar_codigo_java(self.input_text, self.success)
+                            # self.combinar_y_ejecutar_codigo_java(self.input_text, self.success)
+                            if self.combinar_y_ejecutar_codigo_java(self.input_text, self.success) == True:
+                                self.success+=1
+                                self.input_text = ""
+                                self.active = False
+                                MiniGames.pinta_panel(self)
+                                if self.success >=7 :
+                                    pygame.time.delay(1000)
+                                    MiniGames.end(self, True)
+                            else:
+                                self.vidas-=1
+                                if self.vidas == 0:
+                                    pygame.time.delay(1000)
+                                    MiniGames.end(self, False)
                         elif event.key == pygame.K_BACKSPACE:
                             self.input_text = self.input_text[:-1]
                         else:
                             if len(self.input_text) < 3:
                                 self.input_text += event.unicode
             MiniGames.pinta_panel(self)
+            MiniGames.draw_lives(self)
             self.draw_problemas(self.success)
             self.recopilar_texto_usuario()
             pygame.display.flip()                              
-            MiniGames.draw_lives(self)
 
     def crea_problemas(self):
         self.numeros_generados = [self.genera_numeros() for _ in range(20)]
@@ -76,7 +89,6 @@ class MiniGame4:
                 resultado = num1 / num2  # Asegúrate de manejar la división por cero si es posible
             elif operador == "%":
                 resultado = num1 % num2
-       
             self.resultados.append((num1, operador, num2, resultado))        
 
     def genera_numeros(self):
@@ -129,15 +141,13 @@ public class MiClase {{
         # Parse the value from the Java output
         try:
             parsed_value = float(java_output)  # Assuming the output format is "Tu solucion <value>"
-            print(f"Parsed value: {parsed_value}", resultado)
             if parsed_value == resultado:
-                print("Acertaste!!")
+                acierto = True
+                return acierto
 
             # Now you can use parsed_value in your Python code for further processing
         except (IndexError, ValueError):
             print("Error parsing the value from Java output")
-
-        return parsed_value  # You can return the value if needed
         
     def draw_problemas(self, problema_index):
         if 0 <= problema_index < len(self.resultados):
