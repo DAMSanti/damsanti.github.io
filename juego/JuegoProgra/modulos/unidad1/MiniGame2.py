@@ -2,7 +2,7 @@ import pygame
 import sys
 import random        
 from config import *
-from MiniGames import MiniGames
+from modulos.MiniGames import MiniGames
 
 class MiniGame2:
     def __init__(self, game):
@@ -10,13 +10,14 @@ class MiniGame2:
         self.button_clicked = False
         self.button_hovered = False
         self.button_color = (0, 128, 0)  
+        self.transparent_color = (0, 128, 0, 128)
         self.waiting = False
         self.vidas = 3
         self.success = 0
         self.button_font = pygame.font.Font(None, 36)
         self.click_lock = False  # Variable de bloqueo
         self.click_lock_duration = 0.5
-        self.number_types = ["Int", "Float", "Short","Double"]
+        self.number_types = ["Byte", "Float", "Short","Double"]
 
     def start_game(self):
         self.crea_problemas() 
@@ -68,10 +69,10 @@ class MiniGame2:
                 resultado = num1 / num2  # Asegúrate de manejar la división por cero si es posible
 
             if int(resultado) == resultado:
-                if -32768 <= resultado <= 32767:
-                    clasificacion = "Short"
+                if -128 <= resultado <= 127:
+                    clasificacion = "Byte"
                 else:
-                    clasificacion = "Int"
+                    clasificacion = "Short"
             else:
                 epsilon = sys.float_info.epsilon
                 if abs(resultado - round(resultado, 4)) <= epsilon:
@@ -98,38 +99,45 @@ class MiniGame2:
             x_pos = panel_x + panel_width * 0.15
             y_pos = panel_y + panel_height * 0.2
 
+            # Crear una fuente con un tamaño máximo
+            max_font_size = 30  # Tamaño de fuente máximo en píxeles
+            font = pygame.font.Font(None, max_font_size)
+
             # Combinar "resultado" y "clasificación" en dos líneas de texto
-            resultado_text = self.button_font.render(f"{resultado}", True, text_color)
-            clasificacion_text = self.button_font.render(f"{clasificacion}", True, text_color)
+            resultado_text = font.render(f"{resultado}", True, text_color)
+            ancho_resultado, alto_resultado = resultado_text.get_size()
 
-            # Calcular la altura del cuadro para acomodar ambas líneas
-            cuadro_height = panel_height *0.2
-
+            cuadro_width = 200  # Tamaño del cuadro en píxeles
+            cuadro_height = 100
+            cuadro_transparente = pygame.Surface((cuadro_width, cuadro_height), pygame.SRCALPHA)
+            
             # Dibuja el cuadro con espacio para dos líneas de texto
             cuadro_rect = pygame.Rect(x_pos, y_pos, panel_width * 0.12, cuadro_height)
-            pygame.draw.rect(screen, self.button_color, cuadro_rect, 0)
+            pygame.draw.rect(cuadro_transparente, self.transparent_color, cuadro_rect, 0)
+            
+            # Redimensionar la fuente para ajustar el texto al cuadro
+            while ancho_resultado > cuadro_width - 30 or alto_resultado > cuadro_height:
+                max_font_size -= 1
+                font = pygame.font.Font(None, max_font_size)
+                resultado_text = font.render(f"{resultado}", True, (255, 255, 255))
+                ancho_resultado, alto_resultado = resultado_text.get_size()
 
             # Calcula las posiciones centradas para las dos líneas de texto
             x_centered = cuadro_rect.centerx - resultado_text.get_width() // 2
             y_centered = cuadro_rect.centery - resultado_text.get_height() // 2
             resultado_text_rect = resultado_text.get_rect(topleft=(x_centered, y_centered))
 
-            y_offset = resultado_text.get_height() + 10
-            x_centered = cuadro_rect.centerx - clasificacion_text.get_width() // 2
-            clasificacion_text_rect = clasificacion_text.get_rect(topleft=(x_centered, y_pos + y_offset))
-
             screen.blit(resultado_text, resultado_text_rect)
-            screen.blit(clasificacion_text, clasificacion_text_rect)
             
             # Dibujar el cuadro para el operador
             x_pos =  panel_x + panel_width * 0.3
-            y_pos = panel_y + panel_height * 0.25
+            y_pos = panel_y + panel_height * 0.23
 
             igual_text = self.button_font.render(f"=", True, text_color)
             igual_rect =  pygame.Rect(x_pos, y_pos, panel_width * 0.05, cuadro_height*0.5)
-            pygame.draw.rect(screen, (0, 0, 0), igual_rect, 0)
+            pygame.draw.rect(cuadro_transparente, self.transparent_color, igual_rect, 0)
             
-            # Calcula las posiciones centradas para las dos líneas de texto
+            # Calcula las posiciones centradas para el texto
             x_centered = igual_rect.centerx - igual_text.get_width() // 2
             y_centered = igual_rect.centery - igual_text.get_height() // 2
             igual_text_rect = igual_text.get_rect(topleft=(x_centered, y_centered))
@@ -142,9 +150,55 @@ class MiniGame2:
 
             espacio_text = self.button_font.render(f"", True, text_color)
             espacio_rect =  pygame.Rect(x_pos, y_pos, panel_width * 0.12, cuadro_height)
-            pygame.draw.rect(screen, self.button_color, espacio_rect, 0)
+            pygame.draw.rect(screen, self.transparent_color, espacio_rect, 0)
             
             screen.blit(espacio_text, espacio_rect)
+
+            # Dibujar el cuadro para el operador
+            x_pos =  panel_x + panel_width * 0.35
+            y_pos = panel_y + panel_height * 0.23
+
+            igual_text = self.button_font.render(f"(", True, text_color)
+            igual_rect =  pygame.Rect(x_pos, y_pos, panel_width * 0.05, cuadro_height*0.5)
+            pygame.draw.rect(cuadro_transparente, self.transparent_color, igual_rect, 0)
+            
+            # Calcula las posiciones centradas para el texto
+            x_centered = igual_rect.centerx - igual_text.get_width() // 2
+            y_centered = igual_rect.centery - igual_text.get_height() // 2
+            igual_text_rect = igual_text.get_rect(topleft=(x_centered, y_centered))
+            
+            screen.blit(igual_text, igual_text_rect) 
+                      
+             # Dibujar el cuadro para el operador
+            x_pos =  panel_x + panel_width * 0.46
+            y_pos = panel_y + panel_height * 0.23
+
+            igual_text = self.button_font.render(f")", True, text_color)
+            igual_rect =  pygame.Rect(x_pos, y_pos, panel_width * 0.05, cuadro_height*0.5)
+            pygame.draw.rect(cuadro_transparente, self.transparent_color, igual_rect, 0)
+            
+            # Calcula las posiciones centradas para el texto
+            x_centered = igual_rect.centerx - igual_text.get_width() // 2
+            y_centered = igual_rect.centery - igual_text.get_height() // 2
+            igual_text_rect = igual_text.get_rect(topleft=(x_centered, y_centered))
+            
+            screen.blit(igual_text, igual_text_rect)
+
+            
+             # Dibujar el cuadro para el operador
+            x_pos =  panel_x + panel_width * 0.49
+            y_pos = panel_y + panel_height * 0.23
+
+            igual_text = self.button_font.render(f"(", True, text_color)
+            igual_rect =  pygame.Rect(x_pos, y_pos, panel_width * 0.05, cuadro_height*0.5)
+            pygame.draw.rect(cuadro_transparente, self.transparent_color, igual_rect, 0)
+            
+            # Calcula las posiciones centradas para el texto
+            x_centered = igual_rect.centerx - igual_text.get_width() // 2
+            y_centered = igual_rect.centery - igual_text.get_height() // 2
+            igual_text_rect = igual_text.get_rect(topleft=(x_centered, y_centered))
+            
+            screen.blit(igual_text, igual_text_rect)
 
 
             # Dibujar el cuadro para num1
@@ -153,9 +207,9 @@ class MiniGame2:
 
             num1_text = self.button_font.render(f"{num1}", True, text_color)
             num1_rect = pygame.Rect(x_pos, y_pos, panel_width * 0.12, cuadro_height)
-            pygame.draw.rect(screen, self.button_color, num1_rect, 0)
+            pygame.draw.rect(cuadro_transparente, self.transparent_color, num1_rect, 0)
             
-            # Calcula las posiciones centradas para las dos líneas de texto
+            # Calcula las posiciones centradas parael texto
             x_centered = num1_rect.centerx - num1_text.get_width() // 2
             y_centered = num1_rect.centery - num1_text.get_height() // 2
             num1_text_rect = num1_text.get_rect(topleft=(x_centered, y_centered))
@@ -165,11 +219,11 @@ class MiniGame2:
 
             # Dibujar el cuadro para el operador
             x_pos =  panel_x + panel_width * 0.66
-            y_pos = panel_y + panel_height * 0.25
+            y_pos = panel_y + panel_height * 0.23
 
             operador_text = self.button_font.render(f"{operador}", True, text_color)
             operador_rect =  pygame.Rect(x_pos, y_pos, panel_width * 0.05, cuadro_height*0.5)
-            pygame.draw.rect(screen, (0, 0, 0), operador_rect, 0)
+            pygame.draw.rect(cuadro_transparente, (0, 0, 0), operador_rect, 0)
             
             # Calcula las posiciones centradas para las dos líneas de texto
             x_centered = operador_rect.centerx - operador_text.get_width() // 2
@@ -184,7 +238,7 @@ class MiniGame2:
 
             num2_text = self.button_font.render(f"{num2}", True, text_color)
             num2_rect = pygame.Rect(x_pos, y_pos, panel_width * 0.12, cuadro_height)
-            pygame.draw.rect(screen, self.button_color, num2_rect, 0)
+            pygame.draw.rect(cuadro_transparente, self.transparent_color, num2_rect, 0)
             
             # Calcula las posiciones centradas para las dos líneas de texto
             x_centered = num2_rect.centerx - num2_text.get_width() // 2
@@ -193,6 +247,21 @@ class MiniGame2:
             
             
             screen.blit(num2_text, num2_text_rect)
+            
+            # Dibujar el cuadro para el operador
+            x_pos =  panel_x + panel_width * 0.80
+            y_pos = panel_y + panel_height * 0.23
+
+            igual_text = self.button_font.render(f")", True, text_color)
+            igual_rect =  pygame.Rect(x_pos, y_pos, panel_width * 0.05, cuadro_height*0.5)
+            pygame.draw.rect(cuadro_transparente, self.transparent_color, igual_rect, 0)
+            
+            # Calcula las posiciones centradas para el texto
+            x_centered = igual_rect.centerx - igual_text.get_width() // 2
+            y_centered = igual_rect.centery - igual_text.get_height() // 2
+            igual_text_rect = igual_text.get_rect(topleft=(x_centered, y_centered))
+            
+            screen.blit(igual_text, igual_text_rect)
 
     def draw_botones(self):
         # Define una lista de colores para los botones
@@ -234,7 +303,7 @@ class MiniGame2:
         pygame.display.update()
 
     def corrige(self, index, clasificacion):      
-        if index == 0 and clasificacion == "Int":
+        if index == 0 and clasificacion == "Byte":
             self.success+=1
             MiniGames.pinta_panel(self)
         elif index == 1 and clasificacion == "Float":

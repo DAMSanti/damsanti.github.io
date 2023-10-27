@@ -76,6 +76,12 @@ class MiniGames:
                             self.waiting = False
                             self.clear_panel()
                             self.game.escogeJuego()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_RETURN or event.key == pygame.K_KP_ENTER:
+                        self.handle_mouse_click()
+                        self.waiting = False
+                        self.clear_panel()
+                        self.game.escogeJuego()
                 if event.type == pygame.USEREVENT:
                     self.click_lock = False  # Desactivar el bloqueo cuando expire el temporizador
                     

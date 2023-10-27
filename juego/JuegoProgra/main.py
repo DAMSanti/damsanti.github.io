@@ -1,11 +1,12 @@
 # game.py
 import pygame
 import sys
-from player import Player
-from escritorios import Escritorios
-from MiniGame1 import MiniGame1
-from MiniGame2 import MiniGame2
-from MiniGame3 import MiniGame3
+from recursos.player import Player
+from recursos.escritorios import Escritorios
+from modulos.unidad1.MiniGame1 import MiniGame1
+from modulos.unidad1.MiniGame2 import MiniGame2
+from modulos.unidad1.MiniGame3 import MiniGame3
+from modulos.unidad1.MiniGame4 import MiniGame4
 from config import *
 
 class Game:
@@ -22,7 +23,7 @@ class Game:
         self.background_x = 0
         self.objects = []
         self.vidas = 3
-        self.pantalla = 0 # Modifica la pantallad e inicio
+        self.pantalla = 3 # Modifica la pantallad e inicio
         
     def run(self):
         while not self.game_over:
@@ -97,6 +98,8 @@ class Game:
             self.minigame = MiniGame2(self)
         elif self.pantalla == 2:
             self.minigame = MiniGame3(self)
+        elif self.pantalla == 3:
+            self.minigame = MiniGame4(self)
         self.minigame.start_game()
                                
     def borra_objects(self):

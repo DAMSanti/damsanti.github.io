@@ -15,15 +15,15 @@ ESCRITORIO_WIDTH = SCREEN_WIDTH * 0.25
 ESCRITORIO_HEIGHT = SCREEN_HEIGHT * 0.38
 
 # Rutas a imagenes
-ruta_fondo = 'fondo.jpg'
-ruta_escritorios = 'escritorio.png'
+ruta_fondo = 'imgs/fondo.jpg'
+ruta_escritorios = 'imgs/escritorio.png'
 ruta_idle = 'anim/idle'
 ruta_walk = 'anim/run'
-ruta_corazonlleno = "corazon.png"
-ruta_corazonvacio = "corazonvacio.png"
-ruta_panel = "pantalla.png"    
-ruta_numeros = "numeros.png"
-ruta_cesta = 'cesta.png'
+ruta_corazonlleno = "imgs/corazon.png"
+ruta_corazonvacio = "imgs/corazonvacio.png"
+ruta_panel = "imgs/pantalla.png"    
+ruta_numeros = "imgs/numeros.png"
+ruta_cesta = 'imgs/cesta.png'
 
 # Variables generales
 max_vidas = 3
@@ -49,9 +49,10 @@ game_font = pygame.font.Font(None, 36)
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 interactua_text = game_font.render("Pulsa la barra espaciadora", True, (255, 255, 255))
-description_0 = "Minijuego 1: \n\nAsigna los tipos de variables correctos a cada uno de los datos mostrados. \nDeberas introducir el tipo que mas se ajuste en cada caso."
-description_1 = "Minijuego 2: \n\nHaz el cast necesario para obtener el resultado deseado."
-description_2 = "Minijuego 3: \n\nUtiliza los botones en pantalla para navegar por el laberinto."
+description_0 = "Minijuego 1: \n\nAsigna los tipos de variables correctos a cada uno de los datos mostrados. \nDeberas introducir el tipo que mas se ajuste en cada caso.\nSi arrastras un valor a un tipo de variable equivocado, perderas una vida."
+description_1 = "Minijuego 2: \n\nHaz el cast necesario para obtener el resultado deseado.\n No siempre sera necesario hacer un cast,\npero aun asi debes seleccionar la opcion correcta. \nSi fallas, perderás una vida."
+description_2 = "Minijuego 3: \n\nUtiliza los botones en pantalla para navegar por el laberinto.\nEn Java no existe ninguna secuencia de escape que nos devuelva a la linea anterior\npor lo tanto en este minijuego se ha tomado la 'decision artistica'\n de escoger '\ r' como instruccion 'ARRIBA'"
+description_3 = "Minijuego 3: \n\nUtiliza los botones en pantalla para navegar por el laberinto.\nEn Java no existe ninguna secuencia de escape que nos devuelva a la linea anterior\npor lo tanto en este minijuego se ha tomado la 'decision artistica'\n de escoger '\ r' como instruccion 'ARRIBA'"
 
 # Definimos la imagen de fondo
 escritorio_image = pygame.image.load(ruta_escritorios).convert_alpha()

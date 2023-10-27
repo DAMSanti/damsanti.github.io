@@ -3,7 +3,7 @@ import pygame
 import sys
 import random       
 from config import *
-from MiniGames import MiniGames
+from modulos.MiniGames import MiniGames
 
 class MiniGame1:
     def __init__(self, game):
@@ -15,6 +15,7 @@ class MiniGame1:
         self.success = 0
         self.dragging_variable = None  # Cuadro de tipo de variable que se está arrastrando
         self.dragging_offset = (0, 0)  # Desplazamiento de la posición del mouse al cuadro
+        self.dragging_value_index = None  # Índice del valor que se está arrastrando
         
     def start_game(self):
         self.minijuego = self
@@ -27,16 +28,14 @@ class MiniGame1:
         self.play_game()
 
     def play_game(self):
-        self.dragging_variable = None  # Declarar dragging_variable como local
-        self.dragging_value_index = None  # Índice del valor que se está arrastrando
         while self.vidas > 0 and self.success < len(variable_types):
             for event in pygame.event.get():
+                if event.type == pygame.USEREVENT:
+                    self.click_lock = False  # Desactivar el bloqueo cuando expire el temporizador    
                 self.eventQuit(event)
                 self.eventListenerDown(event)
                 self.eventListenerMove(event)
                 self.eventListenerUp(event)
-                if event.type == pygame.USEREVENT:
-                    self.click_lock = False  # Desactivar el bloqueo cuando expire el temporizador          
                 MiniGames.pinta_panel(self)
                 MiniGames.draw_lives(self)
                 self.pintaValores()
@@ -49,17 +48,18 @@ class MiniGame1:
             
     def eventListenerDown(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
-                if event.button == 1:
-                    MiniGames.handle_mouse_click(self)
-                    x, y = event.pos
-                    clicked_rect = pygame.Rect(x, y, 1, 1)
-                    for i, value in enumerate(self.values):
-                        self.value_rect = pygame.Rect(panel_x + SCREEN_WIDTH * 0.13 + i * (SCREEN_WIDTH * 0.09) * 0.9 , panel_y + SCREEN_HEIGHT * 0.1, SCREEN_WIDTH * 0.05, SCREEN_HEIGHT * 0.06)
-                        # Si el cursor está sobre el cuadro de tipo de variable y no se está arrastrando uno ya
-                        if clicked_rect.colliderect(self.value_rect) and self.dragging_variable is None:
-                            self.dragging_variable = value
-                            self.dragging_offset = (x - self.value_rect.x, y - self.value_rect.y)
-                            self.dragging_value_index = i    
+            if event.button == 1:
+                MiniGames.handle_mouse_click(self)
+                x, y = event.pos
+                clicked_rect = pygame.Rect(x, y, 1, 1)
+                self.dragging_variable = None  # Inicializa la variable de arrastre como nula
+                for i, value in enumerate(self.values):
+                    value_rect = pygame.Rect(panel_x + SCREEN_WIDTH * 0.13 + i * (SCREEN_WIDTH * 0.09) * 0.9, panel_y + SCREEN_HEIGHT * 0.1, SCREEN_WIDTH * 0.05, SCREEN_HEIGHT * 0.06)
+                    if clicked_rect.colliderect(value_rect) and self.dragging_variable is None:
+                        self.dragging_variable = value
+                        self.dragging_offset = (x - value_rect.x, y - value_rect.y)
+                        self.dragging_value_index = i  
+                        self.value_rect = value_rect
                             
     def eventListenerMove(self, event):
         if event.type == pygame.MOUSEMOTION:
@@ -68,33 +68,38 @@ class MiniGame1:
                 # Limita la posición de la caja arrastrada para que no se acerque a menos de 200 píxeles del borde
                 x = max(panel_x + 300, min(panel_x + panel_width - 300, x))
                 y = max(panel_y + 150, min(panel_y + panel_height - 150, y))
-                self.value_rect = pygame.Rect(x - self.dragging_offset[0], y - self.dragging_offset[1], SCREEN_WIDTH * 0.05, SCREEN_HEIGHT * 0.06)                            
+                # Actualiza la posición de self.value_rect en lugar de crear uno nuevo
+                self.value_rect.x = x - self.dragging_offset[0]
+                self.value_rect.y = y - self.dragging_offset[1]                         
                                                
     def eventListenerUp(self, event):
         if event.type == pygame.MOUSEBUTTONUP:
             if event.button == 1:
                 MiniGames.handle_mouse_click(self)
                 if self.dragging_variable is not None:
+                    processed = False
                     for i, var_type in enumerate(self.variables):
-                        var_rect = pygame.Rect((panel_x + SCREEN_WIDTH * 0.12) + i * (SCREEN_WIDTH * 0.09) * 0.88, panel_y + panel_height - SCREEN_HEIGHT * 0.26, SCREEN_WIDTH * 0.09, SCREEN_HEIGHT * 0.15) 
-                        if self.value_rect.colliderect(var_rect):                                        
-                            if self.dragging_variable in values_types:
-                                expected_type = values_types[self.dragging_variable]
-                                selected_type = self.variables[i]
-                            if expected_type == selected_type:
-                                self.success += 1
-                                # Agrega el índice del valor a la lista de aciertos
-                                self.acertadas.append(self.dragging_value_index)
-                                if self.success == len(variable_types):
-                                    pygame.time.delay(1000)
-                                    MiniGames.end(self, True)
-                            else:
-                                self.vidas -= 1
-                                if self.vidas == 0:
-                                    pygame.time.delay(1000)
-                                    MiniGames.end(self, False)
+                        var_rect = pygame.Rect((panel_x + SCREEN_WIDTH * 0.12) + i * (SCREEN_WIDTH * 0.09) * 0.88, panel_y + panel_height - SCREEN_HEIGHT * 0.26, SCREEN_WIDTH * 0.09, SCREEN_HEIGHT * 0.15)
+                        if self.value_rect.colliderect(var_rect):
+                            if not processed:
+                                if self.dragging_variable in values_types:
+                                    expected_type = values_types[self.dragging_variable]
+                                    selected_type = self.variables[i]
+                                if expected_type == selected_type:
+                                    self.success += 1
+                                    # Agrega el índice del valor a la lista de aciertos
+                                    self.acertadas.append(self.dragging_value_index)
+                                    if self.success == len(variable_types):
+                                        pygame.time.delay(1000)
+                                        MiniGames.end(self, True)
+                                else:
+                                    self.vidas -= 1
+                                    if self.vidas == 0:
+                                        pygame.time.delay(1000)
+                                        MiniGames.end(self, False)
+                                processed = True
                     self.dragging_variable = None
-                    self.dragging_value_index = None     
+                    self.dragging_value_index = None   
 
     def draw_variable(self, var_type, rect):
         cesta_image = pygame.image.load(ruta_cesta).convert_alpha()

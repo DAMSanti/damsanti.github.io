@@ -2,7 +2,7 @@ import pygame
 import sys
 import random        
 from config import *
-from MiniGames import MiniGames
+from modulos.MiniGames import MiniGames
 
 class MiniGame3:
     def __init__(self, game):

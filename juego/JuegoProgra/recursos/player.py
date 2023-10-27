@@ -1,6 +1,6 @@
 # player.py
 import pygame
-from MiniGames import MiniGames
+from modulos.MiniGames import MiniGames
 from config import *
 
 class Player:
@@ -21,7 +21,7 @@ class Player:
         if self.minigame is None:
             self.minigame = MiniGames(self.game)
         if self.minigame:
-            self.minigame.start(self.game.pantalla) 
+            self.minigame.start(self.game.pantalla)
             
     def move_left(self):
         if not self.flipped:
