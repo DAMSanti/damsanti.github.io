@@ -14,14 +14,11 @@ class MiniGame3:
         self.success = 0
         self.click_lock = False  # Variable de bloqueo
         self.click_lock_duration = 0.5
-        # Define el tamaño de la cuadrícula del laberinto
-        self.GRID_SIZE = 10
-        self.CELL_SIZE = panel_width * 0.3 // self.GRID_SIZE
         self.mov_types = ["/n", "/r", "/t","/b"]
         # Crea una cuadrícula para el laberinto
-        self.grid = [[0] * self.GRID_SIZE for _ in range(self.GRID_SIZE)]
+        self.grid = [[0] * GRID_SIZE for _ in range(GRID_SIZE)]
         self.cuadro_x, self.cuadro_y = 0, 1  
-        self.cuadro_size = panel_width * 0.3 // self.GRID_SIZE
+        self.cuadro_size = panel_width * 0.3 // GRID_SIZE
 
     def start_game(self):
         self.genera_laberinto(1,1)
@@ -61,34 +58,32 @@ class MiniGame3:
         for dx, dy in directions:
             nx, ny = x + 2 * dx, y + 2 * dy  # Calcula la posición de la celda vecina
 
-            if 0 <= nx < self.GRID_SIZE - 1 and 0 <= ny < self.GRID_SIZE and self.grid[ny][nx] == 0:
+            if 0 <= nx < GRID_SIZE - 1 and 0 <= ny < GRID_SIZE and self.grid[ny][nx] == 0:
                 # Elimina la pared entre la celda actual y la celda vecina
                 self.grid[y + dy][x + dx] = 1
                 self.genera_laberinto(nx, ny)
                 
         # Marca la entrada y la salida
         self.grid[1][0] = 2
-        self.grid[self.GRID_SIZE - 1][self.GRID_SIZE - 2] = 3
+        self.grid[GRID_SIZE - 1][GRID_SIZE - 2] = 3
                          
     def pinta_laberinto(self):
         panel_laberinto_x = panel_x * 3.9
         panel_laberinto_y = panel_y * 2.2
-        for y in range(self.GRID_SIZE):
-            for x in range(self.GRID_SIZE):
-                cell_color = None
+        for y in range(GRID_SIZE):
+            for x in range(GRID_SIZE):
+                tile = None
                 if self.grid[y][x] == 1:
-                    cell_color = (169, 169, 169)  # Pared
+                    tile = tile_camino
                 elif self.grid[y][x] == 0:
-                    cell_color = (139, 69, 19)  # Camino
+                    tile = tile_pared
                 elif self.grid[y][x] == 2 or self.grid[y][x] == 3:
-                    cell_color = (0, 0, 255)  # Entrada o salida
+                    tile = tile_entrada if self.grid[y][x] == 2 else tile_salida
 
-                if cell_color is not None:
-                    rect = pygame.Rect(
-                        panel_laberinto_x + x * self.CELL_SIZE, panel_laberinto_y + y * self.CELL_SIZE,
-                        self.CELL_SIZE, self.CELL_SIZE
-                    )
-                    pygame.draw.rect(screen, cell_color, rect)
+                if tile is not None:
+                    rect = tile.get_rect()
+                    rect.topleft = (panel_laberinto_x + x * CELL_SIZE, panel_laberinto_y + y * CELL_SIZE)
+                    screen.blit(tile, rect)
         pygame.display.update()
                   
     def draw_botones(self):
@@ -117,7 +112,7 @@ class MiniGame3:
                 button_color = (min(button_color[0] + 20, 255), min(button_color[1] + 20, 255), min(button_color[2] + 20, 255))
 
             # Dibuja el botón con el color asignado
-            pygame.draw.rect(screen, button_color, button_rect)
+            pygame.draw.rect(screen, button_color, button_rect, border_radius=10)
 
             # Dibuja el texto en el botón
             button_text = game_font.render(tipo, True, text_color)
@@ -145,7 +140,12 @@ class MiniGame3:
         self.pinta_cuadro()
                     
     def pinta_cuadro(self):
-        x = panel_x * 3.9 + self.cuadro_x * self.CELL_SIZE
-        y = panel_y * 2.2 + self.cuadro_y * self.CELL_SIZE
-        pygame.draw.rect(screen, (255, 255, 255), (x, y, self.cuadro_size, self.cuadro_size))
+        x = panel_x * 3.9 + self.cuadro_x * CELL_SIZE
+        y = panel_y * 2.2 + self.cuadro_y * CELL_SIZE
+        
+        # Dibujar la imagen en lugar de un rectángulo
+        screen.blit(imagen_person, (x, y))
+        
+        pygame.display.update()
+        #  pygame.draw.rect(screen, (255, 255, 255), (x, y, self.cuadro_size, self.cuadro_size))
 

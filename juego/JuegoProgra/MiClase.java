@@ -1,11 +1,13 @@
 
 public class MiClase {
     public static void main(String[] args) {
-        double num1 = 21;
-        double num2 = 9.58;
-        double resultado = 1.8399999999999999;
+        int num1 = 69;
+        int num2 = 122;
+        int num3 = 110;
+        int num4 = 45;
+        String resultado = "true";
 
-        double res = num1 % num2;
+        boolean res = (num1 <= num2) && (num3 >= num4);
         System.out.println(res);
     }
 }

@@ -79,7 +79,7 @@ class MiniGame1:
                 if self.dragging_variable is not None:
                     processed = False
                     for i, var_type in enumerate(self.variables):
-                        var_rect = pygame.Rect((panel_x + SCREEN_WIDTH * 0.12) + i * (SCREEN_WIDTH * 0.09) * 0.88, panel_y + panel_height - SCREEN_HEIGHT * 0.26, SCREEN_WIDTH * 0.09, SCREEN_HEIGHT * 0.15)
+                        var_rect = pygame.Rect((panel_x + SCREEN_WIDTH * 0.12) + i * (SCREEN_WIDTH * 0.09) * 0.88, panel_y + panel_height - SCREEN_HEIGHT * 0.23, SCREEN_WIDTH * 0.07, SCREEN_HEIGHT * 0.12)
                         if self.value_rect.colliderect(var_rect):
                             if not processed:
                                 if self.dragging_variable in values_types:
@@ -108,7 +108,7 @@ class MiniGame1:
         
         # Ajusta la posición vertical del texto
         text_x = rect.centerx
-        text_y = rect.y + int(rect.height * 12/20)  # Coloca el texto a 3/4 de la altura de la imagen
+        text_y = rect.y + int(rect.height * 0.4)  # Coloca el texto a 3/4 de la altura de la imagen
         
         # Crea una superficie con el texto sombreado
         var_text = game_font.render(var_type, True, text_color)
@@ -159,7 +159,7 @@ class MiniGame1:
         # Dibuja los tipos de variables en la parte inferior de la pantalla
         var_x = panel_x + SCREEN_WIDTH * 0.12
         for var_type in self.variables:
-            var_rect = pygame.Rect(var_x, panel_y + panel_height - SCREEN_HEIGHT * 0.26, SCREEN_WIDTH * 0.09, SCREEN_HEIGHT * 0.15)
+            var_rect = pygame.Rect(var_x, panel_y + panel_height - SCREEN_HEIGHT * 0.23, SCREEN_WIDTH * 0.07, SCREEN_HEIGHT * 0.12)
             self.draw_variable(var_type, var_rect)
             var_x += (SCREEN_WIDTH * 0.09) * 0.88
 

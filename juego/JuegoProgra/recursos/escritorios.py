@@ -7,7 +7,7 @@ class Escritorios:
         self.player = player
         self.rect = escritorio_image.get_rect()
         self.rect.x = x
-        self.rect.y = SCREEN_HEIGHT - SCREEN_HEIGHT * 0.38
+        self.rect.y = SCREEN_HEIGHT * 0.5
         
     def update(self, speed):
         self.rect.x -= speed
