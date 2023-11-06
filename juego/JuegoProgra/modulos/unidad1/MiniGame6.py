@@ -15,10 +15,10 @@ class MiniGame6:
         self.success = 0
         self.color = color_inactive
         self.color2 = color_inactive
-        self.input_rect = pygame.Rect(panel_x + panel_width * 0.225, panel_y + panel_height * 0.3, 50, 30)
+        self.input_rect = pygame.Rect(panel_x + panel_width * 0.225, panel_y + panel_height * 0.3, 90, 30)
         self.input_text = ""
         self.active = False
-        self.input_rect2 = pygame.Rect(panel_x + panel_width * 0.225, panel_y + panel_height * 0.4, 50, 30)
+        self.input_rect2 = pygame.Rect(panel_x + panel_width * 0.225, panel_y + panel_height * 0.4, 90, 30)
         self.input_text2 = ""
         self.active2 = False
     def start_game(self):
@@ -121,12 +121,12 @@ class MiniGame6:
         txt_surface = digi_font.render(self.input_text, True, self.color)
         # Calcula la posición horizontal para centrar el texto en el rectángulo de entrada
         x_centered = self.input_rect.x + (self.input_rect.width - txt_surface.get_width()) // 2
-        y_centered = self.input_rect.y + (self.input_rect.height - txt_surface.get_height()) // 2
+        y_centered = self.input_rect.y + (self.input_rect.height - txt_surface.get_height()) // 2 - 2
 
         txt_surface2 = digi_font.render(self.input_text2, True, self.color)
         # Calcula la posición horizontal para centrar el texto en el rectángulo de entrada
         x_centered2 = self.input_rect2.x + (self.input_rect2.width - txt_surface2.get_width()) // 2
-        y_centered2 = self.input_rect2.y + (self.input_rect2.height - txt_surface2.get_height()) // 2
+        y_centered2 = self.input_rect2.y + (self.input_rect2.height - txt_surface2.get_height()) // 2 - 2
 
         # Renderiza las áreas de entrada de texto
         screen.blit(txt_surface, (x_centered, y_centered))
@@ -182,11 +182,10 @@ public class MiClase {{
             x_pos =  panel_x + panel_width * 0.20
             y_pos = panel_y + panel_height * 0.20            
             MiniGames.pinta(x_pos, y_pos, f"int x = {num1};", 1)
-            x_pos =  panel_x + panel_width * 0.235
-            y_pos = panel_y + panel_height * 0.29           
+            x_pos =  panel_x + panel_width * 0.26
+            y_pos = panel_y + panel_height * 0.285           
             MiniGames.pinta(x_pos, y_pos, f";", 1)
-            x_pos =  panel_x + panel_width * 0.235
-            y_pos = panel_y + panel_height * 0.39           
+            y_pos = panel_y + panel_height * 0.385        
             MiniGames.pinta(x_pos, y_pos, f";", 1)
             x_pos = panel_x + ( panel_width / 2 - 70 )
             y_pos = panel_y + panel_height * 0.60 

@@ -1,6 +1,7 @@
 # config.py
 import pygame
 import os
+import sys
 pygame.init()
 pygame.display.set_caption("Juego de Programación en Java")
 
@@ -32,20 +33,20 @@ imagen_person = pygame.image.load("_internal/imgs/person.png")
 
 """
 # Rutas a imagenes
-ruta_fondo = 'imgs/oficina.png'
-ruta_escritorios = 'imgs/escritorio1.png'
+ruta_fondo = os.path.join("imgs", "oficina.jpg")
+ruta_escritorios = os.path.join("imgs", "escritorio21.png")
 ruta_idle = 'anim/idle'
 ruta_walk = 'anim/run'
-ruta_corazonlleno = "imgs/corazon.png"
-ruta_corazonvacio = "imgs/corazonvacio.png"
-ruta_panel = "imgs/pantalla1.png"    
-ruta_numeros = "imgs/numeros.png"
-ruta_cesta = 'imgs/cesta2.png'
-tile_pared = pygame.image.load("imgs/tile.png")
-tile_camino = pygame.image.load("imgs/tile_suelo.png")
-tile_entrada = pygame.image.load("imgs/tile_entrada.png")
-tile_salida = pygame.image.load("imgs/tile_salida.png")
-imagen_person = pygame.image.load("imgs/person.png")
+ruta_corazonlleno = os.path.join("imgs", "corazon.png")
+ruta_corazonvacio = os.path.join("imgs", "corazonvacio.png")
+ruta_panel = os.path.join("imgs", "pantalla1.png") 
+ruta_numeros = os.path.join("imgs", "numeros.png")
+ruta_cesta = os.path.join("imgs", "cesta2.png")
+tile_pared = os.path.join("imgs", "tile.png")
+tile_camino = os.path.join("imgs", "tile_suelo.png")
+tile_entrada = os.path.join("imgs", "tile_entrada.png")
+tile_salida = os.path.join("imgs", "tile_salida.png")
+imagen_person = os.path.join("imgs", "person.png")
     
 # Variables generales
 max_vidas = 3
@@ -72,6 +73,13 @@ color_active = (47, 252, 2)
 GRID_SIZE = 10
 CELL_SIZE = panel_width * 0.3 // GRID_SIZE
 
+# Carga las imágenes con pygame.image.load
+tile_pared = pygame.image.load(tile_pared)
+tile_camino = pygame.image.load(tile_camino)
+tile_entrada = pygame.image.load(tile_entrada)
+tile_salida = pygame.image.load(tile_salida)
+imagen_person = pygame.image.load(imagen_person)
+
 # Escala las imágenes al tamaño de la celda
 tile_pared = pygame.transform.scale(tile_pared, (CELL_SIZE, CELL_SIZE))
 tile_camino = pygame.transform.scale(tile_camino, (CELL_SIZE, CELL_SIZE))
@@ -79,7 +87,8 @@ tile_entrada = pygame.transform.scale(tile_entrada, (CELL_SIZE, CELL_SIZE))
 tile_salida = pygame.transform.scale(tile_salida, (CELL_SIZE, CELL_SIZE))
 imagen_person = pygame.transform.scale(imagen_person, (CELL_SIZE, CELL_SIZE))     
 
-digi_font = pygame.font.Font('font/DS-DIGIT.ttf', 36)
+fuente="font/LLPIXEL3.ttf"
+digi_font = pygame.font.Font(fuente, 36)
 game_font = pygame.font.Font(None, 36)
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 

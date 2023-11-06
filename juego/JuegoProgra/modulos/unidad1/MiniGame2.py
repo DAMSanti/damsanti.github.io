@@ -97,7 +97,7 @@ class MiniGame2:
 
             # Definir la posición del cuadro
             x_pos = panel_x + panel_width * 0.2
-            y_pos = panel_y + panel_height * 0.24
+            y_pos = panel_y + panel_height * 0.237
             MiniGames.pinta(x_pos, y_pos, f"{resultado}\n", 0)
             x_pos =  panel_x + panel_width * 0.35
             y_pos = panel_y + panel_height * 0.23

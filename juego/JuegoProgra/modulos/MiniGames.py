@@ -136,12 +136,15 @@ class MiniGames:
             # Calcula las posiciones centradas para el texto
             y_centered = igual_rect.centery - igual_text.get_height() // 2
             igual_text_rect = igual_text.get_rect(topleft=(igual_rect.centerx, y_centered))
-                
+            igual_text2 = digi_font.render(texto, True, (0,0,0))
+            igual_text_rect2 = igual_text.get_rect(topleft=(igual_rect.centerx+2, y_centered+2))
+              
+            screen.blit(igual_text2, igual_text_rect2)  
             screen.blit(igual_text, igual_text_rect)
         else:
             # Crear una fuente con un tamaño máximo
             max_font_size = 30  # Tamaño de fuente máximo en píxeles
-            font = pygame.font.Font('font/DS-DIGIT.ttf', max_font_size)
+            font = pygame.font.Font(fuente, max_font_size)
 
             # Combinar "Resultado Esperado" y "resultado" en una cadena con un carácter de retorno de línea
             texto_combinado = texto
@@ -172,7 +175,17 @@ class MiniGames:
             # Establecer las posiciones para ambas líneas de texto
             texto_linea1_rect = texto_linea1.get_rect(topleft=(x_centered_linea1, y_centered_linea1))
             texto_linea2_rect = texto_linea2.get_rect(topleft=(x_centered_linea2, y_centered_linea2))
+            
+            # Renderizar las dos líneas de texto
+            texto_linea12 = font.render(linea1, True, (0,0,0))
+            texto_linea22 = font.render(linea2, True, (0,0,0))
+            
+            texto_linea1_rect2 = texto_linea1.get_rect(topleft=(x_centered_linea1 + 2, y_centered_linea1 + 2))
+            texto_linea2_rect2 = texto_linea2.get_rect(topleft=(x_centered_linea2 + 2, y_centered_linea2 + 2))
 
+            screen.blit(texto_linea12, texto_linea1_rect2)
+            screen.blit(texto_linea22, texto_linea2_rect2)
+            
             # Pintar las dos líneas de texto en sus respectivas posiciones
             screen.blit(texto_linea1, texto_linea1_rect)
             screen.blit(texto_linea2, texto_linea2_rect)

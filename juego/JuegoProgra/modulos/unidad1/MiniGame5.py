@@ -14,7 +14,7 @@ class MiniGame5:
         self.vidas = 3
         self.success = 0
         self.color = color_inactive
-        self.input_rect = pygame.Rect(panel_x + panel_width * 0.58, panel_y + panel_height * 0.37, 50, 30)
+        self.input_rect = pygame.Rect(panel_x + panel_width * 0.575, panel_y + panel_height * 0.375, 90, 30)
         self.input_text = ""
         self.active = False
 
@@ -66,7 +66,7 @@ class MiniGame5:
                 elif event.key == pygame.K_BACKSPACE:
                     self.input_text = self.input_text[:-1]
                 else:
-                    if len(self.input_text) < 1:
+                    if len(self.input_text) < 2:
                         self.input_text += event.unicode       
                         
     def crea_problemas(self):
@@ -104,7 +104,7 @@ class MiniGame5:
         txt_surface = digi_font.render(self.input_text, True, self.color)
         # Calcula la posición horizontal para centrar el texto en el rectángulo de entrada
         x_centered = self.input_rect.x + (self.input_rect.width - txt_surface.get_width()) // 2
-        y_centered = self.input_rect.y + (self.input_rect.height - txt_surface.get_height()) // 2
+        y_centered = self.input_rect.y + (self.input_rect.height - txt_surface.get_height()) // 2 - 2
 
         # Renderiza las áreas de entrada de texto
         screen.blit(txt_surface, (x_centered, y_centered))
@@ -156,7 +156,7 @@ public class MiClase {{
             num1, _, num2, resultado = problema
             
             # Dibujar el cuadro para el operador
-            x_pos =  panel_x + panel_width * 0.20
+            x_pos =  panel_x + panel_width * 0.16
             y_pos = panel_y + panel_height * 0.20
             MiniGames.pinta(x_pos, y_pos, f"int num1 = {num1};", 1)
             y_pos = panel_y + panel_height * 0.28
