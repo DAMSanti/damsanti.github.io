@@ -7,7 +7,11 @@ from modulos.unidad1.MiniGame1 import MiniGame1
 from modulos.unidad1.MiniGame2 import MiniGame2
 from modulos.unidad1.MiniGame3 import MiniGame3
 from modulos.unidad1.MiniGame4 import MiniGame4
+from modulos.unidad1.MiniGame5 import MiniGame5
+from modulos.unidad1.MiniGame6 import MiniGame6
+from modulos.unidad1.MiniGame7 import MiniGame7
 from config import *
+sys.path.append('_internal')
 
 class Game:
     def __init__(self):
@@ -23,7 +27,7 @@ class Game:
         self.background_x = 0
         self.objects = []
         self.vidas = 3
-        self.pantalla = 3 # Modifica la pantallad e inicio
+        self.pantalla = 0 # Modifica la pantallad e inicio
         
     def run(self):
         while not self.game_over:
@@ -46,8 +50,13 @@ class Game:
                     
     def render_game(self): 
         self.pinta_pantalla()
-        self.draw_lives()       
-        score_text = game_font.render(f"Distancia: {self.max_score}", True, (255, 255, 255))
+        self.draw_lives()
+        
+        # Renderizar el texto con sombra
+        score_text = digi_font.render(f"Distancia: {self.max_score}", True, (0, 0, 0))  # Sombrero de color
+        screen.blit(score_text, (12, 12))
+    
+        score_text = digi_font.render(f"Distancia: {self.max_score}", True, color_active)
         screen.blit(score_text, (10, 10))
                       
     def update_game(self):
@@ -59,8 +68,10 @@ class Game:
         self.background_x -= self.player.background_speed
         if self.background_x < -background_image.get_width():
             self.background_x = 0
+            
         screen.blit(background_image, (self.background_x, 0))
         screen.blit(background_image, (self.background_x + background_image.get_width(), 0))
+        
         self.player.control_personaje()
         self.update_objects(screen)
         self.player.draw(screen)  
@@ -89,7 +100,7 @@ class Game:
             obj.draw(screen)
         # Generar un nuevo objeto si es necesario
         if len(self.objects) == 0:
-            self.create_new_object(SCREEN_WIDTH, SCREEN_HEIGHT - 270)
+            self.create_new_object(SCREEN_WIDTH*1.5, SCREEN_HEIGHT - 270)
             
     def escogeJuego(self):
         if self.pantalla == 0:
@@ -100,6 +111,12 @@ class Game:
             self.minigame = MiniGame3(self)
         elif self.pantalla == 3:
             self.minigame = MiniGame4(self)
+        elif self.pantalla == 4:
+            self.minigame = MiniGame5(self)
+        elif self.pantalla == 5:
+            self.minigame = MiniGame6(self)
+        elif self.pantalla == 6:
+            self.minigame = MiniGame7(self)
         self.minigame.start_game()
                                
     def borra_objects(self):
