@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formula 1 - Inicio</title>
-    <link rel="icon" href="/imgs/F1logo.png" type="image/png">
+    <link rel="icon" href="./imgs/F1logo.png" type="image/png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Cabecera -->
     <header>
-        <img src="/imgs/F1logo.png" alt="Imagen de cabecera">
+        <img src="./imgs/F1logo.png" alt="Imagen de cabecera">
         <h1>Formula 1</h1>
     </header>
 
@@ -25,14 +25,14 @@
         </ul>
     </nav>
 
-    <!-- Página de Inicio -->
+    <!-- Formulario -->
     <main>
         <section id="formulario">
             <article>
                 <form>
                     <table>
                         <tr>
-                            <td>Nombre:</td>
+                            <td><label>Nombre:</label></td>
                             <td><input type="text" name="nombre" required></td>
                         </tr>
                         <tr>
@@ -65,16 +65,14 @@
                         </tr>
                     </table>
                     <div class="button-container">
-                        <button type="submit">
-                            <img src="enviar.png" alt="Enviar">
-                        </button>
-                        <button class="delete" type="reset">Borrar</button>
+                        <input id="boton" class="enviar" type="submit" value="Enviar">
+                        <input id="boton" class="borrar" type="reset" value="Borrar">
                     </div>
                 </form>                
             </article> 
         </section>
-        
-        
+
+        <!-- Aside -->
         <aside>
             <h2>Enlaces de Interés</h2>
             <br>
