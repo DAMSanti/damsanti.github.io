@@ -1,0 +1,8 @@
+#articulonoticias {
+    width: 580px;
+    padding: 10px;
+    border: 1px solid;
+    column-count: 2;
+    column-gap: 20px;
+    column-rule: 1px solid #000000;
+    }
