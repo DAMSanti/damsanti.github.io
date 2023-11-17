@@ -1,5 +1,8 @@
 /* styles.css */
-
+* {
+    margin: 0px;
+    padding: 0px;
+    }
 /* Scrollbar styles */
 ::-webkit-scrollbar {
 width: 12px;
@@ -22,29 +25,26 @@ background: #88ba1c;
 
 /* Estilo de la cabecera */
 header {
+    display: flex;
     background-image: url('imgs/banner.png'); /* Ruta de la imagen de fono */
     background-size: 100% 100%;
     padding: 20px;
     height: 8vh;
-    position: relative;
 }
 
 header h1 {
+    flex: 6;
     color: #fff;
     font-size: 240%;
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    align-self: center;
+    text-align: center;
 }
 
 header img {
+    flex: 1;
     max-height: 7vh;
-    position: absolute;
-    top: 5vh;
-    left: 10%;
-    transform: translate(-50%, -50%);
 }
+
 
 /* Estilo del índice */
 nav ul {
@@ -55,6 +55,7 @@ nav ul {
 }
 
 nav a {
+    flex: 1;
     text-decoration: none;
     color: #fff;
     font-weight: bold;
@@ -62,6 +63,7 @@ nav a {
 
 nav a:hover {
     text-shadow: 3px 4px 6px #1D4072, 0 0 0 #000, 1px 4px 6px #def;
+    background-color: #666;
 }
 
 /* Estilo del aside */
@@ -70,11 +72,11 @@ aside {
     top: 19%;
     right: -0px;
     width: 0px;
-    height: 65%;
+    height: 69%;
     background-color: #333;
     color: #333;
     padding: 20px;
-    font-size: 1px;
+    font-size: 0px;
 }
 
 aside:hover {
@@ -119,12 +121,16 @@ footer a:hover {
     text-decoration: underline;
 }
 
+
+
+
+
 /* Estilo de la section central en index */
 #cuerpoindex {
     display: flex;
     justify-content: space-between;
     margin: 20px;
-    height: 69vh;       
+    height: 77vh;       
 }
 
     #cuerpoindex article {
@@ -133,28 +139,61 @@ footer a:hover {
         padding: 20px;
         margin: 10px;
         overflow: auto;
-        text-align: center 
+        text-align: center
     }
 
 /* Estilo de la section central en info */
 #cuerpoinfo {
-    display: flex;
-    align-items: center;
     margin: auto;
     width: 70vw;
-    height: 69vh;
-    justify-content:space-around;
+    height: 81vh;
 }
 
     #cuerpoinfo article {
-        flex: 1;
         background-color: #f9f9f9;
         padding: 20px;
-        margin: auto;
-        height: 60vh;
+        height: 75vh;
         overflow: auto;
         text-align: center 
     }
+
+/* Estilo del formulario de registro */
+
+#formulario {
+    margin:auto;
+    height: 78vh;
+    max-width: 20vw;
+}
+
+#formulario form {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    margin-top: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color:#f2f2f2;
+
+}
+
+.formulario-container div {
+    flex: 1;
+    margin-top: 25px;
+}
+
+.formulario-container div input {
+    max-height: 25px;
+}
+
+.button-container {
+    justify-content: space-around;
+    margin-top: 20px;
+    display: flex;
+}
+
+.button_container input {
+    flex: 1;
+}
 
 /* Estilo de formulatio de presentacion */
 .conoce {
@@ -244,6 +283,66 @@ footer a:hover {
   right: 0;
 }
 
+
+
+
+/* Estilo pagina galeria */
+#galeria {
+    height: 80vh;
+    text-align: center;
+}
+
+#galeria-fotos {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 78vw;
+    margin-left: 10vw;
+}
+
+#galeria-fotos div {
+    flex: 0 1 calc(26% - 20px);
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+#galeria-fotos div:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 5px rgb(255, 0, 0);
+}
+
+#galeria img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+#galeria label {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Estilo tabla resumen de temporada */
 table {
     width: 100%;
@@ -253,73 +352,4 @@ th, td, tr {
     border-collapse: collapse;
     padding: 5px;
     line-height: 2;
-}
-
-#formulario {
-    align-items: center;
-    margin: auto;
-    height: 69vh;
-    width: 30vw;
-    justify-content:center;
-}
-
-#formulario table {
-    height: 50vh;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color:#f2f2f2;
-}
-
-.button-container {
-    justify-content: space-around;
-    align-items: center;
-    margin: auto;
-}
-
-.button-container input {
-    margin: auto;
-    margin-inline: 140px;
-    margin-top: 20px;
-}
-
-#galeria {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-#galeria article {
-    flex: 0 1 calc(33.33% - 20px);
-    margin: 10px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
-    background-color: #f9f9f9;
-}
-
-#galeria article:hover {
-    transform: scale(1.05);
-}
-
-#galeria table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-#galeria td {
-    text-align: center;
-    padding: 10px;
-}
-
-#galeria img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-#galeria p {
-    margin: 10px 0;
-    font-size: 14px;
-    color: #666;
 }

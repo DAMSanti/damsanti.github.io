@@ -1,0 +1,44 @@
+#cajapadre {
+    display: flex;
+    width: 600px;
+    height: 200px;
+    border: 1px solid;
+
+    align-items: flex-end;
+    }
+
+#cajapadre > div {
+    height: 145px;
+    margin: 5px;
+    background-color: #CCCCCC;
+    }
+#caja-1 {
+    flex: 1;
+    }
+#caja-2 {
+    flex: 1;
+    
+    }
+#caja-3 {
+    flex: 1;
+    }
+#caja-4 {
+    flex: 1;
+    }
+
+#caja-1:hover {
+    box-shadow: 3px 3px 5px rgba(100, 100, 100, 0.7);
+    align-self: center;
+}
+#caja-2:hover {
+    box-shadow: 3px 3px 5px rgba(100, 100, 100, 0.7);
+    align-self: center;
+}
+#caja-3:hover {
+    box-shadow: 3px 3px 5px rgba(100, 100, 100, 0.7);
+    align-self: center;
+}
+#caja-4:hover {
+    box-shadow: 3px 3px 5px rgba(100, 100, 100, 0.7);
+    align-self: center;
+}

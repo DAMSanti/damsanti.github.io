@@ -28,48 +28,46 @@
     <!-- Formulario -->
     <main>
         <section id="formulario">
-            <article>
-                <form>
-                    <table>
-                        <tr>
-                            <td><label>Nombre:</label></td>
-                            <td><input type="text" name="nombre" required></td>
-                        </tr>
-                        <tr>
-                            <td>Apellidos:</td>
-                            <td><input type="text" name="apellidos" required></td>
-                        </tr>
-                        <tr>
-                            <td>DNI:</td>
-                            <td><input type="text" name="dni" required></td>
-                        </tr>
-                        <tr>
-                            <td>Contraseña:</td>
-                            <td><input type="password" name="contrasena" required></td>
-                        </tr>
-                        <tr>
-                            <td>Verificar Contraseña:</td>
-                            <td><input type="password" name="verificar_contrasena" required></td>
-                        </tr>
-                        <tr>
-                            <td>Edad:</td>
-                            <td><input type="number" name="edad" required></td>
-                        </tr>
-                        <tr>
-                            <td>Domicilio:</td>
-                            <td><input name="domicilio" type="text" required>
-                        </tr>
-                        <tr>
-                            <td>Datos de Interés:</td>
-                            <td><input name="datos_interes" type="text" required>
-                        </tr>
-                    </table>
-                    <div class="button-container">
-                        <input id="boton" class="enviar" type="submit" value="Enviar">
-                        <input id="boton" class="borrar" type="reset" value="Borrar">
+            <form>
+                <div class="formulario-container">
+                    <div>
+                        <label>Nombre:</label>
+                        <input type="text" name="nombre" required>                   
                     </div>
-                </form>                
-            </article> 
+                    <div>
+                        <label>Apellidos:</label>
+                        <input type="text" name="apellidos" required>
+                    </div>
+                    <div>
+                        <label>DNI:</label>
+                        <input type="text" name="dni" required>
+                    </div>
+                    <div>
+                        <label>Contraseña:</label>
+                        <input type="password" name="contrasena" required>
+                    </div>
+                    <div>
+                        <label>Verificar Contraseña:</label>
+                        <input type="password" name="verificar_contrasena" required>                
+                    </div>
+                    <div>
+                        <label>Edad:</label>
+                        <input type="number" name="edad" required>
+                    </div>
+                    <div>
+                        <label>Domicilio:</label>
+                        <input name="domicilio" type="text" required>
+                    </div>
+                    <div>
+                        <label>Datos de Interés:</label>
+                        <input name="datos_interes" type="text" required>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <input id="boton" class="enviar" type="submit" value="Enviar">
+                    <input id="boton" class="borrar" type="reset" value="Borrar">
+                </div>
+            </form>                
         </section>
 
         <!-- Aside -->
