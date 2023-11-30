@@ -1,0 +1,72 @@
+/* Estilo del formulario de registro */
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+main {
+    background-image: url('MULTIMEDIA/mar2.jpg');
+    max-height: 150vh;
+}
+
+form {
+    margin:20px;
+}
+#formulario {
+    margin:auto;
+    height: 100vh;
+    max-width: 20vw;
+    text-align: center;
+}
+
+#formulario h2 {
+    color:#a532da    
+}
+
+#formulario form {
+    flex-direction: column;
+    padding: 15px;
+    margin-top: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color:#f2f2f2;
+}
+
+.formulario-container div {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+}
+
+.formulario-container div label {
+    flex: 1;
+    margin-top: 25px;
+    text-align: left;
+}
+
+.formulario-container div input {
+    max-height: 25px;
+    border-color:#a532da;
+    border-radius: 5px;
+}
+
+.button-container {
+    justify-content: space-around;
+    margin-top: 20px;
+    display: flex;
+}
+
+.button_container input {
+    flex: 1;
+}
+
+.enviar {
+    background-color: #b759e2;
+    width: 500px;
+    border-radius: 5px;
+    text-align: center;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}

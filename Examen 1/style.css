@@ -1,0 +1,171 @@
+/* styles.css */
+* {
+    margin: 0px;
+    padding: 0px;
+    }
+/* Scrollbar styles */
+::-webkit-scrollbar {
+width: 12px;
+height: 12px;
+}
+
+::-webkit-scrollbar-track {
+border: 1px solid #FE380E;
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+background: #333;  
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: #88ba1c;  
+}
+
+#cuerpo {
+    display: flex;
+}
+
+/* Estilo de la cabecera */
+header {
+    display: flex;
+    background-image: url('MULTIMEDIA/header.jpg'); /* Ruta de la imagen de fono */
+    background-size: 100% 100%;
+    padding: 20px;
+    height: 25vh;
+    border: 3px solid rgb(51, 16, 255);
+    border-bottom: 3px solid rgb(0, 0, 0);
+    border-radius: 5px;
+}
+
+header h1 {
+    flex: 6;
+    color: #fff;
+    font-size: 420%;
+    align-self:flex-end;
+    text-align: end;
+}
+
+/* Estilo del índice */
+nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 64vh;
+    list-style: none;
+    background-color: rgba(151, 143, 226, 0.507);
+    font-size: 22px;
+    text-align: left;
+    border: 3px solid rgb(0, 0, 0);
+    border-left: 3px solid rgb(51, 16, 255);
+    max-width: 17vw;
+}
+
+nav div {
+    background-color: white;
+    border-radius: 5px;
+    align-self: center;
+    padding: 5px;
+    padding-left: 45px;
+    padding-right: 45px;
+    margin: 15px;
+    color: #FE380E;
+    text-align: center;
+}
+
+nav a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: rgb(67, 19, 180);
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-shadow: 3px 4px 6px #1D4072, 0 0 0 #000, 1px 4px 6px #def;
+    background-color: #666;
+}
+
+
+
+/* Estilo del articulo */
+#cuerpoindex {
+    flex: 5;
+    margin: 15px
+    
+}
+
+#cuerpoindex h2{
+    color: rgb(67, 19, 180);
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+#cuerpoindex p{
+    font-size: 25px;
+    text-indent: 20px;
+}
+
+main {
+    border-right: 3px solid rgb(51, 16, 255);
+}
+
+/* Estilo pagina galeria */
+#galeria {
+    height: 35vh;
+    text-align: center;
+}
+
+#galeria-fotos {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 75vw;
+    margin-left: 10vw;
+}
+
+#galeria-fotos div {
+    flex: 0 1 calc(26% - 20px);
+    margin: 10px;
+    padding: 15px;
+    text-align: center;
+}
+
+#galeria img {
+    max-width: 65%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+}
+
+#galeria p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+
+/* Estilo del pie de página */
+footer {
+    background-image: url('MULTIMEDIA/mar2.jpg'); /* Ruta de la imagen de fono */
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border: 3px solid rgb(51, 16, 255);
+    border-top: 3px solid rgb(0, 0, 0);
+}
+
+footer a {
+    text-decoration: none;
+    color: #fff;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+

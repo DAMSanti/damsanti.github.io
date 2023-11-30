@@ -1,0 +1,107 @@
+/* Cambia el fondo de color de toda la página */
+body {
+    background-color: #BFBFBA;
+    justify-content: center; /* Centrar horizontalmente */
+}
+
+/***********************/
+/*        BANNER       */
+/***********************/
+
+/* Estilos para el banner */
+#banner {
+    text-align: center;
+    grid-template-columns: 1fr 3fr 1fr; /* Divide en tres columnas: 1fr, 2fr, 1fr */
+    align-items: center; /* Centra verticalmente los elementos en las filas */
+    background-color: #13CCF3; /* Color de fondo del banner */
+    color: #3765A7; /* Color del texto en el banner */
+    text-shadow: 3px 4px 6px #1D4072, 0 0 0 #000, 1px 4px 6px #def;
+    padding: 1% 1%; /* Espaciado interior del banner */
+    position: relative; /* Posición relativa para alinear el logotipo */
+    height: 12vh; /* Altura fija del banner */
+    max-width: 100%;
+    min-height: 50px;
+    border-radius: 20px; /* Agrega esquinas redondeadas al botón */
+}
+    /* Estilos para el título en el banner */
+    #banner h1 {
+        grid-column: 2;
+        margin: 0; /* Elimina el margen superior del título */
+        font-size: 2vw; /* Tamaño de fuente del título */
+        position: relative; /* Posición absoluta para centrar verticalmente */
+        margin: auto;
+    }
+    /* Estilos para el logotipo en el banner */
+    #banner img {
+        grid-column: 1;
+        max-width: 20vw; /* Tamaño máximo del logotipo */
+        max-height: 7vh;
+        margin-left: 2%;
+        border-radius: 20px;
+    }
+    /* Estilos para el botón */
+    #banner a {
+        color: #fff; /* Color del texto del botón */
+        font-weight: bolder;
+        text-decoration: none; /* Elimina el subrayado del enlace */
+        border-radius: 5px; /* Agrega esquinas redondeadas al botón */
+        cursor: pointer;
+        padding: 5px;
+    }
+    /* Cambiar el color del botón al pasar el cursor sobre él */
+    #banner a:hover {
+        background-color: #0056b3;
+    }
+
+    ul li {
+        margin: 10px; /* Centrar horizontalmente */
+        margin-left: -35px;
+        margin-top: 12px;
+        padding: 16px;
+        list-style-type: none;
+    }
+
+
+#aside {
+    text-align: center;
+    width: 15vw;
+    height: 65vh;
+    background-color: aqua;
+}
+
+#botonaside {
+    padding: 10px 24px;
+    width: 15vw;
+}
+
+
+/* Estilos para el banner */
+#foot {
+    text-align: center;
+    align-items: center; /* Centra verticalmente los elementos en las filas */
+    background-color: #13CCF3; /* Color de fondo del banner */
+    color: #3765A7; /* Color del texto en el banner */
+    text-shadow: 3px 4px 6px #1D4072, 0 0 0 #000, 1px 4px 6px #def;
+    padding: 1% 1%; /* Espaciado interior del banner */
+    position: relative; /* Posición relativa para alinear el logotipo */
+    height: 5vh; /* Altura fija del banner */
+    max-width: 100%;
+    border-radius: 20px; /* Agrega esquinas redondeadas al botón */
+}
+    
+
+/* Estilos para el banner */
+#seccion {
+    text-align: center;
+    align-items: center; /* Centra verticalmente los elementos en las filas */
+    background-color: #13CCF3; /* Color de fondo del banner */
+    color: #3765A7; /* Color del texto en el banner */
+    text-shadow: 3px 4px 6px #1D4072, 0 0 0 #000, 1px 4px 6px #def;
+    padding: 1% 1%; /* Espaciado interior del banner */
+    position: relative; /* Posición relativa para alinear el logotipo */
+    height: 65vh; /* Altura fija del banner */
+    width: 80vw;
+    border-radius: 20px; /* Agrega esquinas redondeadas al botón */
+}
+
+

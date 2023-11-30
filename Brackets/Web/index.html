@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Página de Marcas</title>
+        <link rel="stylesheet" href="style.css">
+    </head> 
+    <body>
+        <header>
+            <div id="banner">
+                <table border="0" style="width: 100%">
+                <colgroup>
+                    <col style="width: 12%"/>
+                    <col style="width: 22%"/>  
+                    <col style="width: 22%"/>  
+                    <col style="width: 22%"/>  
+                    <col style="width: 22%"/>    
+                </colgroup>
+                <tr>  
+                    <td rowspan="2">
+                        <img src="https://www.bibliopos.es/wp-content/uploads/2013/09/lenguaje-marcas.jpg" alt="Logotipo">
+                    </td>
+                    <td colspan="4">
+                        <h1>Curso 23/24 Lenguaje de Marcas</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4"></td> 
+                </tr>
+                <tr>
+                    <td colspan="4"></td>    
+                </tr>
+                <tr>
+                    <td><a href="">Inicio</a></td>
+                    <td><a href="">Registro</a></td>
+                    <td><a href="">Información</a></td>
+                    <td><a href="">Galeria de Imagenes</a></td>
+                    <td><a href="">Contactos</a></td>
+                </tr>
+                </table>
+            </div>
+        </header>
+        <br>
+        <table>
+            <tr>
+                <td>
+                    <aside>
+                        <div id="aside">
+                            <ul>
+                                <li><a href="">Enlace 1</a></li>
+                                <li><a href="">Enlace 2</a></li>
+                                <li><a href="">Enlace 3</a></li>
+                                <li><a href="">Enlace 4</a></li>
+                                <li><a href="">Enlace 5</a></li>
+                                <li><a href="">Enlace 6</a></li>
+                                <li><a href="">Enlace 7</a></li>
+                                <li><a href="">Enlace 8</a></li>
+                                <li><a href="">Enlace 9</a></li>
+                                <li><a href="">Enlace 10</a></li>
+                            </ul>
+                        </div>
+                        <button id="botonaside" onclick="toggle(this);">Ocultar Enlaces</button>
+                    </aside>
+                </td>
+                <td>
+                    <section id="seccion">
+                        sdagfasdgas
+                        <article id="articulos">
+                            adgasdag   
+                        </article>
+                        <article id="articulos">
+                            adgasdag   
+                        </article>
+                        <article id="articulos">
+                            adgasdag   
+                        </article>
+                    </section>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <foot>
+            <div id="foot">
+                <a>Página realizada por Santiago Tamayo con Brackets</a>
+            </div>
+        </foot>
+                    
+
+
+    </body>    
+    
+    <script>
+        let toggle = button => {
+            let element = document.getElementById("aside");
+            let hidden = element.getAttribute("hidden");
+
+            if (hidden) {
+                element.removeAttribute("hidden");
+                button.innerText = "Ocultar Enlaces";
+            } else {
+                element.setAttribute("hidden", "hidden");
+                button.innerText = "Mostrar Enlaces";
+            }
+        }
+    </script>
+</html>

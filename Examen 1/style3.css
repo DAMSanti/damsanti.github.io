@@ -1,0 +1,285 @@
+/* styles.css */
+* {
+    margin: 0px;
+    padding: 0px;
+    }
+/* Scrollbar styles */
+::-webkit-scrollbar {
+width: 12px;
+height: 12px;
+}
+
+::-webkit-scrollbar-track {
+border: 1px solid #FE380E;
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+background: #333;  
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: #88ba1c;  
+}
+
+/* Estilo de la cabecera */
+header {
+    display: flex;
+    background-image: url('MULTIMEDIA/Picasso/Fotos/18.jpg'); /* Ruta de la imagen de fono */
+    background-size: 100% 100%;
+    padding: 20px;
+    height: 8vh;
+}
+
+header h1 {
+    flex: 6;
+    color: #fff;
+    font-size: 240%;
+    align-self: center;
+    text-align: center;
+}
+
+header img {
+    flex: 1;
+    max-height: 7vh;
+    max-width: 7vw;
+}
+
+
+/* Estilo del índice */
+nav ul {
+    list-style: none;
+    display: flex;
+    background-color: #333;
+    justify-content: space-around;
+}
+
+nav a {
+    flex: 1;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-shadow: 3px 4px 6px #1D4072, 0 0 0 #000, 1px 4px 6px #def;
+    background-color: #666;
+}
+
+/* Estilo del aside */
+aside {
+    position: absolute;
+    top: 19%;
+    right: -0px;
+    width: 0px;
+    height: 69%;
+    background-color: #333;
+    color: #333;
+    padding: 20px;
+    font-size: 0px;
+}
+
+aside:hover {
+    width: 250px;
+    color: white;
+    font-size: 100%;
+    text-align:center;
+}
+
+aside ul {
+    list-style: none;
+}
+
+aside li {
+    margin: 3vh 0;
+}
+
+aside a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+aside a:hover {
+    text-shadow: 3px 4px 6px #1D4072, 0 0 0 #000, 1px 4px 6px #def;
+}
+
+/* Estilo del pie de página */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+footer a {
+    text-decoration: none;
+    color: #fff;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* Estilo de la section central en index */
+#cuerpoindex {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    height: 77vh;       
+}
+
+    #cuerpoindex article {
+        flex: 1;
+        background-color: #f9f9f9;
+        padding: 20px;
+        margin: 10px;
+        overflow: auto;
+        text-align: center
+    }
+
+
+/* Estilo de formulatio de presentacion */
+.conoce {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+    .conoce label {
+        display: block;
+        padding: 10px;
+        margin-bottom: 5%;
+    }
+
+    .conoce input[type="radio"], input[type="number"], input[type="date"] {
+        margin-bottom: 5%;
+    }
+
+    .conoce select{
+        overflow:hidden;
+        text-align: center;
+        margin-bottom: 5%;
+        padding: 5px;
+    }
+
+    .conoce input[type="text"], input[type="password"], input[type="number"], textarea {
+        padding: 5px;
+    }
+
+#boton {
+    text-align: center;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.enviar {
+    background-color: #4CAF50;
+}
+
+.borrar {
+    background-color: #f44336;
+}
+
+/* Estilo boton leer mas */
+#leerMas {
+    border-radius: 4px;
+    background-color: #FE380E;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 20px;
+    padding: 20px;
+    width: 150px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+    font-size: 15px;
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/* Estilo tabla resumen de temporada */
+table {
+    width: 100%;
+}
+
+th, td, tr {
+    border-collapse: collapse;
+    padding: 5px;
+    line-height: 2;
+}
+
+
+/* Estilo pagina galeria */
+#galeria {
+    height: 72vh;
+    text-align: center;
+}
+
+#galeria-fotos {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 30vw;
+    margin-left: 10vw;
+}
+
+#galeria-fotos div {
+    flex: 0 1 calc(26% - 20px);
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+#galeria-fotos div:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 5px rgb(255, 0, 0);
+}
+
+#galeria img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+#galeria label {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+

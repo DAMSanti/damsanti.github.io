@@ -1,0 +1,63 @@
+body {
+    background-color: antiquewhite;
+}
+
+section > p {
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 3px 4px 6px #1D4072, 0 0 0 #000, 1px 4px 6px #def;
+    /* color: #FF0000; */
+    color: hsl(0, 100%, 50%)
+}
+
+section > p:hover {
+    color: #0059ff;
+}
+
+header {
+    background-image: url("imgs/banner.png") ;
+    background-repeat: no-repeat;
+    background-position: 40vw;
+}
+
+#titulo {
+    width: 100vw;
+}
+
+#titulo > p {
+    color: white;
+    padding: 50px;
+    text-align: center;
+    font: normal 18px MiNuevaLetra, Verdana, sans-serif;
+}
+
+#titulo:hover {
+    font: bolder 26px MiNuevaLetra2, Verdana, sans-serif;
+}
+
+#descripcion {
+    text-align: center;
+}
+
+a {
+    width: 100vw;
+    color: #00ff9d;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+@font-face {
+    font-family: "MiNuevaLetra";
+    src: url("fonts/GodHells.ttf");
+}
+
+@font-face {
+    font-family: "MiNuevaLetra2";
+    src: url("fonts/PerfectBeloved.otf");
+}
+
+a > p {
+    text-align: center;
+    color: #0059ff;
+}

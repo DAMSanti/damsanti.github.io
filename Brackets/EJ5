@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tablas</title>
+    </head>
+    <body>
+        <table border="1">
+            <tr align=center>
+                <td colspan="4">Celda</td>
+                <td colspan="2">Celda</td>
+                <td>Celda</td>
+            </tr>
+            <tr align=center>
+                <td colspan="4">Celda</td>
+                <td colspan="2">Celda</td>
+                <td>Celda</td>
+            </tr>
+            <tr align=center>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td rowspan="2" colspan="2">Celda</td>
+                <td rowspan="2">Celda</td>
+            </tr>
+            <tr align=center>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+            </tr>
+            <tr align=center>
+                <td rowspan="2" colspan="4">Celda</td>
+                <td>Celda</td>
+                <td>Celda</td>
+                <td rowspan="2">Celda</td>
+            </tr>
+            <tr>
+                <td>Celda</td>
+                <td>Celda</td>
+            </tr>
+        </table>
+    </body>
+</html>

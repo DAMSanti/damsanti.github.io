@@ -1,0 +1,102 @@
+<! DOCTYPE html>
+<html>
+    <head lang="es">
+        <title>Lenguaje de Marcas</title>
+    </head>
+
+    <body>
+        <h1>Ole ahí los chavales</h1>
+        <p> Version <del> HTML 5.2 </del>
+        <ins> HTML 5.3 </ins></p>
+        <p>Géneros de <mark>videojuegos:</mark> </p>
+        <ul>
+            <li><a href="#Parrafo1"><b>El Mundo</b></a></li>
+            <li><a href="#Parrafo2"><b>El Pais</b></a></li>
+            <li><a href="#Parrafo3"><b>ABC</b></a></li>
+        </ul>
+        <hr>
+        <article id="Parrafo1">
+            <a href="https://www.elmundo.es/" target="_blank"> Enlace a El Mundo. <abbr title="Diario El Mundo">(DM)</abbr> </a>
+            <br>
+            Este es el diario <cite>El Mundo</cite>
+            <br>
+            <code>
+                <pre>
+                    import javax.swing.JOptionPane;
+
+                    public class Hoja2x5 {
+                        public static void main(String[ ] args) {
+                            // Creamos objeto teclado
+
+                            // Declaramos variables a utilizar
+                            String baseimp, porcent = "%";
+                            double precio;
+
+                            // Entrada de datos   
+                            baseimp = JOptionPane.showInputDialog("Escriba un numero");
+                            precio = Double.parseDouble(baseimp);
+
+                            //Presentacion del resultado
+                            System.out.println("\n\n\t   FACTURA");
+                            System.out.printf("Base Imponible:\t\t%,.2f €\n" , precio);
+                            System.out.printf("IVA 21%s: \t\t%,.2f €" ,porcent, (precio * 1.21));
+                            System.out.printf("\nEl precio despues de aplicar 10%s de descuento: \t\t%,.2f €\n" ,porcent, ((precio * 1.21)*0.9));
+                        }
+                    }
+                </pre>
+            </code>              
+        </article>
+        <hr>
+        <article id="Parrafo2">
+            <a href="https://elpais.com/" target="_blank"> Enlace a El Pais. <abbr title="Diario El Pais">(EP)</abbr> </a>
+            <br>
+            <del datetime="2023-10-04" cite="No me vale este texto"> Este es el diario <cite>El Pais</cite></del>
+            <ins datetime="2023-10-04" cite="Pues ahora si me vale"> Este es el diario <cite>El Pais</cite></ins>
+            <br>
+            <p>
+                Este diario es conocido en todo el <dfn>territorio nacional.</dfn>
+            </p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </article>
+        <hr>
+        <article id="Parrafo3">
+            <a href="https://www.abc.es/" target="_blank"> Enlace al ABC. <abbr title="Diario ABC">(ABC)</abbr> </a>
+            <br>
+            Este es el diario <cite>ABC</cite>            
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </article>
+        <hr>
+    </body>
+</html>
